@@ -1152,7 +1152,7 @@
 </a>
 
 <!-- Sidebar -->
-<div class="sidebar" id="sidebar" style="display: none; position: fixed; top: 0; left: 0; background-color: #2a003e; width: 250px; height: 100%; padding: 20px; z-index: 998; transition: transform 0.3s ease;">
+<div class="sidebar" id="sidebar" style="display: none; position: fixed; top: 0; left: 0; background-color: #2a003e; width: 250px; height: 100%; padding: 20px; z-index: 998; transition: transform 0.3s ease; transform: translateX(-100%);">
     <div style="display: flex; align-items: center; gap: 10px;">
         <!-- Logo next to the header -->
         <img src="PVPNdownload.png" alt="PVPN Logo" style="width: 30px; height: auto;">
@@ -1196,17 +1196,23 @@
 
 // Wait for the DOM content to be fully loaded before adding event listeners
 document.addEventListener('DOMContentLoaded', function() {
-    // Toggle Sidebar Function
-    document.getElementById('toggleSidebar').addEventListener('click', function() {
-        const sidebar = document.getElementById('sidebar');
-        const toggleButton = document.getElementById('toggleSidebar');
+// Get the sidebar and toggle button elements
+    const sidebar = document.getElementById('sidebar');
+    const toggleButton = document.getElementById('toggleSidebar');
 
-        // Toggle sidebar visibility with sliding animation
+    // Initially hide the sidebar
+    sidebar.style.display = 'none';
+    sidebar.style.transform = 'translateX(-100%)'; // Position sidebar off-screen
+
+    // Toggle sidebar visibility with sliding animation
+    toggleButton.addEventListener('click', function() {
         if (sidebar.style.display === 'none') {
             // Show sidebar with sliding animation
             sidebar.style.display = 'block';
-            sidebar.style.transform = 'translateX(0)';
-            
+            setTimeout(() => {
+                sidebar.style.transform = 'translateX(0)';
+            }, 10); // Allow time for the display to be applied before starting the animation
+
             // Move the button to the right
             toggleButton.style.transform = 'translateX(200px)'; // Adjust the distance as needed
         } else {
@@ -1220,7 +1226,6 @@ document.addEventListener('DOMContentLoaded', function() {
             toggleButton.style.transform = 'translateX(0)';
         }
     });
-});
       // Redirect on page load
         window.onload = function () {
             checkRedirect();
