@@ -29,8 +29,10 @@
 
         body {
     background-image: url('Assets/bg.png'); /* Set the background image */
-    background-size: cover; /* Make sure the image covers the entire screen */
+    background-size: auto; /* Do not stretch the image, keep it at its original size */
     background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-attachment: fixed; /* Make the background stay fixed while scrolling */
     color: #fff; /* White text */
     font-family: 'Poppins', sans-serif;
     display: flex;
