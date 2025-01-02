@@ -679,7 +679,7 @@
 <div class="featured-games-section" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 800px; margin: 40px auto; padding: 20px; border: 2px solid #fff; border-radius: 10px; background-color: rgba(42, 0, 62, 0.8);">
     
     <!-- Featured Game Title -->
-    <h2 style="grid-column: span 2; font-size: 1.8rem; color: #ff69b4; font-weight: bold; text-align: center; margin-bottom: 20px;">FEATURED GAMES</h2>
+    <h2 style="grid-column: span 3; font-size: 1.8rem; color: #ff69b4; font-weight: bold; text-align: center; margin-bottom: 20px;">FEATURED GAMES</h2>
     
     <!-- Counterstrike Game -->
     <div class="game-promotion" style="text-align: center; padding: 15px; border: 2px solid #fff; border-radius: 10px; background-color: rgba(42, 0, 62, 0.9);">
@@ -697,7 +697,7 @@
     <!-- Moto X3M Game -->
     <div class="game-promotion" style="text-align: center; padding: 15px; border: 2px solid #fff; border-radius: 10px; background-color: rgba(42, 0, 62, 0.9);">
         <img src="Assets/motox3m.png" alt="Moto X3M" style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 15px;">
-        <button class="play-now-button" onclick="window.location.href='motox3m.html'" 
+        <button class="play-now-button" onclick="openGame('motox3m', 'motox3m')" 
                 style="background-color: #ff69b4; color: white; font-size: 1rem; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">
             Play "MOTO X3M"
         </button>
@@ -706,8 +706,21 @@
             <span style="font-weight: bold;">Racing</span>
         </div>
     </div>
-</div>
 
+    <!-- Retro Bowl Game -->
+    <div class="game-promotion" style="text-align: center; padding: 15px; border: 2px solid #fff; border-radius: 10px; background-color: rgba(42, 0, 62, 0.9);">
+        <img src="Assets/retrobowl.png" alt="Retro Bowl" style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 15px;">
+        <button class="play-now-button" onclick="openGame('retrobowl', 'retrobowl')" 
+                style="background-color: #ff69b4; color: white; font-size: 1rem; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">
+            Play "RETRO BOWL"
+        </button>
+        <div class="promotion-label" style="margin-top: 10px; font-size: 0.9rem; color: white; display: flex; justify-content: center; align-items: center;">
+            <i class="fas fa-football-ball" style="color: white; margin-right: 5px;"></i>
+            <span style="font-weight: bold;">Sports</span>
+        </div>
+    </div>
+</div>
+   
     <!-- A:B Cloaker Button -->
     <button class="cloak-button" onclick="window.location.href='/playervpn-game/aboutblank'">A:B Cloaker</button>
 
