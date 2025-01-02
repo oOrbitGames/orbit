@@ -140,53 +140,6 @@
             color: white;
         }
 
-        /* Game Images Marquee */
-.game-marquee-container {
-    overflow: hidden;
-    white-space: nowrap;
-    position: relative;
-    width: 100%;
-    height: 70px; /* Reduced height for the marquee */
-}
-
-.game-marquee {
-    display: inline-block;
-    animation: scroll 30s linear infinite; /* Speed of scrolling */
-}
-
-.game-marquee img {
-    height: 50px; /* Smaller height for the game images */
-    width: auto; /* Maintain aspect ratio */
-    margin-right: 15px; /* Reduced space between the images */
-}
-
-        @keyframes scroll {
-            from {
-                transform: translateX(100%);
-            }
-            to {
-                transform: translateX(-100%);
-            }
-        }
-
-        .game-marquee-item {
-            display: inline-block;
-            margin: 0 10px; /* Space between images */
-            cursor: pointer;
-            transition: outline 0.3s, animation-play-state 0.3s; /* Smooth outline transition */
-        }
-
-        .game-marquee-item img {
-            height: 120px; /* Set height for images */
-            width: 120px; /* Set width for images */
-            border-radius: 15px; /* Rounded corners */
-            transition: outline 0.3s, transform 0.3s; /* Smooth transition for transformations */
-        }
-
-        .game-marquee-item:hover {
-            outline: 2px solid red; /* Red outline on hover */
-            animation-play-state: paused; /* Pause scrolling on hover */
-        }
 
         /* Button Styles */
         .cloak-button {
