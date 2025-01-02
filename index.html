@@ -1119,13 +1119,16 @@
         </div>
     </div>
     
-<!-- Sidebar Toggle Link -->
-<a href="javascript:void(0);" id="toggleSidebar" style="position: fixed; top: 20px; left: 20px; background-color: #ff69b4; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">
+<!-- Sidebar Toggle Link (styled like a button) -->
+<a href="javascript:void(0);" id="toggleSidebar" 
+   style="position: fixed; top: 20px; left: 20px; background-color: #ff69b4; color: white; padding: 10px 15px; text-decoration: none; font-weight: bold; border-radius: 5px; cursor: pointer; z-index: 999; 
+   transition: all 0.3s ease; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);">
     Toggle Sidebar
 </a>
 
 <!-- Sidebar -->
-<div class="sidebar" id="sidebar" style="display: none; position: fixed; top: 0; left: 0; width: 250px; height: 100%; background-color: #2a003e; color: white; transition: transform 0.3s ease-in-out;">
+<div class="sidebar" id="sidebar" style="display: none; position: fixed; top: 0; left: 0; background-color: #2a003e; width: 250px; height: 100%; padding: 20px; z-index: 998; 
+transition: transform 0.3s ease;">
     <h3>Orbit</h3>
     <a href="https://orbitproxy.flarum.cloud/"><img src="quickkey.png" alt="Forum :)" style="width: 20px; margin-right: 8px;"> Forum :)</a>
     <div class="recommended-games">
@@ -1154,33 +1157,32 @@
     }
 
 // Wait for the DOM content to be fully loaded before adding event listeners
-    document.addEventListener('DOMContentLoaded', function() {
-        // Set initial states
+document.addEventListener('DOMContentLoaded', function() {
+    // Toggle Sidebar Function
+    document.getElementById('toggleSidebar').addEventListener('click', function() {
         const sidebar = document.getElementById('sidebar');
         const toggleButton = document.getElementById('toggleSidebar');
-        
-        // Ensure sidebar is hidden on page load
-        sidebar.style.display = 'none';
-        toggleButton.style.transform = 'translateX(0)'; // Button starts at the left
 
-        // Toggle Sidebar Function
-        toggleButton.addEventListener('click', function() {
-            // If sidebar is hidden
-            if (sidebar.style.display === 'none') {
-                // Show sidebar with sliding animation
-                sidebar.style.display = 'block';
-                sidebar.style.transform = 'translateX(0)'; // Sidebar slides in
-                toggleButton.style.transform = 'translateX(260px)'; // Move button further right
-            } else {
-                // Hide sidebar with sliding animation
-                sidebar.style.transform = 'translateX(-100%)'; // Sidebar slides out
-                setTimeout(function() {
-                    sidebar.style.display = 'none';
-                }, 300); // Wait for the animation to finish before hiding sidebar
-                toggleButton.style.transform = 'translateX(0)'; // Move button back to the left
-            }
-        });
+        // Toggle sidebar visibility with sliding animation
+        if (sidebar.style.display === 'none') {
+            // Show sidebar with sliding animation
+            sidebar.style.display = 'block';
+            sidebar.style.transform = 'translateX(0)';
+            
+            // Move the button to the right
+            toggleButton.style.transform = 'translateX(200px)'; // Adjust the distance as needed
+        } else {
+            // Hide sidebar with sliding animation
+            sidebar.style.transform = 'translateX(-100%)';
+            setTimeout(function() {
+                sidebar.style.display = 'none';
+            }, 300); // Wait for the animation to finish before hiding the sidebar
+
+            // Move the button to the left (back to original position)
+            toggleButton.style.transform = 'translateX(0)';
+        }
     });
+});
       // Redirect on page load
         window.onload = function () {
             checkRedirect();
