@@ -1357,59 +1357,16 @@
             const recommendedContainer = document.getElementById('recommended-items');
             recommendedContainer.innerHTML = ''; // Clear existing content
 
-// Shuffle games
-const shuffledGames = games.sort(() => 0.5 - Math.random()).slice(0, 8);
+            // Shuffle games
+            const shuffledGames = games.sort(() => 0.5 - Math.random()).slice(0, 8);
 
-shuffledGames.forEach(game => {
-    const gameElement = document.createElement('div');
-    gameElement.className = 'recommended-item';
-    gameElement.innerHTML = `<a href="${game.link}"><img src="${game.image}" alt="${game.name}"> ${game.name}</a>`;
-    recommendedContainer.appendChild(gameElement);
-});
-
-// Function to load the games from the JSON file
-function loadGames() {
-    fetch('games.json') // Fetch the games.json file
-        .then(response => response.json()) // Parse the JSON response
-        .then(data => {
-            const gameList = document.getElementById('gameList');
-            gameList.innerHTML = ''; // Clear previous list
-            data.games.forEach(game => {
-                // Create a div for each game
-                const gameItem = document.createElement('div');
-                gameItem.classList.add('game-item');
-                
-                // Create the content for each game
-                gameItem.innerHTML = `
-                    <h3>${game.title}</h3>
-                    <p>${game.description}</p>
-                    <img src="${game.image}" alt="${game.title}" style="width: 100px;">
-                    <a href="${game.link}">Play now</a>
-                `;
-                gameList.appendChild(gameItem);
+            shuffledGames.forEach(game => {
+                const gameElement = document.createElement('div');
+                gameElement.className = 'recommended-item';
+                gameElement.innerHTML = `<a href="${game.link}"><img src="${game.image}" alt="${game.name}"> ${game.name}</a>`;
+                recommendedContainer.appendChild(gameElement);
             });
-        })
-        .catch(error => console.error('Error loading the games:', error));
-}
-
-// Function to filter games based on search input
-function filterGames() {
-    const searchBar = document.getElementById('searchBar');
-    const filter = searchBar.value.toLowerCase();
-    const gameItems = document.querySelectorAll('.game-item');
-
-    gameItems.forEach(item => {
-        const gameTitle = item.querySelector('h3').textContent.toLowerCase(); // Get the game title
-        if (gameTitle.includes(filter)) {
-            item.style.display = '';
-        } else {
-            item.style.display = 'none';
         }
-    });
-}
-
-// Load the games when the page loads
-window.onload = loadGames;
     </script>
 </body>
 
