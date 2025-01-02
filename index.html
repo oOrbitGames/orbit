@@ -503,8 +503,96 @@
             border: none;
             border-radius: 10px; /* Rounded iframe corners */
         }
+    
+       /* Modal Container */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* Center it */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Width of the modal */
+    max-width: 500px; /* Max width for responsiveness */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Modal Title */
+.settings-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+/* Dropdown */
+.dropdown {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#tab-cloak-select {
+    padding: 10px;
+    width: 100%;
+    max-width: 300px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#tab-cloak-select:focus {
+    border-color: #007BFF;
+}
+
+/* Cloak Button */
+.cloak-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cloak-button:hover {
+    background-color: #0056b3;
+}
+
+.cloak-button:active {
+    background-color: #004085;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .modal-content {
+        width: 90%;
+        margin: 20% auto;
+    }
+
+    .settings-title {
+        font-size: 1.2rem;
+    }
+}
     </style>
-</head>
+ </head>
 
 <body>
     <div id="particles-js"></div>
