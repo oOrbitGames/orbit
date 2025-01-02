@@ -14,7 +14,7 @@
 |-------------------------|------------------------------------------------------------|
 | Tons of Unlocked Games | Access a wide variety of unlocked games.                  |
 | Password Protected      | Secure access with a password.                             |
-| Forum (Coming Soon)     | A community forum for discussions and updates powered by Moonlight. |
+| Forum | A community forum for discussions and updates powered by Moonlight. |
 | Tab Cloaking            | Disguise to an educational site                            |
 | about:blank Cloaker     | Instantly switch to a blank page for privacy.              |
 | Secure One-Time Login   | Login securely with a unique, single-use authentication method. |
