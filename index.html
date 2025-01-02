@@ -87,6 +87,17 @@
             transform: translateY(0); /* Reset position */
         }
 
+        /* Visit Counter Badge */
+        #visitor-counter {
+            margin: 15px auto; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+        }
+
+        #visitor-counter img {
+            width: 133px; /* Width of the badge */
+        }
 
         /* Header Image */
         header img {
@@ -357,6 +368,30 @@
             background: rgba(30, 144, 255, 0.2); /* Light blue */
         }
 
+        /* Recommended Games */
+        .recommended-games {
+            margin-top: 20px;
+        }
+
+        .recommended-item {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+            transition: transform 0.3s;
+        }
+
+        .recommended-item img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .recommended-item:hover {
+            transform: scale(1.05);
+        }
+
         /* Header Section */
         header {
             text-align: center;
@@ -536,7 +571,24 @@
         </div>
     </div>
 
-    
+    <!-- Visitor Hit Counter Badge -->
+    <div id="visitor-counter">
+        <!-- Badge Code - Do Not Change The Code -->
+        <div class="col-xs-12 mt20" id="bg">
+            <div style="margin:0px auto;width:133px;background:rgb(0, 0, 0);text-align:left;display:flex;border-radius:5px">
+                <span style="padding:7px;display:inline-block;border-right:1px solid #746dba">
+                    <a href="http://visitorshitcounter.com" rel="nofollow noopener" target="_blank" title="https://visitorshitcounter.com/">
+                        <img src="https://visitorshitcounter.com/img/s-logo.svg" alt="https://visitorshitcounter.com/" style="width:100%;border:none;float:left">
+                    </a>
+                </span>
+                <span class="text" id="dupli_hit_counter" style="padding:10px 0 0 0;display:inline-block;color:rgb(255, 255, 255);width:100%;text-align:center;"></span>
+                <input type="hidden" id="site_val" value="https://visitorshitcounter.com/counterDisplay?code=4b1ad7ff2d74e83b80dc336ab03fdb96&style=0017&pad=5&type=page&initCount=1">
+            </div>
+        </div>
+        <script src="https://visitorshitcounter.com/js/badgess.js?v=1735665299"></script>
+        <!-- Badge Code End Here -->
+    </div>
+
     <header>
     <img src="RBIT-4.png" alt="Logo"> <!-- Replace with your header image URL -->
     <h3>Tons of unblocked games!</h3>
@@ -1357,6 +1409,35 @@
                 });
             }
         };
+
+        // Load recommended games from the array
+        const games = [
+            { name: "Snowrider 3D", image: "snowrider.png", link: "snowrider.html" },
+            { name: "Time Shooter 3", image: "timeshooter3.png", link: "timeshooter3.html" },
+            { name: "Smash Karts", image: "smashkarts.png", link: "smashkarts.html" },
+            { name: "Stick Duals", image: "stickdual.png", link: "stickdual.html" },
+            { name: "Mario Bros.", image: "mario.png", link: "mario.html" },
+            { name: "Soccer Game", image: "football.png", link: "football.html" },
+            { name: "Bob The Robber", image: "robber.png", link: "robber.html" },
+            { name: "Death Run 3D", image: "deathrun.png", link: "deathrun.html" },
+            { name: "AmongUs", image: "amongus.png", link: "amongus.html" },
+            { name: "Drivemad", image: "drivemad.png", link: "drivemad.html" },
+        ];
+
+        function loadRecommendedGames() {
+            const recommendedContainer = document.getElementById('recommended-items');
+            recommendedContainer.innerHTML = ''; // Clear existing content
+
+            // Shuffle games
+            const shuffledGames = games.sort(() => 0.5 - Math.random()).slice(0, 8);
+
+            shuffledGames.forEach(game => {
+                const gameElement = document.createElement('div');
+                gameElement.className = 'recommended-item';
+                gameElement.innerHTML = `<a href="${game.link}"><img src="${game.image}" alt="${game.name}"> ${game.name}</a>`;
+                recommendedContainer.appendChild(gameElement);
+            });
+        }
     </script>
 </body>
 
