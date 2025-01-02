@@ -675,24 +675,36 @@
         </div>
     </div>
 
-   <!-- Featured Game Promotion Section -->
-<div class="game-promotion" style="max-width: 600px; margin: 40px auto; text-align: center; padding: 30px; border: 2px solid #fff; border-radius: 10px; background-color: rgba(42, 0, 62, 0.8);">
+<!-- Featured Games Section -->
+<div class="featured-games-section" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 800px; margin: 40px auto; padding: 20px; border: 2px solid #fff; border-radius: 10px; background-color: rgba(42, 0, 62, 0.8);">
+    
     <!-- Featured Game Title -->
-    <h2 style="font-size: 1.8rem; color: #ff69b4; font-weight: bold; margin-bottom: 20px;">FEATURED GAME</h2>
+    <h2 style="grid-column: span 2; font-size: 1.8rem; color: #ff69b4; font-weight: bold; text-align: center; margin-bottom: 20px;">FEATURED GAMES</h2>
     
-    <!-- Game Image -->
-    <img src="Assets/counterstrike2.png" alt="Counterstrike" style="max-width: 100%; height: auto; border-radius: 8px;">
-    
-    <!-- Play Now Button -->
-    <button class="play-now-button" onclick="openGame('counterstrike', 'counterstrike')" 
-            style="background-color: #ff69b4; color: white; font-size: 1.2rem; padding: 15px 20px; border: none; border-radius: 5px; margin-top: 20px; cursor: pointer; transition: background-color 0.3s;">
-        Play "COUNTERSTRIKE" in Your Browser
-    </button>
-    
-    <!-- Promotion Label -->
-    <div class="promotion-label" style="margin-top: 15px; font-size: 1rem; color: white; display: flex; justify-content: center; align-items: center;">
-        <i class="fas fa-fire" style="color: white; margin-right: 8px;"></i>
-        <span style="font-weight: bold;">Action</span>
+    <!-- Counterstrike Game -->
+    <div class="game-promotion" style="text-align: center; padding: 15px; border: 2px solid #fff; border-radius: 10px; background-color: rgba(42, 0, 62, 0.9);">
+        <img src="Assets/counterstrike2.png" alt="Counterstrike" style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 15px;">
+        <button class="play-now-button" onclick="openGame('counterstrike', 'counterstrike')" 
+                style="background-color: #ff69b4; color: white; font-size: 1rem; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">
+            Play "COUNTERSTRIKE"
+        </button>
+        <div class="promotion-label" style="margin-top: 10px; font-size: 0.9rem; color: white; display: flex; justify-content: center; align-items: center;">
+            <i class="fas fa-fire" style="color: white; margin-right: 5px;"></i>
+            <span style="font-weight: bold;">Action</span>
+        </div>
+    </div>
+
+    <!-- Moto X3M Game -->
+    <div class="game-promotion" style="text-align: center; padding: 15px; border: 2px solid #fff; border-radius: 10px; background-color: rgba(42, 0, 62, 0.9);">
+        <img src="Assets/motox3m.png" alt="Moto X3M" style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 15px;">
+        <button class="play-now-button" onclick="window.location.href='motox3m.html'" 
+                style="background-color: #ff69b4; color: white; font-size: 1rem; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">
+            Play "MOTO X3M"
+        </button>
+        <div class="promotion-label" style="margin-top: 10px; font-size: 0.9rem; color: white; display: flex; justify-content: center; align-items: center;">
+            <i class="fas fa-motorcycle" style="color: white; margin-right: 5px;"></i>
+            <span style="font-weight: bold;">Racing</span>
+        </div>
     </div>
 </div>
 
