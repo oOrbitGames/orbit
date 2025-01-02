@@ -1156,25 +1156,33 @@ transition: transform 0.3s ease;">
         }
     }
 
-    // Wait for the DOM content to be fully loaded before adding event listeners
-    document.addEventListener('DOMContentLoaded', function() {
-        // Toggle Sidebar Function
-        document.getElementById('toggleSidebar').addEventListener('click', function() {
-            const sidebar = document.getElementById('sidebar');
-            // Toggle sidebar visibility with sliding animation
-            if (sidebar.style.display === 'none') {
-                sidebar.style.display = 'block';
-                sidebar.style.transform = 'translateX(0)';
-                document.getElementById('toggleSidebar').style.transform = 'rotate(180deg)';
-            } else {
-                sidebar.style.transform = 'translateX(-100%)';
-                setTimeout(function() {
-                    sidebar.style.display = 'none';
-                }, 300); // Wait for the animation to finish before hiding the sidebar
-                document.getElementById('toggleSidebar').style.transform = 'rotate(0deg)';
-            }
-        });
+// Wait for the DOM content to be fully loaded before adding event listeners
+document.addEventListener('DOMContentLoaded', function() {
+    // Toggle Sidebar Function
+    document.getElementById('toggleSidebar').addEventListener('click', function() {
+        const sidebar = document.getElementById('sidebar');
+        const toggleButton = document.getElementById('toggleSidebar');
+
+        // Toggle sidebar visibility with sliding animation
+        if (sidebar.style.display === 'none') {
+            // Show sidebar with sliding animation
+            sidebar.style.display = 'block';
+            sidebar.style.transform = 'translateX(0)';
+            
+            // Move the button to the right
+            toggleButton.style.transform = 'translateX(200px)'; // Adjust the distance as needed
+        } else {
+            // Hide sidebar with sliding animation
+            sidebar.style.transform = 'translateX(-100%)';
+            setTimeout(function() {
+                sidebar.style.display = 'none';
+            }, 300); // Wait for the animation to finish before hiding the sidebar
+
+            // Move the button to the left (back to original position)
+            toggleButton.style.transform = 'translateX(0)';
+        }
     });
+});
       // Redirect on page load
         window.onload = function () {
             checkRedirect();
