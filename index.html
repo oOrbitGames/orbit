@@ -410,17 +410,18 @@
             z-index: 2; /* Above particles background */
         }
 
-        /* Games Container */
-    .games-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 items per row instead of 3 */
-    gap: 20px; /* Reduced gap between items */
-    width: 100%;
-    max-width: 1000px; /* Reduced max-width to make the container smaller */
-    padding: 10px; /* Reduced padding for a more compact layout */
-    animation: fadeInUp 1.4s ease-in-out;
-    z-index: 2; /* Above particles background */
-}
+       /* Games Container */
+        .games-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 items per row */
+            gap: 30px;
+            width: 100%;
+            max-width: 1400px;
+            padding: 20px;
+            animation: fadeInUp 1.4s ease-in-out;
+            z-index: 2; /* Above particles background */
+        }
+        
         /* Game Item Style */
         .game-item {
             background-color: #282a36;
