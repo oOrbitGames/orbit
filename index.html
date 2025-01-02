@@ -141,18 +141,24 @@
         }
 
         /* Game Images Marquee */
-        .game-marquee-container {
-            overflow: hidden;
-            white-space: nowrap;
-            position: relative;
-            width: 100%;
-            height: 140px; /* Height for the marquee */
-        }
+.game-marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    width: 100%;
+    height: 100px; /* Adjusted height for smaller images */
+}
 
-        .game-marquee {
-            display: inline-block;
-            animation: scroll 30s linear infinite; /* Speed of scrolling */
-        }
+.game-marquee {
+    display: inline-block;
+    animation: scroll 30s linear infinite; /* Speed of scrolling */
+}
+
+.game-marquee img {
+    height: 80px; /* Set the height of the game images */
+    width: auto; /* Maintain aspect ratio */
+    margin-right: 20px; /* Space between the images */
+}
 
         @keyframes scroll {
             from {
