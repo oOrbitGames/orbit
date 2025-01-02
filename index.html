@@ -635,8 +635,24 @@
     <h3>Tons of unblocked games!</h3>
     <h3>Making school chromebooks great again :)</h3>
 </header>
-    
-   <!-- Progress Bar -->
+
+<!-- Partner Announcement Section -->
+<section style="background-color: #2a003e; color: white; padding: 20px; border-radius: 8px; text-align: center; max-width: 800px; 
+    margin: 20px auto; position: relative; margin-top: 20px;">
+    <h2 style="font-size: 1.8rem; font-weight: bold; color: #ff69b4;">Partner with Us!</h2>
+    <p style="font-size: 1rem; line-height: 1.6; color: #ffe6f7;">
+        Hey Everyone, We are excited to announce that ORBIT Proxy is now looking for partners to join our growing community! We currently have 2 out of 20 partners, and we are eager to expand. At ORBIT Proxy, we aim to provide seamless, secure, and unrestricted access to your favorite games, and we want passionate individuals or organizations to help us achieve that goal.
+    </p>
+    <h3 style="font-size: 1.2rem; color: #ff69b4;">Interested? Here's How to Partner:</h3>
+    <p style="font-size: 1rem; color: #ffe6f7;">
+        If you're interested in partnering with us, simply email us at <a href="mailto:Opal.EphTv.Networks@outlook.com" style="color: #ff69b4; text-decoration: none;">Opal.EphTv.Networks@outlook.com</a> to get started. Tell us a bit about why you'd like to partner and how you can contribute, Make sure to include your GitHub username.
+    </p>
+    <p style="font-size: 1rem; color: #ffe6f7;">
+        We look forward to hearing from you and working together to make gaming more accessible for everyone!
+    </p>
+</section>
+
+    <!-- Progress Bar -->
     <div class="progress-container">
         <div class="progress-bar" id="progress-bar"></div>
         <div class="progress-label" id="progress-label">LVL 1</div>
@@ -680,7 +696,7 @@
 
     <!-- Moto X3M Game -->
     <div class="game-promotion" style="text-align: center; padding: 15px; border: 2px solid #fff; border-radius: 10px; background-color: rgba(42, 0, 62, 0.9);">
-        <img src="motox3m.png" alt="Moto X3M" style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 15px;">
+        <img src="/motox3m.png" alt="Moto X3M" style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 15px;">
         <button class="play-now-button" onclick="openGame('motox3m', 'motox3m')" 
                 style="background-color: #ff69b4; color: white; font-size: 1rem; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">
             Play "MOTO X3M"
@@ -1146,29 +1162,20 @@
         </div>
     </div>
     
-<!-- Sidebar Toggle Link (styled like a button) -->
+<!-- Sidebar Toggle Icon -->
 <a href="javascript:void(0);" id="toggleSidebar" 
-   style="position: fixed; top: 20px; left: 20px; background-color: #ff69b4; color: white; padding: 10px 15px; text-decoration: none; font-weight: bold; border-radius: 5px; cursor: pointer; z-index: 999; 
+   style="position: fixed; top: 20px; left: 20px; padding: 10px 15px; text-decoration: none; font-weight: bold; border-radius: 5px; cursor: pointer; z-index: 999; 
    transition: all 0.3s ease; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);">
-    Toggle Sidebar
+    <img src="Assets/threelines.png" alt="Toggle Sidebar" style="width: 30px; height: auto;">
 </a>
 
 <!-- Sidebar -->
-<div class="sidebar" id="sidebar" style="display: none; position: fixed; top: 0; left: 0; background-color: #2a003e; width: 250px; height: 100%; padding: 20px; z-index: 998; transition: transform 0.3s ease;">
-    <div style="display: flex; align-items: center; gap: 10px;">
-        <!-- Logo next to the header -->
-        <img src="PVPNdownload.png" alt="PVPN Logo" style="width: 30px; height: auto;">
-        <h3 style="margin: 0; color: white;">Orbit</h3>
-    </div>
+<div class="sidebar" id="sidebar" style="display: none; position: fixed; top: 0; left: 0; background-color: #2a003e; width: 250px; height: 100%; padding: 20px; z-index: 998; 
+transition: transform 0.3s ease;">
+    <h3>Orbit</h3>
     <a href="https://orbitproxy.flarum.cloud/"><img src="quickkey.png" alt="Forum :)" style="width: 20px; margin-right: 8px;"> Forum :)</a>
-    
-    <!-- Partner With Us Link -->
-    <a href="https://playervpn.github.io/playervpn-game/partner.html" style="display: block; margin: 20px 0; color: #ff69b4; text-decoration: none; font-weight: bold;">
-        Partner With Us
-    </a>
-    
     <div class="recommended-games">
-        <h3 style="color: white;">Recommended Games</h3>
+        <h3>Recommended Games</h3>
         <div id="recommended-items"></div>
     </div>
 </div>
@@ -1195,30 +1202,30 @@
 // Wait for the DOM content to be fully loaded before adding event listeners
 document.addEventListener('DOMContentLoaded', function() {
     // Toggle Sidebar Function
-    document.getElementById('toggleSidebar').addEventListener('click', function() {
-        const sidebar = document.getElementById('sidebar');
-        const toggleButton = document.getElementById('toggleSidebar');
+document.getElementById('toggleSidebar').addEventListener('click', function() {
+    const sidebar = document.getElementById('sidebar');
+    const toggleButton = document.getElementById('toggleSidebar');
 
-        // Toggle sidebar visibility with sliding animation
-        if (sidebar.style.display === 'none') {
-            // Show sidebar with sliding animation
-            sidebar.style.display = 'block';
-            sidebar.style.transform = 'translateX(0)';
-            
-            // Move the button to the right
-            toggleButton.style.transform = 'translateX(200px)'; // Adjust the distance as needed
-        } else {
-            // Hide sidebar with sliding animation
-            sidebar.style.transform = 'translateX(-100%)';
-            setTimeout(function() {
-                sidebar.style.display = 'none';
-            }, 300); // Wait for the animation to finish before hiding the sidebar
+    // Toggle sidebar visibility with sliding animation
+    if (sidebar.style.display === 'none') {
+        // Show sidebar with sliding animation
+        sidebar.style.display = 'block';
+        sidebar.style.transform = 'translateX(0)';
+        
+        // Move the button to the right
+        toggleButton.style.transform = 'translateX(200px)'; // Adjust the distance as needed
+    } else {
+        // Hide sidebar with sliding animation
+        sidebar.style.transform = 'translateX(-100%)';
+        setTimeout(function() {
+            sidebar.style.display = 'none';
+        }, 300); // Wait for the animation to finish before hiding the sidebar
 
-            // Move the button to the left (back to original position)
-            toggleButton.style.transform = 'translateX(0)';
-        }
-    });
+        // Move the button to the left (back to original position)
+        toggleButton.style.transform = 'translateX(0)';
+    }
 });
+
       // Redirect on page load
         window.onload = function () {
             checkRedirect();
