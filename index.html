@@ -1195,38 +1195,38 @@
     }
 
 // Wait for the DOM content to be fully loaded before adding event listeners
-document.addEventListener('DOMContentLoaded', function() {
-// Get the sidebar and toggle button elements
-    const sidebar = document.getElementById('sidebar');
-    const toggleButton = document.getElementById('toggleSidebar');
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get the sidebar and toggle button elements
+        const sidebar = document.getElementById('sidebar');
+        const toggleButton = document.getElementById('toggleSidebar');
 
-    // Initially hide the sidebar
-    sidebar.style.display = 'none';
-    sidebar.style.transform = 'translateX(-100%)'; // Position sidebar off-screen
+        // Initially hide the sidebar on page load
+        sidebar.style.display = 'none';
+        sidebar.style.transform = 'translateX(-100%)'; // Ensure it's off-screen
 
-    // Toggle sidebar visibility with sliding animation
-    toggleButton.addEventListener('click', function() {
-        if (sidebar.style.display === 'none') {
-            // Show sidebar with sliding animation
-            sidebar.style.display = 'block';
-            setTimeout(() => {
+        // Toggle sidebar visibility with sliding animation
+        toggleButton.addEventListener('click', function() {
+            if (sidebar.style.display === 'none') {
+                // Show sidebar with sliding animation
+                sidebar.style.display = 'block';
                 sidebar.style.transform = 'translateX(0)';
-            }, 10); // Allow time for the display to be applied before starting the animation
+                
+                // Move the button to the right
+                toggleButton.style.transform = 'translateX(200px)'; // Adjust the distance as needed
+            } else {
+                // Hide sidebar with sliding animation
+                sidebar.style.transform = 'translateX(-100%)';
+                setTimeout(function() {
+                    sidebar.style.display = 'none';
+                }, 300); // Wait for the animation to finish before hiding the sidebar
 
-            // Move the button to the right
-            toggleButton.style.transform = 'translateX(200px)'; // Adjust the distance as needed
-        } else {
-            // Hide sidebar with sliding animation
-            sidebar.style.transform = 'translateX(-100%)';
-            setTimeout(function() {
-                sidebar.style.display = 'none';
-            }, 300); // Wait for the animation to finish before hiding the sidebar
-
-            // Move the button to the left (back to original position)
-            toggleButton.style.transform = 'translateX(0)';
-        }
+                // Move the button to the left (back to original position)
+                toggleButton.style.transform = 'translateX(0)';
+            }
+        });
     });
-      // Redirect on page load
+     
+        // Redirect on page load
         window.onload = function () {
             checkRedirect();
             const title = localStorage.getItem("tabTitle");
