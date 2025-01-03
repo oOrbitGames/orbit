@@ -585,17 +585,24 @@ header h5 {
     z-index: 10; /* Higher z-index to ensure it's above other elements */
 }
 
+.search-bar-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #800080;
+    font-size: 1.2rem;
+}
+
 #searchBar {
     width: 50%;
-    padding: 10px 40px 10px 20px; /* Added padding for icon space */
+    padding: 10px 20px 10px 40px; /* Added padding for icon space */
     font-size: 1rem;
     border: 2px solid #800080;
     border-radius: 5px;
     margin-top: 10px;
     outline: none;
     transition: border-color 0.3s ease-in-out;
-    background: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/svgs/solid/search.svg') no-repeat 98% center;
-    background-size: 20px;
 }
 
 #searchBar:focus {
