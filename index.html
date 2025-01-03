@@ -1454,22 +1454,34 @@ header h5 {
 fetch('games.json')
     .then(response => response.json()) // Parse the JSON data
     .then(gamesData => {
+        console.log('Games Data Loaded:', gamesData); // Check if data is loaded
+
         // Display all games initially
         displayGames(gamesData);
 
         // Add event listener for the search bar
         document.getElementById('searchBar').addEventListener('keyup', () => filterGames(gamesData));
     })
-    .catch(error => console.error('Error loading games.json:', error));
+    .catch(error => {
+        console.error('Error loading games.json:', error); // Log errors if there's an issue fetching the JSON
+    });
 
 // Function to filter games based on the search term
 function filterGames(gamesData) {
     const searchTerm = document.getElementById('searchBar').value.toLowerCase();
+    console.log('Search Term:', searchTerm); // Debug the input value
+
+    if (searchTerm === '') {
+        displayGames(gamesData); // Show all games if the search bar is empty
+        return;
+    }
+
     const filteredGames = gamesData.filter(game => {
         return game.title.toLowerCase().includes(searchTerm) || game.description.toLowerCase().includes(searchTerm);
     });
 
-    displayGames(filteredGames);
+    console.log('Filtered Games:', filteredGames); // Debug the filtered games
+    displayGames(filteredGames); // Update the game list with filtered results
 }
 
 // Function to display the games
