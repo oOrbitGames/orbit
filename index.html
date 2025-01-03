@@ -575,6 +575,29 @@ header h5 {
     font-weight: 300;
 }
 
+.search-bar-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 20px;
+    padding: 0 15px;
+    text-align: center;
+}
+
+#searchBar {
+    width: 50%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #800080;
+    border-radius: 5px;
+    margin-top: 10px;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+}
+
+#searchBar:focus {
+    border-color: #ff69b4;
+}
+
     </style>
  </head>
 
@@ -601,6 +624,11 @@ header h5 {
         <div class="progress-bar" id="progress-bar"></div>
         <div class="progress-label" id="progress-label">LVL 1</div>
     </div>
+
+
+<div class="search-bar-container">
+    <input type="text" id="searchBar" placeholder="Search for a game..." onkeyup="filterGames()">
+</div>
 
 
     <div class="games-container" id="games-container">
@@ -1418,6 +1446,48 @@ header h5 {
                 recommendedContainer.appendChild(gameElement);
             });
         }
+
+// Fetch the games.json data
+fetch('games.json')
+    .then(response => response.json()) // Parse the JSON data
+    .then(gamesData => {
+        // Display all games initially
+        displayGames(gamesData);
+
+        // Add event listener for the search bar
+        document.getElementById('searchBar').addEventListener('keyup', () => filterGames(gamesData));
+    })
+    .catch(error => console.error('Error loading games.json:', error));
+
+// Function to filter games based on the search term
+function filterGames(gamesData) {
+    const searchTerm = document.getElementById('searchBar').value.toLowerCase();
+    const filteredGames = gamesData.filter(game => {
+        return game.title.toLowerCase().includes(searchTerm) || game.description.toLowerCase().includes(searchTerm);
+    });
+
+    displayGames(filteredGames);
+}
+
+// Function to display the games
+function displayGames(games) {
+    const gamesContainer = document.getElementById('gamesContainer');
+    gamesContainer.innerHTML = ''; // Clear the container before adding filtered games
+
+    games.forEach(game => {
+        const gameItem = document.createElement('div');
+        gameItem.classList.add('game-item');
+        
+        gameItem.innerHTML = `
+            <img src="${game.image}" alt="${game.title}">
+            <h2>${game.title}</h2>
+            <p>${game.description}</p>
+            <a href="${game.link}" class="play-now-button">Play Now</a>
+        `;
+        
+        gamesContainer.appendChild(gameItem);
+    });
+}
     </script>
 </body>
 
