@@ -575,30 +575,50 @@ header h5 {
     font-weight: 300;
 }
 
-/* Ensure the search bar is interactive */
-.search-bar-container {
+/* Search bar container */
+.search-container {
+    position: relative;
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto 20px;
-    padding: 0 15px;
-    text-align: center;
-    position: relative; /* Prevents overlap */
-    z-index: 10; /* Higher z-index to ensure it's above other elements */
+    max-width: 400px;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    border: 2px solid #ddd;
+    border-radius: 30px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-#searchBar {
-    width: 50%;
-    padding: 10px;
-    font-size: 1rem;
-    border: 2px solid #800080;
-    border-radius: 5px;
-    margin-top: 10px;
+/* Search input field */
+#gameSearchInput {
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    background-color: transparent;
     outline: none;
-    transition: border-color 0.3s ease-in-out;
 }
 
-#searchBar:focus {
-    border-color: #ff69b4;
+/* Font Awesome search icon */
+.search-icon {
+    position: absolute;
+    right: 10px;
+    color: #888;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Search icon hover effect */
+.search-icon:hover {
+    color: #007bff;
+}
+
+/* Input field focus effect */
+#gameSearchInput:focus {
+    border-color: #007bff;
 }
 
     </style>
@@ -629,9 +649,9 @@ header h5 {
     </div>
 
 
-<!-- Search bar container -->
-<div class="search-bar-container">
-    <input type="text" id="gameSearchInput" placeholder="Search for a game..." />
+<div class="search-container">
+    <input type="text" id="gameSearchInput" placeholder="Search for a game...">
+    <i class="fas fa-search search-icon"></i>
 </div>
 
 
