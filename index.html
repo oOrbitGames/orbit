@@ -575,63 +575,30 @@ header h5 {
     font-weight: 300;
 }
 
-/* Main container for the search bar */
+/* Ensure the search bar is interactive */
 .search-bar-container {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto 20px;
     padding: 0 15px;
     text-align: center;
-    position: relative;
-    z-index: 10;
-    background-color: #ffffff; /* White theme */
+    position: relative; /* Prevents overlap */
+    z-index: 10; /* Higher z-index to ensure it's above other elements */
 }
 
-/* Search input field */
 #searchBar {
-    width: 60%; /* Slightly wider for better visibility */
-    padding: 12px 40px 12px 15px; /* Adding space for icon */
+    width: 50%;
+    padding: 10px;
     font-size: 1rem;
-    border: 2px solid #ddd; /* Light gray border */
-    border-radius: 30px; /* Rounded corners */
+    border: 2px solid #800080;
+    border-radius: 5px;
     margin-top: 10px;
     outline: none;
-    background-color: #f9f9f9; /* Subtle background for input */
-    color: #333; /* Dark text for contrast */
-    transition: all 0.3s ease-in-out;
+    transition: border-color 0.3s ease-in-out;
 }
 
-/* Focused search input styling */
 #searchBar:focus {
-    border-color: #800080; /* Purple border on focus */
-    background-color: #fff; /* White background when focused */
-    box-shadow: 0 0 5px rgba(128, 0, 128, 0.5); /* Soft purple shadow */
-}
-
-/* Search icon inside the input */
-#searchBar + .fa-search {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #800080; /* Purple color for the icon */
-    font-size: 1.2rem;
-    pointer-events: none; /* Ensure the icon doesn't block input */
-}
-
-/* Hover effect for the input */
-#searchBar:hover {
-    border-color: #ff69b4; /* Light pink border when hovered */
-}
-
-/* Container for the Font Awesome search icon */
-.search-bar-container .fa-search {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #800080; /* Icon color */
-    pointer-events: none; /* To allow clicks to pass through the icon */
+    border-color: #ff69b4;
 }
 
     </style>
@@ -662,9 +629,9 @@ header h5 {
     </div>
 
 
-<div class="search-container">
-    <input type="text" id="gameSearchInput" placeholder="Search for a game...">
-    <i class="fas fa-search search-icon"></i>
+<!-- Search bar container -->
+<div class="search-bar-container">
+    <input type="text" id="gameSearchInput" placeholder="Search for a game..." />
 </div>
 
 
