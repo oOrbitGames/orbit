@@ -97,6 +97,37 @@
             z-index: 2; /* Above particles background */
         }
 
+        /* Progress Bar Styles */
+        .progress-container {
+            width: 100%;
+            max-width: 500px;
+            gin: 20px 0;
+            border-radius: 25px;
+            background-color: #444;
+            height: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #1e90ff, #ff6f61); /* Gradient decoration */
+            transition: width 0.4s ease;
+            border-radius: 25px;
+        }
+
+        .progress-label {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            font-family: 'Poppins', sans-serif;
+            top: 5px;
+            color: white;
+        }
+
         /* GitHub Button Styles */
         .github-button {
             position: fixed;
@@ -564,6 +595,12 @@ header h5 {
     <h1>GAMES & APPS</h1>
     <h5>Faster, Secure, The Future.</h5>
 </header>
+    
+   <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progress-bar"></div>
+        <div class="progress-label" id="progress-label">LVL 1</div>
+    </div>
 
 
     <div class="games-container" id="games-container">
