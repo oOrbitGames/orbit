@@ -575,52 +575,64 @@ header h5 {
     font-weight: 300;
 }
 
-/* Search bar container */
+/* Main container for the search bar */
 .search-bar-container {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto 20px;
     padding: 0 15px;
     text-align: center;
-    position: relative; /* Prevents overlap */
-    z-index: 10; /* Higher z-index to ensure it's above other elements */
+    position: relative;
+    z-index: 10;
+    background-color: #ffffff; /* White theme */
 }
 
 /* Search input field */
 #searchBar {
-    width: 50%;
-    padding: 10px 15px;
+    width: 60%; /* Slightly wider for better visibility */
+    padding: 12px 40px 12px 15px; /* Adding space for icon */
     font-size: 1rem;
-    border: 2px solid #ddd;  /* Light grey border */
-    border-radius: 30px;
+    border: 2px solid #ddd; /* Light gray border */
+    border-radius: 30px; /* Rounded corners */
     margin-top: 10px;
     outline: none;
-    transition: border-color 0.3s ease-in-out;
-    background-color: #fff;  /* White background */
-    color: #333;  /* Dark text */
+    background-color: #f9f9f9; /* Subtle background for input */
+    color: #333; /* Dark text for contrast */
+    transition: all 0.3s ease-in-out;
 }
 
-/* Focus effect on input field */
+/* Focused search input styling */
 #searchBar:focus {
-    border-color: #ff69b4;  /* Pink border on focus */
+    border-color: #800080; /* Purple border on focus */
+    background-color: #fff; /* White background when focused */
+    box-shadow: 0 0 5px rgba(128, 0, 128, 0.5); /* Soft purple shadow */
 }
 
-/* Font Awesome search icon */
-.search-icon {
+/* Search icon inside the input */
+#searchBar + .fa-search {
     position: absolute;
-    right: 10px;
+    right: 15px;
     top: 50%;
     transform: translateY(-50%);
-    color: #888;  /* Light grey icon */
-    font-size: 18px;
-    cursor: pointer;
+    color: #800080; /* Purple color for the icon */
+    font-size: 1.2rem;
+    pointer-events: none; /* Ensure the icon doesn't block input */
 }
 
-/* Search icon hover effect */
-.search-icon:hover {
-    color: #ff69b4;  /* Pink icon on hover */
+/* Hover effect for the input */
+#searchBar:hover {
+    border-color: #ff69b4; /* Light pink border when hovered */
 }
 
+/* Container for the Font Awesome search icon */
+.search-bar-container .fa-search {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #800080; /* Icon color */
+    pointer-events: none; /* To allow clicks to pass through the icon */
+}
 
     </style>
  </head>
