@@ -1182,8 +1182,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const toggleButton = document.getElementById('toggleSidebar');
 
     // Add animation-specific styles without overwriting existing styles
-    sidebar.style.transition = 'transform 0.3s ease'; // Smooth sliding animation
-    sidebar.style.transform = 'translateX(-100%)'; // Ensure it's off-screen initially
+    sidebar.style.transition = 'transform 0.3s ease'; // Smooth sliding animation for sidebar
+    sidebar.style.transform = 'translateX(-100%)'; // Ensure sidebar is off-screen initially
+
+    // Add transition for the button animation
+    toggleButton.style.transition = 'transform 0.3s ease'; // Smooth button animation
 
     // Toggle sidebar visibility with sliding animation
     toggleButton.addEventListener('click', function () {
@@ -1197,7 +1200,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Hide sidebar with sliding animation
             sidebar.style.transform = 'translateX(-100%)';
 
-            // Move the button to the left (back to original position)
+            // Move the button back to the original position
             toggleButton.style.transform = 'translateX(0)';
         }
     });
