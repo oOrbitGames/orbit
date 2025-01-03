@@ -339,6 +339,11 @@
     height: 200px;          /* Fixes height for rectangular images */
     object-fit: cover;      /* Makes sure the image maintains aspect ratio and fits */
     border-bottom: 2px solid #ff69b4;
+    transition: filter 0.3s; /* Smooth transition for the pink tint */
+}
+
+.game-item:hover img {
+    filter: brightness(0.8) hue-rotate(-20deg) saturate(1.2); /* Adds a slight pink tint */
 }
 
 .game-item h2 {
