@@ -575,7 +575,6 @@ header h5 {
     font-weight: 300;
 }
 
-/* Ensure the search bar is interactive */
 .search-bar-container {
     width: 100%;
     max-width: 1200px;
@@ -586,19 +585,36 @@ header h5 {
     z-index: 10; /* Higher z-index to ensure it's above other elements */
 }
 
-#searchBar {
+#gameSearchInput {
     width: 50%;
-    padding: 10px;
+    padding: 10px 40px 10px 20px; /* Extra padding on the left for the icon */
     font-size: 1rem;
+    color: #000; /* Black font */
+    background-color: #fff; /* White background */
     border: 2px solid #800080;
-    border-radius: 5px;
+    border-radius: 25px; /* Rounded corners */
     margin-top: 10px;
     outline: none;
     transition: border-color 0.3s ease-in-out;
+    position: relative;
 }
 
-#searchBar:focus {
+#gameSearchInput:focus {
     border-color: #ff69b4;
+}
+
+/* Font Awesome search icon styling */
+.search-bar-container::before {
+    content: "\f002"; /* Unicode for Font Awesome search icon */
+    font-family: "Font Awesome 5 Free"; /* Ensure you have this imported */
+    font-weight: 900; /* Use solid style */
+    position: absolute;
+    top: 50%;
+    left: 25%; /* Adjust icon position within input */
+    transform: translate(-50%, -50%);
+    font-size: 1.2rem;
+    color: #000; /* Black icon */
+    pointer-events: none; /* Prevent interaction with the icon */
 }
 
     </style>
@@ -631,7 +647,7 @@ header h5 {
 
 <!-- Search bar container -->
 <div class="search-bar-container">
-    <input type="text" id="gameSearchInput" placeholder="Search for a game..." />
+    <input type="text" id="gameSearchInput" placeholder="Search..." />
 </div>
 
 
