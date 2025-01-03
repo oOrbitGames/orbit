@@ -1176,36 +1176,34 @@ header h5 {
     }
 
 // Wait for the DOM content to be fully loaded before adding event listeners
-    document.addEventListener('DOMContentLoaded', function() {
-        // Get the sidebar and toggle button elements
-        const sidebar = document.getElementById('sidebar');
-        const toggleButton = document.getElementById('toggleSidebar');
+document.addEventListener('DOMContentLoaded', function () {
+    // Get the sidebar and toggle button elements
+    const sidebar = document.getElementById('sidebar');
+    const toggleButton = document.getElementById('toggleSidebar');
 
-        // Initially hide the sidebar on page load
-        sidebar.style.display = 'none';
-        sidebar.style.transform = 'translateX(-100%)'; // Ensure it's off-screen
+    // Add initial styles for the sidebar
+    sidebar.style.position = 'fixed';
+    sidebar.style.top = '0';
+    sidebar.style.left = '0';
+    sidebar.style.width = '200px'; // Adjust as needed
+    sidebar.style.height = '100%';
+    sidebar.style.backgroundColor = '#333'; // Adjust as needed
+    sidebar.style.color = '#fff'; // Adjust as needed
+    sidebar.style.overflow = 'hidden';
+    sidebar.style.transition = 'transform 0.3s ease'; // Smooth animation
+    sidebar.style.transform = 'translateX(-100%)'; // Start off-screen
 
-        // Toggle sidebar visibility with sliding animation
-        toggleButton.addEventListener('click', function() {
-            if (sidebar.style.display === 'none') {
-                // Show sidebar with sliding animation
-                sidebar.style.display = 'block';
-                sidebar.style.transform = 'translateX(0)';
-                
-                // Move the button to the right
-                toggleButton.style.transform = 'translateX(200px)'; // Adjust the distance as needed
-            } else {
-                // Hide sidebar with sliding animation
-                sidebar.style.transform = 'translateX(-100%)';
-                setTimeout(function() {
-                    sidebar.style.display = 'none';
-                }, 300); // Wait for the animation to finish before hiding the sidebar
-
-                // Move the button to the left (back to original position)
-                toggleButton.style.transform = 'translateX(0)';
-            }
-        });
+    // Toggle sidebar visibility with sliding animation
+    toggleButton.addEventListener('click', function () {
+        if (sidebar.style.transform === 'translateX(-100%)') {
+            // Show sidebar with sliding animation
+            sidebar.style.transform = 'translateX(0)';
+        } else {
+            // Hide sidebar with sliding animation
+            sidebar.style.transform = 'translateX(-100%)';
+        }
     });
+});
      
         // Redirect on page load
         window.onload = function () {
