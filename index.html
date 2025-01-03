@@ -629,8 +629,9 @@ header h5 {
     </div>
 
 
+<!-- Search bar container -->
 <div class="search-bar-container">
-    <input type="text" id="searchBar" placeholder="Search for a game..." onkeyup="filterGames()">
+    <input type="text" id="gameSearchInput" placeholder="Search for a game..." />
 </div>
 
 
@@ -1452,15 +1453,15 @@ header h5 {
 
 // Search function for filtering game items
 document.getElementById('gameSearchInput').addEventListener('input', function() {
-    const searchTerm = this.value.toLowerCase(); // Get search term
+    const searchTerm = this.value.toLowerCase(); // Get the search term
     const gameItems = document.querySelectorAll('.game-item'); // Get all game items
 
     gameItems.forEach(item => {
         const gameTitle = item.querySelector('h2').textContent.toLowerCase(); // Get the game title
         if (gameTitle.includes(searchTerm)) {
-            item.style.display = 'flex'; // Show game item
+            item.style.display = 'block'; // Ensure the item is shown (block allows it to stay in grid layout)
         } else {
-            item.style.display = 'none'; // Hide game item
+            item.style.display = 'none'; // Hide the item
         }
     });
 });
