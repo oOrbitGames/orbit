@@ -13,7 +13,7 @@
 | Features               | Description                                                |
 |-------------------------|------------------------------------------------------------|
 | Tons of Unlocked Games | Access a wide variety of unlocked games.                  |
-| Password Protected      | Secure access with a password.  (so teachers cant get in      |
+| Password Protected      | Secure access with a password.  (so teachers cant get in)      |
 | Forum | A community forum for discussions and updates.  |
 | Tab Cloaking            | Disguise to an educational site                            |
 | about:blank Cloaker     | Instantly switch to a blank page for privacy.              |
