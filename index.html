@@ -575,7 +575,6 @@ header h5 {
     font-weight: 300;
 }
 
-/* Ensure the search bar is interactive */
 .search-bar-container {
     width: 100%;
     max-width: 1200px;
@@ -588,13 +587,15 @@ header h5 {
 
 #searchBar {
     width: 50%;
-    padding: 10px;
+    padding: 10px 40px 10px 20px; /* Added padding for icon space */
     font-size: 1rem;
     border: 2px solid #800080;
     border-radius: 5px;
     margin-top: 10px;
     outline: none;
     transition: border-color 0.3s ease-in-out;
+    background: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/svgs/solid/search.svg') no-repeat 98% center;
+    background-size: 20px;
 }
 
 #searchBar:focus {
