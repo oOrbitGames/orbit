@@ -1181,17 +1181,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const sidebar = document.getElementById('sidebar');
     const toggleButton = document.getElementById('toggleSidebar');
 
-    // Add initial styles for the sidebar
-    sidebar.style.position = 'fixed';
-    sidebar.style.top = '0';
-    sidebar.style.left = '0';
-    sidebar.style.width = '200px'; // Adjust as needed
-    sidebar.style.height = '100%';
-    sidebar.style.backgroundColor = '#333'; // Adjust as needed
-    sidebar.style.color = '#fff'; // Adjust as needed
-    sidebar.style.overflow = 'hidden';
-    sidebar.style.transition = 'transform 0.3s ease'; // Smooth animation
-    sidebar.style.transform = 'translateX(-100%)'; // Start off-screen
+    // Add animation-specific styles without overwriting existing styles
+    sidebar.style.transition = 'transform 0.3s ease'; // Smooth sliding animation
+    sidebar.style.transform = 'translateX(-100%)'; // Ensure it's off-screen initially
 
     // Toggle sidebar visibility with sliding animation
     toggleButton.addEventListener('click', function () {
