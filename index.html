@@ -581,15 +581,15 @@ header h5 {
     margin: 0 auto 20px;
     padding: 0 15px;
     text-align: center;
-    position: relative; /* Prevents overlap */
-    z-index: 10; /* Higher z-index to ensure it's above other elements */
+    position: relative; /* Enables absolute positioning for child elements */
+    z-index: 10; /* Ensures the container stays above other elements */
 }
 
 #gameSearchInput {
     width: 50%;
-    padding: 10px 40px 10px 20px; /* Extra padding on the left for the icon */
+    padding: 10px 40px 10px 40px; /* Adjust padding for the icon */
     font-size: 1rem;
-    color: #000; /* Black font */
+    color: #000; /* Black text */
     background-color: #fff; /* White background */
     border: 2px solid #800080;
     border-radius: 25px; /* Rounded corners */
@@ -604,17 +604,14 @@ header h5 {
 }
 
 /* Font Awesome search icon styling */
-.search-bar-container::before {
-    content: "\f002"; /* Unicode for Font Awesome search icon */
-    font-family: "Font Awesome 5 Free"; /* Ensure you have this imported */
-    font-weight: 900; /* Use solid style */
+.search-icon {
     position: absolute;
     top: 50%;
-    left: 25%; /* Adjust icon position within input */
+    left: 25%;
     transform: translate(-50%, -50%);
     font-size: 1.2rem;
     color: #000; /* Black icon */
-    pointer-events: none; /* Prevent interaction with the icon */
+    pointer-events: none; /* Prevents interaction with the icon */
 }
 
     </style>
