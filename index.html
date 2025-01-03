@@ -1451,20 +1451,20 @@ header h5 {
             });
         }
 
-// Search function for filtering game items
+// Search function
 document.getElementById('gameSearchInput').addEventListener('input', function() {
-    const searchTerm = this.value.toLowerCase(); // Get the search term
-    const gameItems = document.querySelectorAll('.game-item'); // Get all game items
-
+    const searchTerm = this.value.toLowerCase();
+    const gameItems = document.querySelectorAll('.game-item');
     gameItems.forEach(item => {
-        const gameTitle = item.querySelector('h2').textContent.toLowerCase(); // Get the game title
+        const gameTitle = item.querySelector('h2').textContent.toLowerCase();
         if (gameTitle.includes(searchTerm)) {
-            item.style.display = 'block'; // Ensure the item is shown (block allows it to stay in grid layout)
+            item.style.display = 'flex';
         } else {
-            item.style.display = 'none'; // Hide the item
+            item.style.display = 'none';
         }
     });
 });
+
     </script>
 </body>
 
