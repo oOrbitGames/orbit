@@ -1177,18 +1177,16 @@ header h5 {
 
 // Wait for the DOM content to be fully loaded before adding event listeners
 document.addEventListener('DOMContentLoaded', function () {
-    // Get the sidebar, toggle button, and logo elements
+    // Get the sidebar and toggle button elements
     const sidebar = document.getElementById('sidebar');
     const toggleButton = document.getElementById('toggleSidebar');
-    const logo = document.getElementById('logo'); // Assuming the logo has an ID "logo"
 
     // Add animation-specific styles without overwriting existing styles
     sidebar.style.transition = 'transform 0.3s ease'; // Smooth sliding animation for sidebar
     sidebar.style.transform = 'translateX(-100%)'; // Ensure sidebar is off-screen initially
 
-    // Add transitions for the button and logo animations
+    // Add transition for the button animation
     toggleButton.style.transition = 'transform 0.3s ease'; // Smooth button animation
-    logo.style.transition = 'transform 0.3s ease'; // Smooth logo animation
 
     // Toggle sidebar visibility with sliding animation
     toggleButton.addEventListener('click', function () {
@@ -1198,18 +1196,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Move the button to the right
             toggleButton.style.transform = 'translateX(200px)'; // Adjust as needed
-
-            // Move the logo slightly to the left
-            logo.style.transform = 'translateX(-10px)'; // Adjust distance as needed
         } else {
             // Hide sidebar with sliding animation
             sidebar.style.transform = 'translateX(-100%)';
 
             // Move the button back to the original position
             toggleButton.style.transform = 'translateX(0)';
-
-            // Reset the logo's position
-            logo.style.transform = 'translateX(0)';
         }
     });
 });
