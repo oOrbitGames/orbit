@@ -372,80 +372,109 @@
         
 /* Game Item Style */
 .game-item {
-    background: linear-gradient(145deg, #1a1a1a, #222222); /* Subtle gradient for card */
-    border: 2px solid #6a0dad; /* Sleek purple border */
-    border-radius: 20px; /* Smoothly rounded corners */
+    background: linear-gradient(135deg, #292929, #1f1f1f); /* Soft gradient for depth */
+    border-radius: 25px; /* Smoothly rounded corners for a card feel */
     overflow: hidden;
     cursor: pointer;
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.6), 0px 4px 10px rgba(106, 13, 173, 0.3); /* Layered shadows */
-    transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.6), 0px 4px 10px rgba(255, 105, 180, 0.3); /* 3D shadow effect */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
     position: relative;
     display: flex;
     flex-direction: column;
     text-align: center;
-}
-
-.game-item:hover {
-    transform: translateY(-10px) scale(1.08); /* Larger scale effect */
-    box-shadow: 0px 14px 40px rgba(106, 13, 173, 0.7); /* Intense purple glow */
-    border: 2px solid #ff69b4; /* Pink border on hover */
-}
-
-/* Game Item Image */
-.game-item img {
     width: 100%;
-    height: 220px; /* Slightly taller image */
-    object-fit: cover;
-    border-bottom: 3px solid rgba(255, 255, 255, 0.1); /* Sleek separator */
-    transition: transform 0.4s ease, filter 0.4s ease;
-    filter: brightness(0.9); /* Dim image slightly */
 }
 
-.game-item:hover img {
-    transform: scale(1.1); /* Zoom-in effect */
-    filter: brightness(1); /* Brighten image on hover */
+/* Card Hover Effect */
+.game-item:hover {
+    transform: translateY(-12px) scale(1.1); /* Elevated hover effect */
+    box-shadow: 0px 18px 40px rgba(255, 105, 180, 0.8); /* Glow effect */
 }
 
-/* Game Item Title */
-.game-item h2 {
-    color: #ffffff; /* Clean white text for the title */
-    font-size: 1.8em; /* Slightly larger font */
-    font-weight: 700; /* Bolder text */
-    margin: 20px 0 10px;
-    text-transform: uppercase; /* Professional look */
-    letter-spacing: 1px; /* Slight spacing for clarity */
-    transition: color 0.4s, letter-spacing 0.4s;
-}
-
-.game-item:hover h2 {
-    color: #ff69b4; /* Bright pink on hover */
-    letter-spacing: 1.5px; /* Subtle letter-spacing effect */
-}
-
-/* Game Item Description */
-.game-item p {
-    color: #b3b3b3; /* Softer gray for readability */
-    padding: 0 20px 20px;
-    font-size: 1em;
-    line-height: 1.5; /* Better line spacing */
-}
-
-/* Hover Overlay*/
-.game-item::before {
+/* Glow Edge */
+.game-item::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 105, 180, 0.1); /* Subtle hover overlay */
-    z-index: -1; /* Keep it below the content */
+    border-radius: 25px; /* Match card rounding */
+    background: linear-gradient(45deg, rgba(255, 105, 180, 0.2), rgba(106, 13, 173, 0.2)); /* Subtle gradient glow */
     opacity: 0;
-    transition: opacity 0.4s;
+    pointer-events: none;
+    transition: opacity 0.4s ease-in-out;
+    z-index: 1;
 }
 
-.game-item:hover::before {
-    opacity: 1;
+.game-item:hover::after {
+    opacity: 1; /* Glow activates on hover */
+}
+
+/* Card Image */
+.game-item img {
+    width: 100%;
+    height: 250px; /* Taller image for prominence */
+    object-fit: cover;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.4s ease, filter 0.4s ease;
+    filter: brightness(0.85);
+}
+
+.game-item:hover img {
+    transform: scale(1.05); /* Subtle zoom effect */
+    filter: brightness(1); /* Brighten on hover */
+}
+
+/* Card Title */
+.game-item h2 {
+    color: #ffffff;
+    font-size: 1.8em;
+    font-weight: bold;
+    margin: 20px 0 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    transition: color 0.4s ease, letter-spacing 0.4s ease;
+    z-index: 2;
+}
+
+.game-item:hover h2 {
+    color: #ff69b4; /* Bright pink hover */
+    letter-spacing: 1.5px;
+}
+
+/* Card Description */
+.game-item p {
+    color: #b3b3b3;
+    font-size: 1em;
+    line-height: 1.6;
+    padding: 0 20px 20px;
+    z-index: 2;
+}
+
+/* Glassmorphism Layer */
+.game-item .glass-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px); /* Glass effect */
+    z-index: -1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .game-item img {
+        height: 200px;
+    }
+    .game-item h2 {
+        font-size: 1.5em;
+    }
+    .game-item p {
+        font-size: 0.9em;
+    }
 }
 
 /* Responsive Design */
