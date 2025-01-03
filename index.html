@@ -588,110 +588,7 @@
     .settings-title {
         font-size: 1.2rem;
     }
-} 
-
-/* Footer Styling */
-.footer {
-    background-color: #000;
-    color: #fff;
-    padding: 40px 20px;
-    position: relative;
 }
-
-.footer-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-    gap: 20px;
-}
-
-.footer-logo {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    position: relative;
-}
-
-.footer-logo img {
-    width: 300px;
-    height: auto;
-    filter: drop-shadow(0 0 10px #ff69b4);
-}
-
-.footer-description {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-}
-
-.footer-description p {
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #ffe6f7;
-    max-width: 500px;
-    font-weight: bold;
-}
-
-.divider {
-    border: none;
-    border-top: 1px solid #ff69b4;
-    width: 100%;
-    margin: 10px 0;
-}
-
-.footer-resources {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-}
-
-.footer-resources h2 {
-    font-size: 1.25rem;
-    color: #ffe6f7;
-    margin: 0;
-    font-weight: bold;
-}
-
-.footer-button {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1rem;
-    background: linear-gradient(135deg, #ff69b4, #ff9acd);
-    padding: 8px 16px;
-    border-radius: 8px;
-    width: fit-content;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.footer-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-}
-
-.footer-bottom {
-    background-color: #4b4b4b;
-    padding: 20px 0;
-    text-align: center;
-    background: linear-gradient(180deg, #000, #800080);
-}
-
-.footer-bottom p {
-    font-size: 0.8rem;
-    color: #fff;
-    margin: 0;
-}
-
     </style>
  </head>
 
@@ -1248,43 +1145,7 @@
         <div id="recommended-items"></div>
     </div>
 </div>
-
- <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <!-- Logo Section -->
-            <div class="footer-logo">
-                <img src="https://orbitproxy.flarum.cloud/assets/polls/pollImage-npmba5bu.png" alt="Orbit Logo">
-            </div>
-
-            <!-- Description Section -->
-            <div class="footer-description">
-                <p>
-                    Orbit is a sleek and accessible unlocked games website created by PlayerVPN. Designed for seamless user experience, it features advanced cloaking, password protection, and effortless access to your favorite games anytime, anywhere.
-                </p>
-
-                <!-- Divider -->
-                <hr class="divider">
-            </div>
-
-            <!-- Resources Section -->
-            <div class="footer-resources">
-                <h2>Resources</h2>
-
-                <!-- Buttons with Gradient and Hover Effects -->
-                <a href="https://playervpn.github.io/playervpn-game/" class="footer-button">Back To Home</a>
-                <a href="https://playervpn.github.io/playervpn-game/credits.html" class="footer-button">Credits</a>
-                <a href="https://github.com/PlayerVPN/playervpn-game" class="footer-button">GitHub</a>
-            </div>
-        </div>
-
-        <!-- Grey Footer Section with Background Gradient -->
-        <div class="footer-bottom">
-            <p>&copy; <span id="currentYear"></span> Orbit. All rights reserved.</p>
-        </div>
-    </footer>
-
-
+   
     <!-- Inline JavaScript for Tab Cloak & Header Navigation -->
 <script>
     // Redirect logic to OAuth passkey page
@@ -1605,9 +1466,6 @@
                 recommendedContainer.appendChild(gameElement);
             });
         }
-     // Automatically set the current year in the footer
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
-
     </script>
 </body>
 
