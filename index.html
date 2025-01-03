@@ -1106,38 +1106,45 @@ header h5 {
 
 <!-- Sidebar -->
 <div class="sidebar" id="sidebar" style="display: none; position: fixed; top: 0; left: 0; background-color: #2a003e; width: 250px; height: 100%; padding: 20px; z-index: 998; transition: transform 0.3s ease; transform: translateX(-100%);">
+    <!-- Logo and Header -->
     <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
-        <!-- Logo next to the header -->
-        <img src="PVPNdownload.png" alt="PVPN Logo" style="width: 30px; height: auto;">
-        <h3 style="margin: 0; color: white;">Orbit</h3>
+        <a href="https://playervpn.github.io/playervpn-game/" style="display: flex; align-items: center; text-decoration: none;">
+            <img src="PVPNdownload.png" alt="PVPN Logo" style="width: 30px; height: auto;">
+            <h3 style="margin: 0; color: white;">Orbit</h3>
+        </a>
     </div>
 
     <!-- Sidebar Links Container -->
-    <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 10px;">
+    <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 15px;">
 
-        <!-- Settings Icon Button styled like the other links -->
-        <button class="cloak-button" id="settings-button" style="color: #ff69b4; background-color: transparent; border: none; font-weight: bold; font-size: 1.2em; cursor: pointer;" onclick="openSettings()">Settings‎</button>
+        <!-- Settings -->
+        <button class="cloak-button" id="settings-button" style="color: #ff69b4; background-color: transparent; border: none; font-weight: bold; font-size: 1.2em; cursor: pointer; display: flex; align-items: center; gap: 10px;" onclick="openSettings()">
+            <i class="fas fa-cog"></i> Settings‎
+        </button>
 
-        <!-- Forum Link styled like the other links, but without the image -->
-        <a href="https://orbitproxy.flarum.cloud/" style="color: #ff69b4; text-decoration: none; font-weight: bold;">
-            Forum
+        <!-- Forum Link -->
+        <a href="https://orbitproxy.flarum.cloud/" style="color: #ff69b4; text-decoration: none; font-weight: bold; font-size: 1.2em; display: flex; align-items: center; gap: 10px;">
+            <i class="fas fa-comments"></i> Forum
         </a>
     
-        <!-- Credits button -->
-        <button onclick="window.location.href='credits.html'" style="color: #ff69b4; background-color: #2a003e; border: none; padding: 10px 20px; font-weight: bold; font-size: 1.2em; cursor: pointer; text-align: left;">Credits</button>
+        <!-- Credits -->
+        <button onclick="window.location.href='credits.html'" style="color: #ff69b4; background-color: #2a003e; border: none; padding: 10px 20px; font-weight: bold; font-size: 1.2em; cursor: pointer; text-align: left; display: flex; align-items: center; gap: 10px;">
+            <i class="fas fa-trophy"></i> Credits
+        </button>
 
-        <!-- Partner With Us Link -->
-        <a href="https://playervpn.github.io/playervpn-game/partner.html" style="color: #ff69b4; text-decoration: none; font-weight: bold;">
-            Partner With Us
+        <!-- Partner With Us -->
+        <a href="https://playervpn.github.io/playervpn-game/partner.html" style="color: #ff69b4; text-decoration: none; font-weight: bold; font-size: 1.2em; display: flex; align-items: center; gap: 10px;">
+            <i class="fas fa-handshake"></i> Partner With Us
         </a>
 
         <!-- GitHub Repo Link -->
-        <a href="https://github.com/PlayerVPN/playervpn-game" target="_blank" style="color: #ff69b4; text-decoration: none; font-weight: bold;">
-            Visit our GitHub Repo
+        <a href="https://github.com/PlayerVPN/playervpn-game" target="_blank" style="color: #ff69b4; text-decoration: none; font-weight: bold; font-size: 1.2em; display: flex; align-items: center; gap: 10px;">
+            <i class="fab fa-github"></i> Visit our GitHub Repo
         </a>
 
     </div>
 
+    <!-- Recommended Games Section -->
     <div class="recommended-games" style="margin-top: 20px;">
         <h3 style="color: white;">Recommended</h3>
         <div id="recommended-items"></div>
