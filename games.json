@@ -566,6 +566,12 @@
         "image": "counterstrike.png",
         "description": "Shoot things in this 3D first-person shooter.",
         "categories": ["Shooter", "Multiplayer"]
+    },
+    {
+        "name": "Krunker.io",
+        "url": "krunker.html",
+        "image": "krunker.png",
+        "description": "Fast-paced online multiplayer first-person shooter in a pixelated world.",
+        "categories": ["Shooter", "Multiplayer"]
     }
 ]
-
