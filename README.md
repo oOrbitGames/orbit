@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="logoorbit3.png" alt="Orbit Proxy Logo" style="width: 300px; height: auto; object-fit: contain;">
+  <img src="Assets/Banner.jpg" alt="Orbit Proxy Logo" style="width: 300px; height: auto; object-fit: contain;">
 </div>
 
 
@@ -19,6 +19,15 @@
 | about:blank Cloaker     | Instantly switch to a blank page for privacy.              |
 | Secure One-Time Login   | Login securely with a unique, single-use authentication method. |
 | Easy Accessibility      | PlayerVPN Games is super easy to clone or fork, this can be hosted anywhere, even static site hosts! |
+
+
+<div style="text-align: center;">
+
+## Screenshots
+
+<img src="Assets/Screenshot1.jpg" alt="Screenshot 1" style="width: 50%; max-width: 500px; height: auto;">
+
+<img src="Assets/Screenshot2.jpg" alt="Screenshot 2" style="width: 50%; max-width: 500px; height: auto;">
 
 
 
