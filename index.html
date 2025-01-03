@@ -694,13 +694,8 @@
 </div>
 
 
-    <div style="text-align: center; margin: 20px 0;">
-    <input id="searchBar" type="text" placeholder="Search for games..." 
-           style="width: 80%; max-width: 600px; padding: 10px; border: 2px solid #800080; border-radius: 5px; font-size: 1rem;">
-</div>
-
-  <div class="games-container" id="gamesContainer"></div>
-       <!-- Game items -->
+    <div class="games-container" id="games-container">
+        <!-- Game items -->
         <div class="game-item reveal" onclick="openGame('requestgame.html', 'requestgame.html')">
             <img src="requestgame.png" alt="Game;request">
             <h2>Request.</h2>
@@ -1213,67 +1208,39 @@
         }
     }
 
-document.addEventListener("DOMContentLoaded", () => {
-    // Sidebar toggle functionality
-    const sidebar = document.getElementById('sidebar');
-    const toggleButton = document.getElementById('toggleSidebar');
+// Wait for the DOM content to be fully loaded before adding event listeners
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get the sidebar and toggle button elements
+        const sidebar = document.getElementById('sidebar');
+        const toggleButton = document.getElementById('toggleSidebar');
 
-    sidebar.style.display = 'none';
-    sidebar.style.transform = 'translateX(-100%)';
-    sidebar.style.transition = 'transform 0.3s ease-in-out';
+        // Initially hide the sidebar on page load
+        sidebar.style.display = 'none';
+        sidebar.style.transform = 'translateX(-100%)'; // Ensure it's off-screen
 
-    toggleButton.addEventListener('click', function () {
-        if (sidebar.style.display === 'none') {
-            sidebar.style.display = 'block';
-            setTimeout(() => {
+        // Toggle sidebar visibility with sliding animation
+        toggleButton.addEventListener('click', function() {
+            if (sidebar.style.display === 'none') {
+                // Show sidebar with sliding animation
+                sidebar.style.display = 'block';
                 sidebar.style.transform = 'translateX(0)';
-            }, 10);
+                
+                // Move the button to the right
+                toggleButton.style.transform = 'translateX(200px)'; // Adjust the distance as needed
+            } else {
+                // Hide sidebar with sliding animation
+                sidebar.style.transform = 'translateX(-100%)';
+                setTimeout(function() {
+                    sidebar.style.display = 'none';
+                }, 300); // Wait for the animation to finish before hiding the sidebar
 
-            toggleButton.style.transform = 'translateX(200px)';
-        } else {
-            sidebar.style.transform = 'translateX(-100%)';
-            setTimeout(() => {
-                sidebar.style.display = 'none';
-            }, 300);
-
-            toggleButton.style.transform = 'translateX(0)';
-        }
-    });
-
-    // Search bar and games display functionality
-    const searchBar = document.getElementById("searchBar");
-    const gamesContainer = document.getElementById("gamesContainer");
-
-    fetch("games.json")
-        .then(response => response.json())
-        .then(data => {
-            let games = data;
-            displayGames(games);
-
-            searchBar.addEventListener("input", (e) => {
-                const searchText = e.target.value.toLowerCase();
-                const filteredGames = games.filter(game =>
-                    game.title.toLowerCase().includes(searchText) ||
-                    game.description.toLowerCase().includes(searchText) ||
-                    game.category.toLowerCase().includes(searchText)
-                );
-                displayGames(filteredGames);
-            });
+                // Move the button to the left (back to original position)
+                toggleButton.style.transform = 'translateX(0)';
+            }
         });
-
-    function displayGames(games) {
-        gamesContainer.innerHTML = games.map(game => `
-            <div class="game-item">
-                <img src="${game.image}" alt="${game.title}">
-                <h2>${game.title}</h2>
-                <p>${game.description}</p>
-                <a href="${game.link}" target="_blank" class="play-now-button">Play Now</a>
-            </div>
-        `).join("");
-    }
-});
-   
-      // Redirect on page load
+    });
+     
+        // Redirect on page load
         window.onload = function () {
             checkRedirect();
             const title = localStorage.getItem("tabTitle");
