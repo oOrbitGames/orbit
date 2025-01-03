@@ -372,40 +372,71 @@
 /* Game Item Style */
 .game-item {
     background: linear-gradient(135deg, #292929, #1f1f1f); /* Soft gradient for depth */
-    border-radius: 20px; /* Slightly smaller rounding */
+    border-radius: 20px;
     overflow: hidden;
     cursor: pointer;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.6), 0px 4px 8px rgba(255, 105, 180, 0.3);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.6);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
     position: relative;
     display: flex;
     flex-direction: column;
     text-align: center;
     width: 100%;
-    height: 280px; /* Set a fixed height for consistency */
+    height: 280px;
+    z-index: 1;
+}
+
+/* Glow Effect on Hover */
+.game-item:hover {
+    transform: translateY(-10px) scale(1.1);
+    box-shadow: 0px 20px 40px rgba(255, 105, 180, 0.8), 
+                0px 4px 10px rgba(255, 0, 255, 0.7), 
+                0px 0px 30px rgba(0, 255, 255, 0.6);
+}
+
+/* Extra Glow Outline */
+.game-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    box-shadow: 0px 0px 40px rgba(255, 105, 180, 0.6), 
+                0px 0px 30px rgba(106, 90, 205, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease-in-out;
+    z-index: -1;
+}
+
+.game-item:hover::after {
+    opacity: 1;
 }
 
 /* Card Image */
 .game-item img {
     width: 100%;
-    height: 150px; /* Smaller image height */
+    height: 150px;
     object-fit: cover;
     border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-    transition: transform 0.4s ease, filter 0.4s ease;
     filter: brightness(0.85);
+    transition: transform 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
 }
 
 .game-item:hover img {
-    transform: scale(1.05);
+    transform: scale(1.1);
     filter: brightness(1);
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.7);
 }
 
 /* Title Box */
 .game-item h2 {
     color: #ffffff;
-    font-size: 1.2em; /* Smaller font size */
+    font-size: 1.2em;
     font-weight: bold;
-    margin: 10px 0 5px; /* Adjust spacing */
+    margin: 10px 0 5px;
     background: rgba(0, 0, 0, 0.7);
     padding: 5px 10px;
     border-radius: 10px;
@@ -417,38 +448,16 @@
 .game-item:hover h2 {
     background: rgba(0, 0, 0, 0.5);
     color: #ff69b4;
+    text-shadow: 0px 0px 15px rgba(255, 105, 180, 0.8);
 }
 
 /* Card Description */
 .game-item p {
     color: #b3b3b3;
-    font-size: 0.9em; /* Smaller font size for the description */
+    font-size: 0.9em;
     line-height: 1.4;
-    padding: 0 10px 10px; /* Reduced padding */
+    padding: 0 10px 10px;
     z-index: 2;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .games-container {
-        grid-template-columns: repeat(2, 1fr); /* 2 items per row on smaller screens */
-    }
-
-    .game-item {
-        height: 250px;
-    }
-
-    .game-item img {
-        height: 120px;
-    }
-
-    .game-item h2 {
-        font-size: 1em;
-    }
-
-    .game-item p {
-        font-size: 0.8em;
-    }
 }
 
         /* Keyframes for Animations */
