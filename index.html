@@ -1190,9 +1190,15 @@ document.addEventListener('DOMContentLoaded', function () {
         if (sidebar.style.transform === 'translateX(-100%)') {
             // Show sidebar with sliding animation
             sidebar.style.transform = 'translateX(0)';
+
+            // Move the button to the right
+            toggleButton.style.transform = 'translateX(200px)'; // Adjust as needed
         } else {
             // Hide sidebar with sliding animation
             sidebar.style.transform = 'translateX(-100%)';
+
+            // Move the button to the left (back to original position)
+            toggleButton.style.transform = 'translateX(0)';
         }
     });
 });
