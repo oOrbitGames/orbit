@@ -672,9 +672,6 @@ header h5 {
     <input type="text" id="gameSearchInput" placeholder="Search..." />
 </div>
 
-<div class="recently-played-container" id="recently-played-container">
-    <!-- Recently played games will be dynamically added here -->
-</div>
 
     <div class="games-container" id="games-container">
         <!-- Game items -->
@@ -1221,57 +1218,6 @@ document.addEventListener('DOMContentLoaded', function () {
             toggleButton.style.transform = 'translateX(0)';
         }
     });
-
-    // Get the recently played container element
-    const recentlyPlayedContainer = document.getElementById("recently-played-container");
-
-    // Load recently played games from localStorage
-    const recentlyPlayed = JSON.parse(localStorage.getItem("recentlyPlayed")) || [];
-
-    // Function to render the recently played section
-    function renderRecentlyPlayed() {
-        recentlyPlayedContainer.innerHTML = "<h2>Recently Played</h2>";
-        recentlyPlayed.forEach((game) => {
-            const gameDiv = document.createElement("div");
-            gameDiv.className = "game-item reveal";
-            gameDiv.setAttribute("onclick", `playGame('${game.title}', '${game.image}', '${game.url}')`);
-            gameDiv.innerHTML = `
-                <img src="${game.image}" alt="${game.title}">
-                <h2>${game.title}</h2>
-                <p>Last played on ${game.lastPlayed}</p>
-            `;
-            recentlyPlayedContainer.appendChild(gameDiv);
-        });
-    }
-
-    // Save game to recently played and re-render the section
-    function playGame(title, image, url) {
-        const game = {
-            title: title,
-            image: image,
-            url: url,
-            lastPlayed: new Date().toLocaleDateString(),
-        };
-
-        // Add the game to the start of the list and limit to 5 games
-        recentlyPlayed.unshift(game);
-        if (recentlyPlayed.length > 5) recentlyPlayed.pop();
-
-        // Save the updated list to localStorage
-        localStorage.setItem("recentlyPlayed", JSON.stringify(recentlyPlayed));
-
-        // Render the updated recently played list
-        renderRecentlyPlayed();
-
-        // Simulate opening the game (replace with your actual game logic)
-        alert(`Opening ${title}`);
-    }
-
-    // Attach the playGame function globally
-    window.playGame = playGame;
-
-    // Initial render of recently played
-    renderRecentlyPlayed();
 });
      
         // Redirect on page load
