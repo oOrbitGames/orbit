@@ -381,6 +381,16 @@
     background-color: #ff1493;
 }
 
+#recently-played-container {
+    margin: 20px auto;
+    max-width: 1200px;
+    padding: 10px;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    border: 2px solid #800080;
+    animation: fadeInUp 1s ease-in-out;
+}
+
         /* Keyframes for Animations */
         @keyframes fadeIn {
             from {
@@ -1200,26 +1210,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Render the "Recently Played" section
     function renderRecentlyPlayed() {
-        recentlyPlayedContainer.innerHTML = "<h2>Recently Played</h2>";
-        const gamesRow = document.createElement("div");
-        gamesRow.style.display = "flex";
-        gamesRow.style.flexWrap = "wrap";
-        gamesRow.style.gap = "10px"; // Add spacing between items
+        recentlyPlayedContainer.innerHTML = `
+            <h2 style="color: white; font-family: 'Poppins', sans-serif; margin-bottom: 15px;">Recently Played</h2>
+        `;
+        const gamesGrid = document.createElement("div");
+        gamesGrid.className = "games-container";
+        gamesGrid.style.gridTemplateColumns = "repeat(4, 1fr)"; // Match grid styling
+        gamesGrid.style.gap = "20px"; // Match the gap between cards
 
-        recentlyPlayed.forEach((game) => {
+        recentlyPlayed.slice(0, 4).forEach((game) => { // Limit to 4 games
             const gameDiv = document.createElement("div");
-            gameDiv.className = "game-item reveal";
-            gameDiv.style.flex = "0 0 calc(20% - 10px)"; // Adjust item width and spacing
-            gameDiv.setAttribute("onclick", `openGame('${game.file}', '${game.download}')`);
+            gameDiv.className = "game-item";
             gameDiv.innerHTML = `
-                <img src="${game.image}" alt="${game.title}" style="width: 100%; height: auto;">
+                <img src="${game.image}" alt="${game.title}">
                 <h2>${game.title}</h2>
                 <p>Last played on ${game.lastPlayed}</p>
             `;
-            gamesRow.appendChild(gameDiv);
+            gamesGrid.appendChild(gameDiv);
         });
 
-        recentlyPlayedContainer.appendChild(gamesRow);
+        recentlyPlayedContainer.appendChild(gamesGrid);
     }
 
     // Add a game to "Recently Played" while avoiding duplicates
@@ -1240,8 +1250,8 @@ document.addEventListener('DOMContentLoaded', function () {
             lastPlayed: new Date().toLocaleDateString(),
         });
 
-        // Limit the list to the most recent 5 games
-        if (recentlyPlayed.length > 5) recentlyPlayed.pop();
+        // Limit the list to the most recent 4 games
+        if (recentlyPlayed.length > 4) recentlyPlayed.pop();
 
         // Save the updated list to localStorage
         localStorage.setItem("recentlyPlayed", JSON.stringify(recentlyPlayed));
@@ -1274,7 +1284,7 @@ document.addEventListener('DOMContentLoaded', function () {
         originalOpenGame(gameFile, downloadFile);
     };
 });
-     
+
         // Redirect on page load
         window.onload = function () {
             checkRedirect();
