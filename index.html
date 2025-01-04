@@ -1192,55 +1192,68 @@ header h5 {
         }
     }
 
-// Wait for the DOM content to be fully loaded before adding event listeners
 document.addEventListener('DOMContentLoaded', function () {
-    // Get the recently played container element
     const recentlyPlayedContainer = document.getElementById("recently-played-container");
 
     // Load recently played games from localStorage
     const recentlyPlayed = JSON.parse(localStorage.getItem("recentlyPlayed")) || [];
 
-    // Function to render the recently played section
+    // Render the "Recently Played" section
     function renderRecentlyPlayed() {
         recentlyPlayedContainer.innerHTML = "<h2>Recently Played</h2>";
+        const gamesRow = document.createElement("div");
+        gamesRow.style.display = "flex";
+        gamesRow.style.flexWrap = "wrap";
+        gamesRow.style.gap = "10px"; // Add spacing between items
+
         recentlyPlayed.forEach((game) => {
             const gameDiv = document.createElement("div");
             gameDiv.className = "game-item reveal";
+            gameDiv.style.flex = "0 0 calc(20% - 10px)"; // Adjust item width and spacing
             gameDiv.setAttribute("onclick", `openGame('${game.file}', '${game.download}')`);
             gameDiv.innerHTML = `
-                <img src="${game.image}" alt="${game.title}">
+                <img src="${game.image}" alt="${game.title}" style="width: 100%; height: auto;">
                 <h2>${game.title}</h2>
                 <p>Last played on ${game.lastPlayed}</p>
             `;
-            recentlyPlayedContainer.appendChild(gameDiv);
+            gamesRow.appendChild(gameDiv);
         });
+
+        recentlyPlayedContainer.appendChild(gamesRow);
     }
 
-    // Save game to recently played and re-render the section
+    // Add a game to "Recently Played" while avoiding duplicates
     function addToRecentlyPlayed(title, image, gameFile, downloadFile) {
-        const game = {
+        const gameIndex = recentlyPlayed.findIndex((game) => game.file === gameFile);
+
+        // Remove the game if it already exists (to add it to the front)
+        if (gameIndex !== -1) {
+            recentlyPlayed.splice(gameIndex, 1);
+        }
+
+        // Add the game to the start of the list
+        recentlyPlayed.unshift({
             title: title,
             image: image,
             file: gameFile,
             download: downloadFile,
             lastPlayed: new Date().toLocaleDateString(),
-        };
+        });
 
-        // Add the game to the start of the list and limit to 5 games
-        recentlyPlayed.unshift(game);
+        // Limit the list to the most recent 5 games
         if (recentlyPlayed.length > 5) recentlyPlayed.pop();
 
         // Save the updated list to localStorage
         localStorage.setItem("recentlyPlayed", JSON.stringify(recentlyPlayed));
 
-        // Render the updated recently played list
+        // Update the DOM
         renderRecentlyPlayed();
     }
 
     // Attach addToRecentlyPlayed globally
     window.addToRecentlyPlayed = addToRecentlyPlayed;
 
-    // Initial render of recently played
+    // Initial render of "Recently Played"
     renderRecentlyPlayed();
 
     // Override the existing openGame function to include recently played functionality
