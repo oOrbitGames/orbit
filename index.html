@@ -1226,6 +1226,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 <h2>${game.title}</h2>
                 <p>Last played on ${game.lastPlayed}</p>
             `;
+            
+            // Add an onclick to load the game when clicked
+            gameDiv.addEventListener('click', function() {
+                openGame(game.file, game.download);
+            });
+
             gamesGrid.appendChild(gameDiv);
         });
 
