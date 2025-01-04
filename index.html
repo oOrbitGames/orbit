@@ -341,30 +341,27 @@
 .game-item img {
     width: 100%;            /* Ensures image fills the width of the card */
     height: 200px;          /* Fixes height for rectangular images */
-    object-fit: cover;      /* Maintains aspect ratio */
+    object-fit: cover;      /* Makes sure the image maintains aspect ratio and fits */
     border-bottom: 2px solid #ff69b4;
-    border-radius: 8px;     /* Rounds image corners */
     transition: filter 0.3s;
 }
 
 .game-item h2 {
     color: white;
-    font-size: 1.8rem;      /* Bigger font size for a "pop" effect */
+    font-size: 1.2rem;
     margin: 15px 0 10px;
     font-family: 'Poppins', sans-serif;
-    font-weight: bold;      /* Makes the text bold */
-    transition: color 0.3s, transform 0.3s, font-size 0.3s; /* Smooth transitions */
+    transition: color 0.3s, transform 0.3s; /* Smooth transition for text */
 }
 
 .game-item:hover h2 {
-    color: #ff69b4;         /* Changes to pink on hover */
-    transform: scale(1.2);  /* Slightly enlarges text on hover */
-    font-size: 2rem;        /* Enlarges font size on hover */
+    color: #ff69b4; /* Changes to pink on hover */
+    transform: scale(1.1); /* Increases size on hover */
 }
 
 .game-item p {
     color: #d3d3d3;
-    font-size: 1rem;        /* Slightly larger description font size */
+    font-size: 0.9rem;
     margin-bottom: 15px;
     font-family: 'Poppins', sans-serif;
 }
@@ -373,92 +370,61 @@
     background-color: #ff69b4;
     color: white;
     text-decoration: none;
-    padding: 10px 20px;     /* Bigger button for emphasis */
-    border-radius: 10px;    /* More rounded corners for a modern look */
-    font-size: 1.2rem;      /* Bigger font for the button */
-    font-weight: bold;
-    transition: background-color 0.3s, transform 0.3s; /* Added transform transition */
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
     font-family: 'Poppins', sans-serif;
 }
 
 .play-now-button:hover {
     background-color: #ff1493;
-    transform: scale(1.1); /* Button enlarges slightly on hover */
 }
 
-     /* Keyframes for Animations */
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
+        /* Keyframes for Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
 
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+            to {
+                opacity: 1;
+            }
+        }
 
-@keyframes colorCycle {
-    0% {
-        color: #6a0dad;
-    }
-    25% {
-        color: #1e90ff;
-    }
-    50% {
-        color: #6a0dad;
-    }
-    75% {
-        color: #1e90ff;
-    }
-    100% {
-        color: #6a0dad;
-    }
-}
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
 
-/* Apply Animations */
-.game-item {
-    animation: fadeIn 0.6s ease-out; /* Smooth fade-in effect */
-    will-change: opacity, transform; /* Optimized for performance */
-}
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-.game-item img {
-    animation: fadeInUp 1s ease-out; /* Image slides in smoothly */
-    animation-fill-mode: both; /* Ensures it keeps its final state */
-}
+        @keyframes colorCycle {
+            0% {
+                color: #6a0dad;
+            }
 
-.game-item h2 {
-    animation: colorCycle 3s ease-in-out infinite; /* Infinite color cycling */
-}
+            25% {
+                color: #1e90ff;
+            }
 
-.play-now-button {
-    animation: fadeIn 0.8s ease-in-out; /* Smooth button appearance */
-}
+            50% {
+                color: #6a0dad;
+            }
 
-/* Trigger Animations When Reappearing in Viewport */
-@keyframes fadeInViewport {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+            75% {
+                color: #1e90ff;
+            }
 
-.game-item[data-in-viewport="true"] {
-    animation: fadeInViewport 0.8s ease-out; /* Fade-in when entering viewport */
-}
+            100% {
+                color: #6a0dad;
+            }
+        }
 
         /* Responsive Layout */
         @media (max-width: 768px) {
@@ -1529,5 +1495,3 @@ document.getElementById('gameSearchInput').addEventListener('input', function() 
 </body>
 
 </html>
-
-
