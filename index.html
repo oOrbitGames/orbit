@@ -1352,18 +1352,48 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('visit-counter').textContent = `Total Visits: ${data.count}`;
         }
 
-        // Function to open a game
-        function openGame(gameFile, downloadFile) {
-            if (progress < totalGames) { // Increment only if below max
-                progress++;
-                localStorage.setItem('progress', progress); // Save progress to local storage
-                updateProgressBar(); // Update progress on UI
-            }
-            document.getElementById('game-iframe').src = gameFile; // Set iframe source
-            document.getElementById('game-modal').style.display = 'block'; // Show modal
-            document.getElementById('download-button').setAttribute('href', downloadFile); // Set download link
-            document.getElementById('download-button').setAttribute('download', downloadFile); // Download attribute
+       // Function to open a game and update the recently played list
+function openGame(gameFile, downloadFile) {
+    // If progress is less than the total games, increment and save it
+    if (progress < totalGames) {
+        progress++;
+        localStorage.setItem('progress', progress); // Save progress to local storage
+        updateProgressBar(); // Update progress on UI
+    }
+
+    // Open the game in the iframe and show the modal
+    document.getElementById('game-iframe').src = gameFile; // Set iframe source
+    document.getElementById('game-modal').style.display = 'block'; // Show modal
+    document.getElementById('download-button').setAttribute('href', downloadFile); // Set download link
+    document.getElementById('download-button').setAttribute('download', downloadFile); // Download attribute
+
+    // Add the game to the Recently Played list
+    const recentlyPlayed = JSON.parse(localStorage.getItem("recentlyPlayed")) || [];
+    const gameTitle = gameFile.split('/').pop().split('.')[0]; // Extract title from file name (you can adjust this as needed)
+    const gameImage = gameFile.replace('.html', '.png'); // Assuming the image is the same name as the game file
+
+    // Check if the game already exists in Recently Played
+    const gameIndex = recentlyPlayed.findIndex(game => game.file === gameFile);
+
+    // If the game doesn't exist, add it to the front of the list
+    if (gameIndex === -1) {
+        recentlyPlayed.unshift({
+            title: gameTitle,
+            image: gameImage,
+            file: gameFile,
+            download: downloadFile,
+            lastPlayed: new Date().toLocaleDateString(),
+        });
+
+        // Limit the list to the latest 4 games
+        if (recentlyPlayed.length > 4) {
+            recentlyPlayed.pop();
         }
+
+        // Save the updated list back to localStorage
+        localStorage.setItem("recentlyPlayed", JSON.stringify(recentlyPlayed));
+    }
+}
 
         // Close game modal
         function closeGame() {
