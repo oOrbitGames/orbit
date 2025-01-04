@@ -27,36 +27,13 @@
             box-sizing: border-box;
         }
 
-:root {
-    --background-color: #000;
-    --header-active-background-color: rgba(140, 0, 255, 0.55);
-    --header-hover-background-color: rgba(140, 0, 255, 0.13);
-    --input-background-color: #0a0a0a;
-    --border-color: #525252;
-    --text-color: #ffffff;
-    --hover-text-color: rgba(255, 255, 255, 0.49);
-    --active-text-color: rgba(255, 255, 255, 0.81);
-    --utility-background-color: rgb(22, 22, 22);
-    --utility-shadow-color: rgba(66, 66, 66, 0.86);
-    --hr-background: rgba(160, 160, 160, 0.274);
-    --navbar-background-color: rgb(22, 22, 22);
-    --page-text-color: rgba(82, 82, 82, 0.97);
-    --shortcut-background-color: #fff;
-    --shortcut-box-shadow: 0 0 20px 1px #fff;
-    --image-outline-color: #4400ff;
-    --button-background-color: #4400ff;
-    --button-gradient-color: linear-gradient(
-        304deg,
-        rgb(204, 0, 245) 0%,
-        #4400ff 100%
-    );
-}
-
-body {
-    background: var(--button-gradient-color); /* Use the gradient for the background */
-    background-attachment: fixed; /* Keep the background fixed during scrolling */
-    background-size: cover; /* Ensure it fills the entire viewport */
-    color: var(--text-color); /* White text for contrast */
+   body {
+    background-image: url('Assets/bg2.png'); /* Set the background image */
+    background-size: cover; /* Ensure the image covers the entire screen */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-attachment: fixed; /* Make the background stay fixed while scrolling */
+    color: #fff; /* White text */
     font-family: 'Poppins', sans-serif;
     display: flex;
     flex-direction: column;
@@ -66,6 +43,7 @@ body {
     overflow-x: hidden;
     position: relative;
 }
+
         /* Particles Background */
         #particles-js {
             position: absolute;
