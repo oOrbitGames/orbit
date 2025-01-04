@@ -5,112 +5,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Partners</title>
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 
-    body {
-        margin: 0;
-        font-family: 'Poppins', Arial, sans-serif;
-        background: #000 url('Assets/bg2.png') no-repeat center center fixed;
-        background-size: cover;
-        color: white;
-        overflow-x: hidden;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-    }
+body {
+    margin: 0;
+    font-family: 'Poppins', Arial, sans-serif;
+    background: #000 url('Assets/bg2.png') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
 
-    .container {
-        text-align: center;
-        width: 90%;
-        max-width: 1200px;
-        background: linear-gradient(180deg, #111, #3a003c); /* Dark purple gradient */
-        padding: 20px;
-        border-radius: 15px;
-        box-shadow: 0 0 20px rgba(128, 0, 128, 0.5); /* Purple shadow */
-    }
-
-    .title {
-        font-size: 5rem;
-        color: #800080; /* Purple */
-        text-shadow: 0 0 20px #800080, 0 0 40px #800080, 0 0 60px #800080;
-        margin-bottom: 10px;
-    }
-
-    .subtitle {
-        font-size: 2rem;
-        color: #ddd;
-        margin-bottom: 20px;
-    }
-
-    .collaborator-banner {
-        background: #2c003e; /* Dark purple background */
-        height: 150px;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 20px; /* Adds spacing between the images */
-    }
-
-    .collaborator-banner img {
-        max-height: 120px;
-        border-radius: 10px;
-    }
-
-    .contact-section {
-        margin-top: 30px;
-    }
-
-    .contact-text {
-        font-size: 1.5rem;
-        color: #800080; /* Purple */
-        text-shadow: 0 0 10px #800080, 0 0 20px #800080;
-        margin-bottom: 15px;
-    }
-
-    .email {
-        font-size: 1.2rem;
-        color: #fff;
-        background: #800080; /* Purple */
-        padding: 10px 20px;
-        border-radius: 10px;
-        text-decoration: none;
-        transition: background 0.3s, transform 0.3s;
-    }
-
-    .email:hover {
-        background: #9b33b5; /* Lighter purple */
-        transform: scale(1.1);
-    }
-
-    .footer {
-        margin-top: 20px;
-        font-size: 1rem;
-        color: #888;
-    }
-
-    .footer img {
-        height: 30px;
-        vertical-align: middle;
-        margin-right: 10px;
-    }
-
-    .footer a {
-        color: #800080; /* Purple */
-        text-decoration: none;
-    }
-
-    .footer a:hover {
-        text-decoration: underline;
-    }
+.container {
+    text-align: center;
+    width: 90%;
+    max-width: 1200px;
+    background: linear-gradient(180deg, #111, #3a003c); /* Dark purple gradient */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(128, 0, 128, 0.5); /* Purple shadow */
+    position: relative; /* Ensure home button stays within this container */
+}
 
 .home-button {
-    position: absolute;
-    top: 20px;
-    left: 20px;
     background-color: #800080; /* Purple */
     color: white;
     text-decoration: none;
@@ -120,6 +42,8 @@
     font-weight: bold;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-bottom: 20px; /* Space the button away from other content */
+    display: inline-block;
     z-index: 1000;
 }
 
@@ -130,6 +54,82 @@
 
 .home-button:active {
     transform: scale(0.95);
+}
+
+.title {
+    font-size: 5rem;
+    color: #800080; /* Purple */
+    text-shadow: 0 0 20px #800080, 0 0 40px #800080, 0 0 60px #800080;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 2rem;
+    color: #ddd;
+    margin-bottom: 20px;
+}
+
+.collaborator-banner {
+    background: #2c003e; /* Dark purple background */
+    height: 150px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px; /* Adds spacing between the images */
+}
+
+.collaborator-banner img {
+    max-height: 120px;
+    border-radius: 10px;
+}
+
+.contact-section {
+    margin-top: 30px;
+}
+
+.contact-text {
+    font-size: 1.5rem;
+    color: #800080; /* Purple */
+    text-shadow: 0 0 10px #800080, 0 0 20px #800080;
+    margin-bottom: 15px;
+}
+
+.email {
+    font-size: 1.2rem;
+    color: #fff;
+    background: #800080; /* Purple */
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.email:hover {
+    background: #9b33b5; /* Lighter purple */
+    transform: scale(1.1);
+}
+
+.footer {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #888;
+}
+
+.footer img {
+    height: 30px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.footer a {
+    color: #800080; /* Purple */
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
 }
 
 </style>
