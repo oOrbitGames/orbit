@@ -21,15 +21,6 @@
 | Easy Accessibility      | PlayerVPN Games is super easy to clone or fork, this can be hosted anywhere, even static site hosts! |
 
 
-<div style="text-align: center;">
-
-## Screenshots
-
-<img src="Assets/Screenshot1.jpg" alt="Screenshot 1" style="width: 50%; max-width: 500px; height: auto;">
-
-<img src="Assets/Screenshot2.jpg" alt="Screenshot 2" style="width: 50%; max-width: 500px; height: auto;">
-
-
 
 
 
