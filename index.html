@@ -1229,7 +1229,7 @@ document.addEventListener('DOMContentLoaded', function () {
             
             // Add an onclick to load the game when clicked
             gameDiv.addEventListener('click', function() {
-                openGame(game.file, game.download);
+                openGame(game.file, game.download); // Open the clicked game
             });
 
             gamesGrid.appendChild(gameDiv);
@@ -1286,7 +1286,7 @@ document.addEventListener('DOMContentLoaded', function () {
             addToRecentlyPlayed(title, image, gameFile, downloadFile);
         }
 
-        // Call the original openGame function
+        // Call the original openGame function to load the iframe
         originalOpenGame(gameFile, downloadFile);
     };
 });
