@@ -208,17 +208,19 @@
         });
 
         downloadButton.addEventListener('click', () => {
-            const query = inputQuery.value;
-            if (query.trim() !== '') {
+            const query = inputQuery.value.trim();
+            if (query) {
                 const downloadLink = `https://playervpn.github.io/playervpn-game/${query}.mhtml`;
 
-                fetch(downloadLink)
+                fetch(downloadLink, { method: 'HEAD' }) // Check if file exists
                     .then(response => {
-                        if (!response.ok) {
+                        if (response.ok) {
+                            return fetch(downloadLink);
+                        } else {
                             throw new Error('File not found');
                         }
-                        return response.blob();
                     })
+                    .then(response => response.blob())
                     .then(blob => {
                         const a = document.createElement('a');
                         a.href = URL.createObjectURL(blob);
@@ -229,15 +231,14 @@
 
                         downloadCount++;
                         statusText.textContent = `${downloadCount} stored so far`;
-
                         popup.style.display = 'none';
                         inputQuery.value = '';
                     })
                     .catch(error => {
-                        alert('Error downloading file: ' + error.message);
+                        alert(`Error: ${error.message}. Please check your input.`);
                     });
             } else {
-                alert('Please type a valid query.');
+                alert('Please enter a query.');
             }
         });
 
