@@ -106,12 +106,41 @@
     .footer a:hover {
         text-decoration: underline;
     }
+
+.home-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #800080; /* Purple */
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    z-index: 1000;
+}
+
+.home-button:hover {
+    background-color: #9b33b5; /* Lighter purple */
+    transform: scale(1.05);
+}
+
+.home-button:active {
+    transform: scale(0.95);
+}
+
 </style>
 </head>
 <body>
-    <div class="container">
-        <div class="title">OUR TEAM</div>
-        <div class="subtitle">2/20</div>
+   <div class="container">
+    <div class="title">OUR TEAM</div>
+    <div class="subtitle">2/20</div>
+    <a href="index.html" class="home-button">Home</a>
+</div>
+
 
         <div class="collaborator-banner">
             <img src="https://avatars.githubusercontent.com/u/106455703?s=280&v=4" alt="Collaborator Logo">
