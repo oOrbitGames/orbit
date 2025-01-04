@@ -641,38 +641,6 @@ header h5 {
     pointer-events: none; /* Prevents interaction with the icon */
 }
 
-.starred-game-list {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 games per row */
-    gap: 20px;
-}
-
-.starred-game-item {
-    position: relative;
-    text-align: center;
-}
-
-.starred-game-item img {
-    width: 100px;
-    height: 100px;
-}
-
-.starred-game-item h2 {
-    font-size: 14px;
-}
-
-.starred-game-item p {
-    font-size: 12px;
-}
-
-.starred-game-item i {
-    font-size: 18px;
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    cursor: pointer;
-}
-
     </style>
  </head>
 
@@ -698,15 +666,12 @@ header h5 {
         <div class="progress-label" id="progress-label">LVL 1</div>
     </div>
 
+
 <!-- Search bar container -->
 <div class="search-bar-container">
     <input type="text" id="gameSearchInput" placeholder="Search..." />
 </div>
 
-<div class="starred-games-container" id="starred-games-container">
-    <h2>Starred Games</h2>
-    <div class="starred-game-list" id="starred-game-list"></div>
-</div>
 
     <div class="games-container" id="games-container">
         <!-- Game items -->
@@ -1538,52 +1503,7 @@ document.getElementById('gameSearchInput').addEventListener('input', function() 
             item.style.display = 'none'; // Hide the item
         }
     });
-
-function toggleStarredGame(url, imgSrc, title, description) {
-    const starredGames = JSON.parse(localStorage.getItem('starredGames')) || [];
-    const gameId = url.split('.')[0]; // unique ID based on the game URL
-
-    // Check if the game is already starred
-    const gameIndex = starredGames.findIndex(game => game.id === gameId);
-
-    if (gameIndex === -1) {
-        // Add to starred games
-        starredGames.push({ id: gameId, url, imgSrc, title, description });
-        document.getElementById(`star-${gameId}`).style.color = 'yellow';
-    } else {
-        // Remove from starred games
-        starredGames.splice(gameIndex, 1);
-        document.getElementById(`star-${gameId}`).style.color = 'white';
-    }
-
-    // Save updated list to localStorage
-    localStorage.setItem('starredGames', JSON.stringify(starredGames));
-    displayStarredGames(); // Update the displayed starred games
-}
-
-function displayStarredGames() {
-    const starredGames = JSON.parse(localStorage.getItem('starredGames')) || [];
-    const starredGameList = document.getElementById('starred-game-list');
-    starredGameList.innerHTML = ''; // Clear previous content
-
-    starredGames.forEach(game => {
-        const gameItem = document.createElement('div');
-        gameItem.classList.add('starred-game-item');
-
-        gameItem.innerHTML = `
-            <img src="${game.imgSrc}" alt="${game.title}">
-            <h2>${game.title}</h2>
-            <p>${game.description}</p>
-            <i class="fas fa-star" id="star-${game.id}" style="color: yellow;" onclick="toggleStarredGame('${game.url}', '${game.imgSrc}', '${game.title}', '${game.description}')"></i>
-        `;
-
-        starredGameList.appendChild(gameItem);
-    });
-}
-
-// Call this on page load to display the starred games
-document.addEventListener('DOMContentLoaded', displayStarredGames);
-
+});
     </script>
 </body>
 
