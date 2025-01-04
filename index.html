@@ -1194,34 +1194,6 @@ header h5 {
 
 // Wait for the DOM content to be fully loaded before adding event listeners
 document.addEventListener('DOMContentLoaded', function () {
-    // Get the sidebar and toggle button elements
-    const sidebar = document.getElementById('sidebar');
-    const toggleButton = document.getElementById('toggleSidebar');
-
-    // Add animation-specific styles without overwriting existing styles
-    sidebar.style.transition = 'transform 0.3s ease'; // Smooth sliding animation for sidebar
-    sidebar.style.transform = 'translateX(-100%)'; // Ensure sidebar is off-screen initially
-
-    // Add transition for the button animation
-    toggleButton.style.transition = 'transform 0.3s ease'; // Smooth button animation
-
-    // Toggle sidebar visibility with sliding animation
-    toggleButton.addEventListener('click', function () {
-        if (sidebar.style.transform === 'translateX(-100%)') {
-            // Show sidebar with sliding animation
-            sidebar.style.transform = 'translateX(0)';
-
-            // Move the button to the right
-            toggleButton.style.transform = 'translateX(200px)'; // Adjust as needed
-        } else {
-            // Hide sidebar with sliding animation
-            sidebar.style.transform = 'translateX(-100%)';
-
-            // Move the button back to the original position
-            toggleButton.style.transform = 'translateX(0)';
-        }
-    });
-
     // Get the recently played container element
     const recentlyPlayedContainer = document.getElementById("recently-played-container");
 
@@ -1234,7 +1206,7 @@ document.addEventListener('DOMContentLoaded', function () {
         recentlyPlayed.forEach((game) => {
             const gameDiv = document.createElement("div");
             gameDiv.className = "game-item reveal";
-            gameDiv.setAttribute("onclick", `playGame('${game.title}', '${game.image}', '${game.url}')`);
+            gameDiv.setAttribute("onclick", `openGame('${game.file}', '${game.download}')`);
             gameDiv.innerHTML = `
                 <img src="${game.image}" alt="${game.title}">
                 <h2>${game.title}</h2>
@@ -1245,11 +1217,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Save game to recently played and re-render the section
-    function playGame(title, image, url) {
+    function addToRecentlyPlayed(title, image, gameFile, downloadFile) {
         const game = {
             title: title,
             image: image,
-            url: url,
+            file: gameFile,
+            download: downloadFile,
             lastPlayed: new Date().toLocaleDateString(),
         };
 
@@ -1262,16 +1235,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Render the updated recently played list
         renderRecentlyPlayed();
-
-        // Simulate opening the game (replace with your actual game logic)
-        alert(`Opening ${title}`);
     }
 
-    // Attach the playGame function globally
-    window.playGame = playGame;
+    // Attach addToRecentlyPlayed globally
+    window.addToRecentlyPlayed = addToRecentlyPlayed;
 
     // Initial render of recently played
     renderRecentlyPlayed();
+
+    // Override the existing openGame function to include recently played functionality
+    const originalOpenGame = window.openGame; // Backup the original function
+    window.openGame = function (gameFile, downloadFile) {
+        // Find the clicked game details
+        const gameItem = Array.from(document.querySelectorAll('.game-item')).find(item =>
+            item.getAttribute('onclick') === `openGame('${gameFile}', '${downloadFile}')`
+        );
+
+        if (gameItem) {
+            const title = gameItem.querySelector('h2').textContent;
+            const image = gameItem.querySelector('img').getAttribute('src');
+            addToRecentlyPlayed(title, image, gameFile, downloadFile);
+        }
+
+        // Call the original openGame function
+        originalOpenGame(gameFile, downloadFile);
+    };
 });
      
         // Redirect on page load
