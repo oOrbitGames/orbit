@@ -27,22 +27,22 @@
             box-sizing: border-box;
         }
 
-   body {
-    background-image: url('Assets/bg2.png'); /* Set the background image */
-    background-size: cover; /* Ensure the image covers the entire screen */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Prevent the image from repeating */
-    background-attachment: fixed; /* Make the background stay fixed while scrolling */
-    color: #fff; /* White text */
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-    overflow-x: hidden;
-    position: relative;
-}
+        body {
+            background-image: url('Assets/bg2.png'); /* Set the background image */
+            background-size: cover; /* Ensure the image covers the entire screen */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Prevent the image from repeating */
+            background-attachment: fixed; /* Make the background stay fixed while scrolling */
+            color: #fff; /* White text */
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
 
         /* Particles Background */
         #particles-js {
@@ -97,37 +97,37 @@
             z-index: 2; /* Above particles background */
         }
 
-       /* Progress Bar Styles */
-.progress-container {
-    display: none; /* Hides the progress bar */
-    width: 100%;
-    max-width: 500px;
-    margin: 20px 0;
-    border-radius: 25px;
-    background-color: #444;
-    height: 30px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-}
+        /* Progress Bar Styles */
+        .progress-container {
+            display: none; /* Hides the progress bar */
+            width: 100%;
+            max-width: 500px;
+            margin: 20px 0;
+            border-radius: 25px;
+            background-color: #444;
+            height: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
 
-.progress-bar {
-    width: 0%;
-    height: 100%;
-    background: linear-gradient(90deg, #1e90ff, #ff6f61); /* Gradient decoration */
-    transition: width 0.4s ease;
-    border-radius: 25px;
-}
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #1e90ff, #ff6f61); /* Gradient decoration */
+            transition: width 0.4s ease;
+            border-radius: 25px;
+        }
 
-.progress-label {
-    position: absolute;
-    width: 100%;
-    text-align: center;
-    font-weight: bold;
-    font-family: 'Poppins', sans-serif;
-    top: 5px;
-    color: white;
-}
+        .progress-label {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            font-family: 'Poppins', sans-serif;
+            top: 5px;
+            color: white;
+        }
 
         /* GitHub Button Styles */
         .github-button {
@@ -307,79 +307,79 @@
             z-index: 2; /* Above particles background */
         }
 
-/* Games Container */
-.games-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 items per row */
-    gap: 20px; /* Reduce the gap between cards */
-    width: 100%;
-    max-width: 1200px; /* Adjust the overall container width */
-    padding: 15px;
-    animation: fadeInUp 1.4s ease-in-out;
-    z-index: 2; /* Above particles background */
-}
+        /* Games Container */
+        .games-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 items per row */
+            gap: 20px; /* Reduce the gap between cards */
+            width: 100%;
+            max-width: 1200px; /* Adjust the overall container width */
+            padding: 15px;
+            animation: fadeInUp 1.4s ease-in-out;
+            z-index: 2; /* Above particles background */
+        }
 
-/* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+        /* Import Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
-/* Game Item Styling */
-.game-item {
-    background-color: #1a1a1a;
-    border: 3px solid #800080;
-    border-radius: 10px;
-    overflow: hidden;
-    text-align: center;
-    padding: 10px;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
+        /* Game Item Styling */
+        .game-item {
+            background-color: #1a1a1a;
+            border: 3px solid #800080;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            padding: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
 
-.game-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 8px 20px rgba(255, 105, 180, 0.7);
-}
+        .game-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 8px 20px rgba(255, 105, 180, 0.7);
+        }
 
-.game-item img {
-    width: 100%;            /* Ensures image fills the width of the card */
-    height: 200px;          /* Fixes height for rectangular images */
-    object-fit: cover;      /* Makes sure the image maintains aspect ratio and fits */
-    border-bottom: 2px solid #ff69b4;
-    transition: filter 0.3s;
-}
+        .game-item img {
+            width: 100%;            /* Ensures image fills the width of the card */
+            height: 200px;          /* Fixes height for rectangular images */
+            object-fit: cover;      /* Makes sure the image maintains aspect ratio and fits */
+            border-bottom: 2px solid #ff69b4;
+            transition: filter 0.3s;
+        }
 
-.game-item h2 {
-    color: white;
-    font-size: 1.2rem;
-    margin: 15px 0 10px;
-    font-family: 'Poppins', sans-serif;
-    transition: color 0.3s, transform 0.3s; /* Smooth transition for text */
-}
+        .game-item h2 {
+            color: white;
+            font-size: 1.2rem;
+            margin: 15px 0 10px;
+            font-family: 'Poppins', sans-serif;
+            transition: color 0.3s, transform 0.3s; /* Smooth transition for text */
+        }
 
-.game-item:hover h2 {
-    color: #ff69b4; /* Changes to pink on hover */
-    transform: scale(1.1); /* Increases size on hover */
-}
+        .game-item:hover h2 {
+            color: #ff69b4; /* Changes to pink on hover */
+            transform: scale(1.1); /* Increases size on hover */
+        }
 
-.game-item p {
-    color: #d3d3d3;
-    font-size: 0.9rem;
-    margin-bottom: 15px;
-    font-family: 'Poppins', sans-serif;
-}
+        .game-item p {
+            color: #d3d3d3;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            font-family: 'Poppins', sans-serif;
+        }
 
-.play-now-button {
-    background-color: #ff69b4;
-    color: white;
-    text-decoration: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    font-size: 0.9rem;
-    transition: background-color 0.3s;
-    font-family: 'Poppins', sans-serif;
-}
+        .play-now-button {
+            background-color: #ff69b4;
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
 
-.play-now-button:hover {
-    background-color: #ff1493;
-}
+        .play-now-button:hover {
+            background-color: #ff1493;
+        }
 
         /* Keyframes for Animations */
         @keyframes fadeIn {
@@ -465,184 +465,184 @@
             border: none;
             border-radius: 10px; /* Rounded iframe corners */
         }
-    
-      /* Modal Container */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1000; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0, 0, 0, 0.8); /* Darker background with opacity */
-}
 
-/* Modal Content */
-.modal-content {
-    background-color: #1a1a1a; /* Dark background */
-    margin: 10% auto; /* Center it */
-    padding: 20px;
-    border: 1px solid #800080; /* Purple border */
-    width: 80%; /* Width of the modal */
-    max-width: 500px; /* Max width for responsiveness */
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
+        /* Modal Container */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.8); /* Darker background with opacity */
+        }
 
-/* Modal Title */
-.settings-title {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    color: #ff69b4; /* Pink title */
-    text-align: center;
-}
+        /* Modal Content */
+        .modal-content {
+            background-color: #1a1a1a; /* Dark background */
+            margin: 10% auto; /* Center it */
+            padding: 20px;
+            border: 1px solid #800080; /* Purple border */
+            width: 80%; /* Width of the modal */
+            max-width: 500px; /* Max width for responsiveness */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
 
-/* Dropdown */
-.dropdown {
-    margin-bottom: 20px;
-    text-align: center;
-}
+        /* Modal Title */
+        .settings-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #ff69b4; /* Pink title */
+            text-align: center;
+        }
 
-#tab-cloak-select {
-    padding: 10px;
-    width: 100%;
-    max-width: 300px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-    outline: none;
-    transition: border-color 0.3s;
-}
+        /* Dropdown */
+        .dropdown {
+            margin-bottom: 20px;
+            text-align: center;
+        }
 
-#tab-cloak-select:focus {
-    border-color: #ff69b4; /* Pink focus border */
-}
+        #tab-cloak-select {
+            padding: 10px;
+            width: 100%;
+            max-width: 300px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+            outline: none;
+            transition: border-color 0.3s;
+        }
 
-/* Cloak Button */
-.cloak-button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 1rem;
-    color: #fff;
-    background-color: #800080; /* Purple button */
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
+        #tab-cloak-select:focus {
+            border-color: #ff69b4; /* Pink focus border */
+        }
 
-.cloak-button:hover {
-    background-color: #ff69b4; /* Pink hover effect */
-}
+        /* Cloak Button */
+        .cloak-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #800080; /* Purple button */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
-.cloak-button:active {
-    background-color: #ff1493; /* Darker pink active effect */
-}
+        .cloak-button:hover {
+            background-color: #ff69b4; /* Pink hover effect */
+        }
 
-/* Responsive Design */
-@media (max-width: 600px) {
-    .modal-content {
-        width: 90%;
-        margin: 20% auto;
-    }
+        .cloak-button:active {
+            background-color: #ff1493; /* Darker pink active effect */
+        }
 
-    .settings-title {
-        font-size: 1.2rem;
-    }
-}
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .modal-content {
+                width: 90%;
+                margin: 20% auto;
+            }
 
-/* Header Styling */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+            .settings-title {
+                font-size: 1.2rem;
+            }
+        }
 
-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px;
-    color: white;
-    position: relative;
-    margin-bottom: 10px; /* Minimal space below the header */
-}
+        /* Header Styling */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 
-/* Logo Styling */
-header img {
-    width: 500px; /* Very large logo */
-    height: auto;
-    margin-bottom: -10px; /* Negative margin to bring the text closer to the logo */
-}
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            color: white;
+            position: relative;
+            margin-bottom: 10px; /* Minimal space below the header */
+        }
 
-/* Title Styling */
-header h1 {
-    font-size: 3.5rem; /* Larger title */
-    margin: 0; /* No margin, minimal space */
-    font-weight: bold;
-    font-family: 'Poppins', sans-serif;
-    color: #ff69b4;
-}
+        /* Logo Styling */
+        header img {
+            width: 500px; /* Very large logo */
+            height: auto;
+            margin-bottom: -10px; /* Negative margin to bring the text closer to the logo */
+        }
 
-/* Subtitle Styling */
-header h5 {
-    font-size: 1.5rem; /* Subtitle size */
-    margin-top: 0; /* No space between h1 and h5 */
-    font-weight: bold;
-    font-family: 'Poppins', sans-serif;
-    color: #ffe6f7;
-}
+        /* Title Styling */
+        header h1 {
+            font-size: 3.5rem; /* Larger title */
+            margin: 0; /* No margin, minimal space */
+            font-weight: bold;
+            font-family: 'Poppins', sans-serif;
+            color: #ff69b4;
+        }
 
-/* Subtitle Styling */
-header h5 {
-    font-size: 1.5rem; /* Subtitle size */
-    margin-top: 0; /* No space between h1 and h5 */
-    color: #ffe6f7;
-    font-weight: 300;
-}
+        /* Subtitle Styling */
+        header h5 {
+            font-size: 1.5rem; /* Subtitle size */
+            margin-top: 0; /* No space between h1 and h5 */
+            font-weight: bold;
+            font-family: 'Poppins', sans-serif;
+            color: #ffe6f7;
+        }
 
-.search-bar-container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto 20px;
-    padding: 0 15px;
-    text-align: center;
-    position: relative; /* Enables absolute positioning for child elements */
-    z-index: 10; /* Ensures the container stays above other elements */
-}
+        /* Subtitle Styling */
+        header h5 {
+            font-size: 1.5rem; /* Subtitle size */
+            margin-top: 0; /* No space between h1 and h5 */
+            color: #ffe6f7;
+            font-weight: 300;
+        }
 
-#gameSearchInput {
-    width: 50%;
-    padding: 10px 40px 10px 40px; /* Adjust padding for the icon */
-    font-size: 1rem;
-    color: #000; /* Black text */
-    background-color: #fff; /* White background */
-    border: 2px solid #800080;
-    border-radius: 25px; /* Rounded corners */
-    margin-top: 10px;
-    outline: none;
-    transition: border-color 0.3s ease-in-out;
-    position: relative;
-}
+        .search-bar-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto 20px;
+            padding: 0 15px;
+            text-align: center;
+            position: relative; /* Enables absolute positioning for child elements */
+            z-index: 10; /* Ensures the container stays above other elements */
+        }
 
-#gameSearchInput:focus {
-    border-color: #ff69b4;
-}
+        #gameSearchInput {
+            width: 50%;
+            padding: 10px 40px 10px 40px; /* Adjust padding for the icon */
+            font-size: 1rem;
+            color: #000; /* Black text */
+            background-color: #fff; /* White background */
+            border: 2px solid #800080;
+            border-radius: 25px; /* Rounded corners */
+            margin-top: 10px;
+            outline: none;
+            transition: border-color 0.3s ease-in-out;
+            position: relative;
+        }
 
-/* Font Awesome search icon styling */
-.search-icon {
-    position: absolute;
-    top: 50%;
-    left: 25%;
-    transform: translate(-50%, -50%);
-    font-size: 1.2rem;
-    color: #000; /* Black icon */
-    pointer-events: none; /* Prevents interaction with the icon */
-}
+        #gameSearchInput:focus {
+            border-color: #ff69b4;
+        }
+
+        /* Font Awesome search icon styling */
+        .search-icon {
+            position: absolute;
+            top: 50%;
+            left: 25%;
+            transform: translate(-50%, -50%);
+            font-size: 1.2rem;
+            color: #000; /* Black icon */
+            pointer-events: none; /* Prevents interaction with the icon */
+        }
 
     </style>
- </head>
+</head>
 
 <body>
     <div id="particles-js"></div>
@@ -657,20 +657,20 @@ header h5 {
     </div>
 
     <header>
-    <img src="Assets/Banner.jpg" alt="Logo">
-</header>
-    
-   <!-- Progress Bar -->
+        <img src="Assets/Banner.jpg" alt="Logo">
+    </header>
+
+    <!-- Progress Bar -->
     <div class="progress-container">
         <div class="progress-bar" id="progress-bar"></div>
         <div class="progress-label" id="progress-label">LVL 1</div>
     </div>
 
 
-<!-- Search bar container -->
-<div class="search-bar-container">
-    <input type="text" id="gameSearchInput" placeholder="Search..." />
-</div>
+    <!-- Search bar container -->
+    <div class="search-bar-container">
+        <input type="text" id="gameSearchInput" placeholder="Search..." />
+    </div>
 
 
     <div class="games-container" id="games-container">
@@ -1065,26 +1065,6 @@ header h5 {
             <h2>Big Tower Tiny Square</h2>
             <p>Your a tiny square!</p>
         </div>
-        <div class="game-item reveal" onclick="openGame('ccrush', 'ccrush')">
-            <img src="ccrush.png" alt="crush;candy">
-            <h2>Candy Crush</h2>
-            <p>3 in a row.</p>
-        </div>
-        <div class="game-item reveal" onclick="openGame('counterstrike', 'counterstrike')">
-            <img src="counterstrike.png" alt="counter;strike">
-            <h2>Counter Strike</h2>
-            <p>Shoot things in this 3d, first person shooter.</p>
-        </div>
-            <div class="game-item reveal" onclick="openGame('helixjump', 'helixjump')">
-            <img src="helixjump/helixjump.png" alt="helix;jump">
-            <h2>Helix Jump</h2>
-            <p>Dodge the red stuff...😲</p>
-        </div>
-            <div class="game-item reveal" onclick="openGame('lazyjump', 'lazyjump')">
-            <img src="lazyjump.png" alt="lazy;jump">
-            <h2>Lazy Jump 3D</h2>
-            <p>Land on tubs, chairs, couches and more!</p>
-        </div>
     </div>
 
     <!-- Game Modal -->
@@ -1098,6 +1078,7 @@ header h5 {
             <i class="fas fa-download" id="download-button" download="" title="Download Game"></i>
             <i class="fas fa-key" onclick="window.open('https://learn.lcps.org/', '_blank');" title="Key"></i>
             <i class="fas fa-expand-arrows-alt" onclick="toggleFullScreen();" title="Full Screen"></i>
+            <i class="fas fa-volume-up" id="mute-button" onclick="toggleMute();" title="Mute/Unmute"></i> <!-- Mute/Unmute Icon -->
         </div>
     </div>
 
@@ -1122,101 +1103,99 @@ header h5 {
             <button class="cloak-button" onclick="closeSettings()">Close Settings</button>
         </div>
     </div>
-    
-<!-- Sidebar Toggle Icon -->
-<a href="javascript:void(0);" id="toggleSidebar" style="position: fixed; top: 20px; left: 20px; z-index: 999;">
-    <img src="Assets/threelines.png" alt="Toggle Sidebar" style="width: 30px; height: auto;">
-</a>
 
-<!-- Sidebar -->
-<div class="sidebar" id="sidebar" style="display: none; position: fixed; top: 0; left: 0; background-color: #2a003e; width: 250px; height: 100%; padding: 20px; z-index: 998; transition: transform 0.3s ease; transform: translateX(-100%);">
-    <!-- Logo and Header -->
-    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
-        <a href="index.html" style="display: flex; align-items: center; text-decoration: none;">
-            <img src="PVPNdownload.png" alt="PVPN Logo" style="width: 30px; height: auto;">
-            <h3 style="margin: 0; color: white;">Orbit</h3>
-        </a>
+    <!-- Sidebar Toggle Icon -->
+    <a href="javascript:void(0);" id="toggleSidebar" style="position: fixed; top: 20px; left: 20px; z-index: 999;">
+        <img src="Assets/threelines.png" alt="Toggle Sidebar" style="width: 30px; height: auto;">
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar" style="display: none; position: fixed; top: 0; left: 0; background-color: #2a003e; width: 250px; height: 100%; padding: 20px; z-index: 998; transition: transform 0.3s ease; transform: translateX(-100%);">
+        <!-- Logo and Header -->
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+            <a href="index.html" style="display: flex; align-items: center; text-decoration: none;">
+                <img src="PVPNdownload.png" alt="PVPN Logo" style="width: 30px; height: auto;">
+                <h3 style="margin: 0; color: white;">Orbit</h3>
+            </a>
+        </div>
+
+        <!-- Sidebar Links Container -->
+        <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 15px;">
+
+            <!-- Settings -->
+            <button class="cloak-button sidebar-link" id="settings-button" style="color: #ff69b4; background-color: transparent; border: none; font-weight: bold; font-size: 1.2em; cursor: pointer; display: flex; align-items: center; gap: 10px;" onclick="openSettings()">
+                <i class="fas fa-cog"></i> Settings‎
+            </button>
+
+            <!-- Forum Link -->
+            <a href="https://orbitproxy.flarum.cloud/" class="sidebar-link" style="color: #ff69b4; text-decoration: none; font-weight: bold; font-size: 1.2em; display: flex; align-items: center; gap: 10px;">
+                <i class="fas fa-comments"></i> Forum
+            </a>
+
+            <!-- GitHub Repo Link -->
+            <a href="https://github.com/PlayerVPN/playervpn-game" target="_blank" class="sidebar-link" style="color: #ff69b4; text-decoration: none; font-weight: bold; font-size: 1.2em; display: flex; align-items: center; gap: 10px;">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+
+        </div>
+
+        <!-- Recommended Games Section -->
+        <div class="recommended-games" style="margin-top: 20px;">
+            <h3 style="color: white;">Recommended</h3>
+            <div id="recommended-items"></div>
+        </div>
     </div>
-
-    <!-- Sidebar Links Container -->
-    <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 15px;">
-
-        <!-- Settings -->
-        <button class="cloak-button sidebar-link" id="settings-button" style="color: #ff69b4; background-color: transparent; border: none; font-weight: bold; font-size: 1.2em; cursor: pointer; display: flex; align-items: center; gap: 10px;" onclick="openSettings()">
-            <i class="fas fa-cog"></i> Settings‎
-        </button>
-
-        <!-- Forum Link -->
-        <a href="https://orbitproxy.flarum.cloud/" class="sidebar-link" style="color: #ff69b4; text-decoration: none; font-weight: bold; font-size: 1.2em; display: flex; align-items: center; gap: 10px;">
-            <i class="fas fa-comments"></i> Forum
-        </a>
-    
-
-
-        <!-- GitHub Repo Link -->
-        <a href="https://github.com/PlayerVPN/playervpn-game" target="_blank" class="sidebar-link" style="color: #ff69b4; text-decoration: none; font-weight: bold; font-size: 1.2em; display: flex; align-items: center; gap: 10px;">
-            <i class="fab fa-github"></i> GitHub
-        </a>
-
-    </div>
-
-    <!-- Recommended Games Section -->
-    <div class="recommended-games" style="margin-top: 20px;">
-        <h3 style="color: white;">Recommended</h3>
-        <div id="recommended-items"></div>
-    </div>
-</div>
 
     <!-- Inline JavaScript for Tab Cloak & Header Navigation -->
-<script>
-    // Redirect logic to OAuth passkey page
-    const redirectToOAuth = "https://playervpn.github.io/playervpn-game/oauthpasskey";
-    const LAST_REDIRECT_TIME_KEY = "lastRedirectTime";
-    const TWENTY_MINUTES = 20 * 60 * 1000; // 20 minutes in milliseconds
+    <script>
+        // Redirect logic to OAuth passkey page
+        const redirectToOAuth = "https://playervpn.github.io/playervpn-game/oauthpasskey";
+        const LAST_REDIRECT_TIME_KEY = "lastRedirectTime";
+        const TWENTY_MINUTES = 20 * 60 * 1000; // 20 minutes in milliseconds
 
-    function checkRedirect() {
-        const lastRedirectTime = localStorage.getItem(LAST_REDIRECT_TIME_KEY);
-        const now = new Date().getTime();
+        function checkRedirect() {
+            const lastRedirectTime = localStorage.getItem(LAST_REDIRECT_TIME_KEY);
+            const now = new Date().getTime();
 
-        // Check if last redirect time exists and calculate time difference
-        if (!lastRedirectTime || now - lastRedirectTime > TWENTY_MINUTES) {
-            // Redirect and update last redirect time
-            localStorage.setItem(LAST_REDIRECT_TIME_KEY, now);
-            window.location.href = redirectToOAuth;
+            // Check if last redirect time exists and calculate time difference
+            if (!lastRedirectTime || now - lastRedirectTime > TWENTY_MINUTES) {
+                // Redirect and update last redirect time
+                localStorage.setItem(LAST_REDIRECT_TIME_KEY, now);
+                window.location.href = redirectToOAuth;
+            }
         }
-    }
 
-// Wait for the DOM content to be fully loaded before adding event listeners
-document.addEventListener('DOMContentLoaded', function () {
-    // Get the sidebar and toggle button elements
-    const sidebar = document.getElementById('sidebar');
-    const toggleButton = document.getElementById('toggleSidebar');
+        // Wait for the DOM content to be fully loaded before adding event listeners
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get the sidebar and toggle button elements
+            const sidebar = document.getElementById('sidebar');
+            const toggleButton = document.getElementById('toggleSidebar');
 
-    // Add animation-specific styles without overwriting existing styles
-    sidebar.style.transition = 'transform 0.3s ease'; // Smooth sliding animation for sidebar
-    sidebar.style.transform = 'translateX(-100%)'; // Ensure sidebar is off-screen initially
+            // Add animation-specific styles without overwriting existing styles
+            sidebar.style.transition = 'transform 0.3s ease'; // Smooth sliding animation for sidebar
+            sidebar.style.transform = 'translateX(-100%)'; // Ensure sidebar is off-screen initially
 
-    // Add transition for the button animation
-    toggleButton.style.transition = 'transform 0.3s ease'; // Smooth button animation
+            // Add transition for the button animation
+            toggleButton.style.transition = 'transform 0.3s ease'; // Smooth button animation
 
-    // Toggle sidebar visibility with sliding animation
-    toggleButton.addEventListener('click', function () {
-        if (sidebar.style.transform === 'translateX(-100%)') {
-            // Show sidebar with sliding animation
-            sidebar.style.transform = 'translateX(0)';
+            // Toggle sidebar visibility with sliding animation
+            toggleButton.addEventListener('click', function () {
+                if (sidebar.style.transform === 'translateX(-100%)') {
+                    // Show sidebar with sliding animation
+                    sidebar.style.transform = 'translateX(0)';
 
-            // Move the button to the right
-            toggleButton.style.transform = 'translateX(200px)'; // Adjust as needed
-        } else {
-            // Hide sidebar with sliding animation
-            sidebar.style.transform = 'translateX(-100%)';
+                    // Move the button to the right
+                    toggleButton.style.transform = 'translateX(200px)'; // Adjust as needed
+                } else {
+                    // Hide sidebar with sliding animation
+                    sidebar.style.transform = 'translateX(-100%)';
 
-            // Move the button back to the original position
-            toggleButton.style.transform = 'translateX(0)';
-        }
-    });
-});
-     
+                    // Move the button back to the original position
+                    toggleButton.style.transform = 'translateX(0)';
+                }
+            });
+        });
+
         // Redirect on page load
         window.onload = function () {
             checkRedirect();
@@ -1316,6 +1295,26 @@ document.addEventListener('DOMContentLoaded', function () {
                 iframe.webkitRequestFullscreen();
             } else if (iframe.msRequestFullscreen) {
                 iframe.msRequestFullscreen();
+            }
+        }
+
+        // Mute/Unmute functionality
+        let isMuted = false;
+
+        function toggleMute() {
+            const muteButton = document.getElementById('mute-button');
+            isMuted = !isMuted; // Toggle mute state
+            muteButton.classList.toggle('fa-volume-up', !isMuted); // Change to volume icon
+            muteButton.classList.toggle('fa-volume-mute', isMuted); // Change to muted icon
+            
+            // Mute/Unmute the game
+            const iframe = document.getElementById('game-iframe');
+            const iframeWindow = iframe.contentWindow; // Accessing the iframe's content window
+            if (iframeWindow) {
+                const audioElements = iframeWindow.document.querySelectorAll('audio');
+                audioElements.forEach(audio => {
+                    audio.muted = isMuted; // Mute/unmute the audio elements within the iframe
+                });
             }
         }
 
@@ -1487,20 +1486,40 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
-// Search function for filtering game items
-document.getElementById('gameSearchInput').addEventListener('input', function() {
-    const searchTerm = this.value.toLowerCase(); // Get the search term
-    const gameItems = document.querySelectorAll('.game-item'); // Get all game items
+        // Search function for filtering game items
+        document.getElementById('gameSearchInput').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase(); // Get the search term
+            const gameItems = document.querySelectorAll('.game-item'); // Get all game items
 
-    gameItems.forEach(item => {
-        const gameTitle = item.querySelector('h2').textContent.toLowerCase(); // Get the game title
-        if (gameTitle.includes(searchTerm)) {
-            item.style.display = 'block'; // Ensure the item is shown (block allows it to stay in grid layout)
-        } else {
-            item.style.display = 'none'; // Hide the item
+            gameItems.forEach(item => {
+                const gameTitle = item.querySelector('h2').textContent.toLowerCase(); // Get the game title
+                if (gameTitle.includes(searchTerm)) {
+                    item.style.display = 'block'; // Ensure the item is shown (block allows it to stay in grid layout)
+                } else {
+                    item.style.display = 'none'; // Hide the item
+                }
+            });
+        });
+        
+        // Mute/Unmute functionality
+        let isMuted = false;
+
+        function toggleMute() {
+            const muteButton = document.getElementById('mute-button');
+            isMuted = !isMuted; // Toggle mute state
+            muteButton.classList.toggle('fa-volume-up', !isMuted); // Change to volume icon
+            muteButton.classList.toggle('fa-volume-mute', isMuted); // Change to muted icon
+            
+            // Mute/Unmute the game
+            const iframe = document.getElementById('game-iframe');
+            const iframeWindow = iframe.contentWindow; // Accessing the iframe's content window
+            if (iframeWindow) {
+                const audioElements = iframeWindow.document.querySelectorAll('audio');
+                audioElements.forEach(audio => {
+                    audio.muted = isMuted; // Mute/unmute the audio elements within the iframe
+                });
+            }
         }
-    });
-});
     </script>
 </body>
 
