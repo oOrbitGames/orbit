@@ -1,110 +1,125 @@
-
-<link rel="shortcut icon" type="image/png" href="https://i.ibb.co/Fh6H1dy/Untitled-design-8.png">
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PVPNGAMEZ | Landing Page | Page Not Found</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>404 - Lost on the Moon</title>
     <style>
-        body, html {
+        @import url('https://fonts.googleapis.com/css2?family=Bobby+Jones+Soft&display=swap');
+
+        body {
             margin: 0;
             padding: 0;
-            height: 100%;
+            height: 100vh;
+            background: radial-gradient(circle, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #fff;
+            font-family: 'Bobby Jones Soft', cursive;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            background-color: black; /* Changed to solid black background */
-            color: #ffffff; 
-            font-family: 'Poppins', sans-serif;
-            text-align: center;
-            overflow: hidden;
-        }
-        h1 {
-            font-size: 100px;
-            margin: 0;
-            animation: fadeIn 1s ease; 
-        }
-        p {
-            font-size: 28px; 
-            margin: 10px 0 40px; 
-            color: #d1d1d1;
-            animation: fadeIn 1.5s ease; 
-        }
-        .image-container {
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            max-width: 80%; 
-            margin: 0 auto; 
-            animation: bounceIn 2s; 
-        }
-        .image-container img {
-            width: 50%;
-            max-width: 600px; 
-            height: auto;
-            border-radius: 15px; 
-            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.4); /* Adjusted shadow for white text */
-        }
-        .home-button {
-            background-color: #ec1d05; 
-            color: white; 
-            border: none;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-flex;
             align-items: center;
-            border-radius: 30px; 
-            font-size: 18px; 
-            transition: background-color 0.3s, transform 0.2s; 
-            margin-top: 20px;
-            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3); /* Shadow effect for button */
-        }
-        .home-button:hover {
-            background-color: #d31e09; 
-            transform: translateY(-2px); 
-        }
-        .home-icon {
-            margin-right: 8px; 
-            font-size: 20px; 
-        }
-        footer {
-            position: absolute; 
-            bottom: 20px; 
-            font-size: 14px; 
-            color: #d1d1d1; 
+            overflow: hidden;
+            text-align: center;
+            position: relative;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
         }
-        @keyframes bounceIn {
-            0% { transform: scale(0); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: floatParticle 10s infinite ease-in-out;
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translate(0, 0);
+                opacity: 1;
+            }
+            50% {
+                transform: translate(50px, -100px);
+                opacity: 0.6;
+            }
+            100% {
+                transform: translate(-30px, -200px);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            text-align: center;
+            z-index: 1;
+        }
+
+        img {
+            width: 500px;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.5rem;
+            color: #fff;
+            text-shadow: 0 0 5px #fff;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #ff0066, #ffcc00);
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 30px;
+            box-shadow: 0 0 10px #ff0066, 0 0 20px #ffcc00;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #ff0066, 0 0 40px #ffcc00;
         }
     </style>
 </head>
 <body>
-    <div>
-        <h1>404</h1>
-        <p>Oops! It seems you are lost.</p>
-        <div class="image-container">
-            <img src="404.png" alt="404 Error"> <!-- Change to your image path -->
-        </div>
-        <a class="home-button" href="https://playervpn.github.io/playervpn-game/">
-            <i class="fas fa-home home-icon"></i>
-            Return Home
-        </a>
+    <div class="particles">
+        <!-- Generate 50 floating particles -->
+        <script>
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = Math.random() * 100 + 'vh';
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                particle.style.animationDuration = 5 + Math.random() * 10 + 's';
+                document.body.appendChild(particle);
+            }
+        </script>
     </div>
-    <footer>
-        © 2024 PVPN GAMES. All rights reserved.
-    </footer>
+    <div class="container">
+        <img src="https://i.ibb.co/gF9d1Hj/4-1.png" alt="404 Image">
+        <h1>You were lost on the moon</h1>
+        <p>It seems like you've wandered off course. Let's get you back home.</p>
+        <a href="/index.html" class="btn">Go Home</a>
+    </div>
 </body>
 </html>
