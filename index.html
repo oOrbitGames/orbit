@@ -351,9 +351,9 @@
         }
 
         .game-item img {
-            width: 100%;            /* Ensures image fills the width of the card */
-            height: 200px;          /* Fixes height for rectangular images */
-            object-fit: cover;      /* Makes sure the image maintains aspect ratio and fits */
+            width: 100%; /* Ensures image fills the width of the card */
+            height: 200px; /* Fixes height for rectangular images */
+            object-fit: cover; /* Makes sure the image maintains aspect ratio and fits */
             border-bottom: 2px solid #ff69b4;
             transition: filter 0.3s;
         }
@@ -810,7 +810,7 @@
             <h2>Bloxorz</h2>
             <p>Move around as a rectangle.</p>
         </div>
-        <div class="game-item reveal" onclick="openGame('cuttherrope.html', 'cuttherope.html')">
+        <div class="game-item reveal" onclick="openGame('cuttherrope.html', 'cuttherrope.html')">
             <img src="cuttherope.png" alt="Cut;Ropes">
             <h2>Cut the Rope.</h2>
             <p>Cut ropes.</p>
@@ -1335,24 +1335,19 @@
 
         let isMuted = false; // Define global variable to keep track of mute state
 
-        // Toggle mute functionality
         function toggleMute() {
             const muteIcon = document.querySelector('.mute-icon');
-            if (isMuted) {
-                // Unmute logic
-                muteIcon.classList.remove('fa-volume-mute');
-                muteIcon.classList.add('fa-volume-up');
-                isMuted = false; // Set mute state to false
-            } else {
-                // Mute logic
-                muteIcon.classList.remove('fa-volume-up');
-                muteIcon.classList.add('fa-volume-mute');
-                isMuted = true; // Set mute state to true
-            }
-
-            // Add mute functionality here, you might want to modify the iframe or the game's audio context
             const gameIframe = document.getElementById('game-iframe');
-            gameIframe.contentWindow.postMessage({ mute: isMuted }, '*');
+
+            // Change the mute state
+            isMuted = !isMuted;
+
+            // Mute or unmute the game iframe
+            muteIcon.classList.toggle('fa-volume-mute', isMuted);
+            muteIcon.classList.toggle('fa-volume-up', !isMuted);
+
+            // Post message for mute state
+            gameIframe.contentWindow.postMessage({ mute: isMuted }, '*'); // Send mute state to the game
         }
 
         // Open settings modal
