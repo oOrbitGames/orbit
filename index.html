@@ -667,13 +667,16 @@ header h5 {
     </div>
 
 
+
+
+<!-- Container for recently played games -->
+<div class="recently-played-container" id="recently-played-container">
+    <!-- Dynamically added recently played games will appear here -->
+</div>
+
 <!-- Search bar container -->
 <div class="search-bar-container">
     <input type="text" id="gameSearchInput" placeholder="Search..." />
-</div>
-
-<div class="recently-played-container" id="recently-played-container">
-    <!-- Recently played games will be dynamically added here -->
 </div>
 
     <div class="games-container" id="games-container">
@@ -1078,25 +1081,10 @@ header h5 {
             <h2>Candy Crush</h2>
             <p>3 in a row.</p>
         </div>
-         <div class="game-item reveal" onclick="openGame('counterstrike', 'counterstrike')">
+        <div class="game-item reveal" onclick="openGame('counterstrike', 'counterstrike')">
             <img src="counterstrike.png" alt="counter;strike">
             <h2>Counter Strike</h2>
             <p>Shoot things in this 3d, first person shooter.</p>
-        </div>
-            <div class="game-item reveal" onclick="openGame('helixjump', 'helixjump')">
-            <img src="helixjump/helixjump.png" alt="helix;jump">
-            <h2>Helix Jump</h2>
-            <p>Dodge the red stuff...😲</p>
-        </div>
-            <div class="game-item reveal" onclick="openGame('lazyjump', 'lazyjump')">
-            <img src="lazyjump.png" alt="lazy;jump">
-            <h2>Lazy Jump 3D</h2>
-            <p>Land on tubs, chairs, couches and more!</p>
-        </div>
-        <div class="game-item reveal" onclick="openGame('basketbrosio', 'basketballio')">
-            <img src="basketbrosio.png" alt="ball;bros">
-            <h2>Basket Bros io</h2>
-            <p>Hosting and joining don't work, click tournament!</p>
         </div>
     </div>
 
@@ -1104,7 +1092,7 @@ header h5 {
     <div class="game-modal" id="game-modal">
         <iframe class="game-iframe" id="game-iframe" src=""></iframe>
 
-       <!-- Icon Bar for Modal -->
+        <!-- Icon Bar for Modal -->
         <div class="icon-bar">
             <i class="fas fa-times" onclick="closeGame();" title="Close Game"></i>
             <i class="fas fa-external-link-alt" onclick="openGameInNewTab();" title="Open in New Tab"></i>
@@ -1164,7 +1152,15 @@ header h5 {
             <i class="fas fa-comments"></i> Forum
         </a>
     
+        <!-- Credits -->
+<a href="credits.html" class="sidebar-link" style="color: #ff69b4; background-color: transparent; border: none; font-weight: bold; font-size: 1.2em; cursor: pointer; text-align: left; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-trophy"></i> Credits
+</a>
 
+        <!-- Partner With Us -->
+        <a href="partner.html" class="sidebar-link" style="color: #ff69b4; text-decoration: none; font-weight: bold; font-size: 1.2em; display: flex; align-items: center; gap: 10px;">
+            <i class="fas fa-handshake"></i> Partner With Us
+        </a>
 
         <!-- GitHub Repo Link -->
         <a href="https://github.com/PlayerVPN/playervpn-game" target="_blank" class="sidebar-link" style="color: #ff69b4; text-decoration: none; font-weight: bold; font-size: 1.2em; display: flex; align-items: center; gap: 10px;">
@@ -1199,88 +1195,90 @@ header h5 {
         }
     }
 
-// Wait for the DOM content to be fully loaded before adding event listeners
 document.addEventListener('DOMContentLoaded', function () {
-    // Get the sidebar and toggle button elements
-    const sidebar = document.getElementById('sidebar');
-    const toggleButton = document.getElementById('toggleSidebar');
-
-    // Add animation-specific styles without overwriting existing styles
-    sidebar.style.transition = 'transform 0.3s ease'; // Smooth sliding animation for sidebar
-    sidebar.style.transform = 'translateX(-100%)'; // Ensure sidebar is off-screen initially
-
-    // Add transition for the button animation
-    toggleButton.style.transition = 'transform 0.3s ease'; // Smooth button animation
-
-    // Toggle sidebar visibility with sliding animation
-    toggleButton.addEventListener('click', function () {
-        if (sidebar.style.transform === 'translateX(-100%)') {
-            // Show sidebar with sliding animation
-            sidebar.style.transform = 'translateX(0)';
-
-            // Move the button to the right
-            toggleButton.style.transform = 'translateX(200px)'; // Adjust as needed
-        } else {
-            // Hide sidebar with sliding animation
-            sidebar.style.transform = 'translateX(-100%)';
-
-            // Move the button back to the original position
-            toggleButton.style.transform = 'translateX(0)';
-        }
-    });
-
-    // Get the recently played container element
     const recentlyPlayedContainer = document.getElementById("recently-played-container");
 
-    // Load recently played games from localStorage
-    const recentlyPlayed = JSON.parse(localStorage.getItem("recentlyPlayed")) || [];
+    // Function to open a game and update the recently played list
+    function openGame(gameFile, downloadFile) {
+        // If progress is less than the total games, increment and save it
+        if (progress < totalGames) {
+            progress++;
+            localStorage.setItem('progress', progress); // Save progress to local storage
+            updateProgressBar(); // Update progress on UI
+        }
 
-    // Function to render the recently played section
-    function renderRecentlyPlayed() {
-        recentlyPlayedContainer.innerHTML = "<h2>Recently Played</h2>";
-        recentlyPlayed.forEach((game) => {
+        // Open the game in the iframe and show the modal
+        document.getElementById('game-iframe').src = gameFile; // Set iframe source
+        document.getElementById('game-modal').style.display = 'block'; // Show modal
+        document.getElementById('download-button').setAttribute('href', downloadFile); // Set download link
+        document.getElementById('download-button').setAttribute('download', downloadFile); // Download attribute
+
+        // Add the game to the Recently Played list
+        const recentlyPlayed = JSON.parse(localStorage.getItem("recentlyPlayed")) || [];
+        const gameTitle = gameFile.split('/').pop().split('.')[0]; // Extract title from file name
+        const gameImage = gameFile.replace('.html', '.png'); // Assuming the image is the same name as the game file
+
+        // Check if the game already exists in Recently Played
+        const gameIndex = recentlyPlayed.findIndex(game => game.file === gameFile);
+
+        // If the game doesn't exist, add it to the front of the list
+        if (gameIndex === -1) {
+            recentlyPlayed.unshift({
+                title: gameTitle,
+                image: gameImage,
+                file: gameFile,
+                download: downloadFile,
+                lastPlayed: new Date().toLocaleDateString(),
+            });
+
+            // Limit the list to the latest 4 games
+            if (recentlyPlayed.length > 4) {
+                recentlyPlayed.pop(); // Remove the oldest game if we have more than 4
+            }
+
+            // Save the updated list back to localStorage
+            localStorage.setItem("recentlyPlayed", JSON.stringify(recentlyPlayed));
+        }
+
+        // Render the recently played games
+        renderRecentlyPlayed(recentlyPlayed);
+    }
+
+    // Function to render the Recently Played games in the DOM
+    function renderRecentlyPlayed(games) {
+        recentlyPlayedContainer.innerHTML = `<h2 style="color: white; font-family: 'Poppins', sans-serif;">Recently Played</h2>`;
+
+        const gamesGrid = document.createElement("div");
+        gamesGrid.className = "games-container";
+        gamesGrid.style.gridTemplateColumns = "repeat(4, 1fr)"; // 4 items per row
+        gamesGrid.style.gap = "20px"; // Matching gap between cards
+
+        games.slice(0, 4).forEach((game) => { // Limit to 4 games
             const gameDiv = document.createElement("div");
-            gameDiv.className = "game-item reveal";
-            gameDiv.setAttribute("onclick", `playGame('${game.title}', '${game.image}', '${game.url}')`);
+            gameDiv.className = "game-item";
             gameDiv.innerHTML = `
                 <img src="${game.image}" alt="${game.title}">
                 <h2>${game.title}</h2>
                 <p>Last played on ${game.lastPlayed}</p>
             `;
-            recentlyPlayedContainer.appendChild(gameDiv);
+
+            // Add an onclick to load the game when clicked
+            gameDiv.addEventListener('click', function() {
+                openGame(game.file, game.download); // Open the clicked game
+            });
+
+            gamesGrid.appendChild(gameDiv);
         });
+
+        recentlyPlayedContainer.appendChild(gamesGrid);
     }
 
-    // Save game to recently played and re-render the section
-    function playGame(title, image, url) {
-        const game = {
-            title: title,
-            image: image,
-            url: url,
-            lastPlayed: new Date().toLocaleDateString(),
-        };
+    // Initial render of "Recently Played" if any
+    const initialRecentlyPlayed = JSON.parse(localStorage.getItem("recentlyPlayed")) || [];
+    renderRecentlyPlayed(initialRecentlyPlayed);
 
-        // Add the game to the start of the list and limit to 5 games
-        recentlyPlayed.unshift(game);
-        if (recentlyPlayed.length > 5) recentlyPlayed.pop();
-
-        // Save the updated list to localStorage
-        localStorage.setItem("recentlyPlayed", JSON.stringify(recentlyPlayed));
-
-        // Render the updated recently played list
-        renderRecentlyPlayed();
-
-        // Simulate opening the game (replace with your actual game logic)
-        alert(`Opening ${title}`);
-    }
-
-    // Attach the playGame function globally
-    window.playGame = playGame;
-
-    // Initial render of recently played
-    renderRecentlyPlayed();
 });
-     
+
         // Redirect on page load
         window.onload = function () {
             checkRedirect();
@@ -1342,18 +1340,87 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('visit-counter').textContent = `Total Visits: ${data.count}`;
         }
 
-        // Function to open a game
-        function openGame(gameFile, downloadFile) {
-            if (progress < totalGames) { // Increment only if below max
-                progress++;
-                localStorage.setItem('progress', progress); // Save progress to local storage
-                updateProgressBar(); // Update progress on UI
-            }
-            document.getElementById('game-iframe').src = gameFile; // Set iframe source
-            document.getElementById('game-modal').style.display = 'block'; // Show modal
-            document.getElementById('download-button').setAttribute('href', downloadFile); // Set download link
-            document.getElementById('download-button').setAttribute('download', downloadFile); // Download attribute
+      document.addEventListener('DOMContentLoaded', function () {
+    const recentlyPlayedContainer = document.getElementById("recently-played-container");
+
+    // Function to open a game and update the recently played list
+    function openGame(gameFile, downloadFile) {
+        // Handle progress logic
+        if (progress < totalGames) {
+            progress++;
+            localStorage.setItem('progress', progress); // Save progress to local storage
+            updateProgressBar(); // Update progress on UI
         }
+
+        // Set iframe source to the game and display modal
+        document.getElementById('game-iframe').src = gameFile; // Set iframe source
+        document.getElementById('game-modal').style.display = 'block'; // Show modal
+        document.getElementById('download-button').setAttribute('href', downloadFile); // Set download link
+        document.getElementById('download-button').setAttribute('download', downloadFile); // Download attribute
+
+        // Add the game to the Recently Played list
+        const recentlyPlayed = JSON.parse(localStorage.getItem("recentlyPlayed")) || [];
+        const gameTitle = gameFile.split('/').pop().split('.')[0]; // Extract game title from file name
+        const gameImage = gameFile.replace('.html', '.png'); // Assuming the image is the same name as the game file
+
+        // Add game only if not already in the list
+        if (!recentlyPlayed.some(game => game.file === gameFile)) {
+            recentlyPlayed.unshift({
+                title: gameTitle,
+                image: gameImage,
+                file: gameFile,
+                download: downloadFile,
+                lastPlayed: new Date().toLocaleDateString(),
+            });
+
+            // Limit to 4 games max
+            if (recentlyPlayed.length > 4) {
+                recentlyPlayed.pop(); // Remove the oldest game if there are more than 4
+            }
+
+            // Save the updated list to localStorage
+            localStorage.setItem("recentlyPlayed", JSON.stringify(recentlyPlayed));
+        }
+
+        // Re-render the recently played games
+        renderRecentlyPlayed(recentlyPlayed);
+    }
+
+    // Function to render the Recently Played games in the DOM
+    function renderRecentlyPlayed(games) {
+        recentlyPlayedContainer.innerHTML = `<h2 style="color: white; font-family: 'Poppins', sans-serif;">Recently Played</h2>`;
+
+        // Create grid for games
+        const gamesGrid = document.createElement("div");
+        gamesGrid.className = "games-container"; // Use your game container class
+        gamesGrid.style.gridTemplateColumns = "repeat(4, 1fr)"; // 4 items per row
+        gamesGrid.style.gap = "20px"; // Adjust gap between cards
+
+        // Loop over games and create a game-item element
+        games.slice(0, 4).forEach((game) => { // Limit to 4 games
+            const gameDiv = document.createElement("div");
+            gameDiv.className = "game-item"; // Apply game item class for styling
+            gameDiv.innerHTML = `
+                <img src="${game.image}" alt="${game.title}">
+                <h2>${game.title}</h2>
+                <p>Last played on ${game.lastPlayed}</p>
+            `;
+
+            // Add an onclick to load the game when clicked
+            gameDiv.addEventListener('click', function() {
+                openGame(game.file, game.download); // Open the clicked game
+            });
+
+            gamesGrid.appendChild(gameDiv); // Append the game div to the grid
+        });
+
+        recentlyPlayedContainer.appendChild(gamesGrid); // Add the grid to the container
+    }
+
+    // Initial render of recently played games from localStorage
+    const initialRecentlyPlayed = JSON.parse(localStorage.getItem("recentlyPlayed")) || [];
+    renderRecentlyPlayed(initialRecentlyPlayed);
+});
 
         // Close game modal
         function closeGame() {
