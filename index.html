@@ -673,6 +673,14 @@ header h5 {
 </div>
 
 
+<div class="recently-played-container" id="recently-played-container">
+    <h2>Hop Back In!</h2>
+    <div class="games-container" id="recent-games-container">
+        <!-- Recently played games will be dynamically added here -->
+    </div>
+</div>
+
+
     <div class="games-container" id="games-container">
         <!-- Game items -->
         <div class="game-item reveal" onclick="openGame('requestgame.html', 'requestgame.html')">
@@ -1295,6 +1303,79 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('download-button').setAttribute('href', downloadFile); // Set download link
             document.getElementById('download-button').setAttribute('download', downloadFile); // Download attribute
         }
+
+// Function to open a game
+function openGame(gameFile, downloadFile) {
+    if (progress < totalGames) { // Increment only if below max
+        progress++;
+        localStorage.setItem('progress', progress); // Save progress to local storage
+        updateProgressBar(); // Update progress on UI
+    }
+
+    // Update the iframe source and modal
+    document.getElementById('game-iframe').src = gameFile; // Set iframe source
+    document.getElementById('game-modal').style.display = 'block'; // Show modal
+    document.getElementById('download-button').setAttribute('href', downloadFile); // Set download link
+    document.getElementById('download-button').setAttribute('download', downloadFile); // Download attribute
+
+    // Add game to recently played
+    const gameItem = document.querySelector(`[onclick="openGame('${gameFile}', '${downloadFile}')"]`);
+    const img = gameItem.querySelector('img');
+    const title = gameItem.querySelector('h2').textContent;
+    const description = gameItem.querySelector('p').textContent;
+
+    addToRecentlyPlayed(downloadFile, img.src, img.alt, title, description);
+}
+
+// Function to store and update recently played games
+function addToRecentlyPlayed(gameId, gameSrc, gameAlt, gameTitle, gameDescription) {
+    const maxRecentGames = 4;
+    let recentlyPlayed = JSON.parse(localStorage.getItem('recentlyPlayed')) || [];
+
+    // Check if the game is already in the list
+    if (!recentlyPlayed.some(game => game.id === gameId)) {
+        // Add the new game to the beginning of the list
+        recentlyPlayed.unshift({ id: gameId, src: gameSrc, alt: gameAlt, title: gameTitle, description: gameDescription });
+
+        // Limit the list to the most recent 4 games
+        if (recentlyPlayed.length > maxRecentGames) {
+            recentlyPlayed.pop();
+        }
+
+        // Save the updated list to local storage
+        localStorage.setItem('recentlyPlayed', JSON.stringify(recentlyPlayed));
+    }
+
+    // Update the recently played section
+    displayRecentlyPlayed();
+}
+
+// Function to display the recently played games
+function displayRecentlyPlayed() {
+    const recentGamesContainer = document.getElementById('recent-games-container');
+    let recentlyPlayed = JSON.parse(localStorage.getItem('recentlyPlayed')) || [];
+
+    // Clear the container
+    recentGamesContainer.innerHTML = '';
+
+    // Add the recently played games to the container
+    recentlyPlayed.forEach(game => {
+        const gameItem = document.createElement('div');
+        gameItem.classList.add('game-item', 'reveal');
+        gameItem.onclick = () => openGame(game.id, game.id); // Pass the stored game ID
+
+        gameItem.innerHTML = `
+            <img src="${game.src}" alt="${game.alt}">
+            <h2>${game.title}</h2>
+            <p>${game.description}</p>
+        `;
+
+        recentGamesContainer.appendChild(gameItem);
+    });
+}
+
+// Initialize the recently played section on page load
+document.addEventListener('DOMContentLoaded', displayRecentlyPlayed);
 
         // Close game modal
         function closeGame() {
