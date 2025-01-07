@@ -673,14 +673,6 @@ header h5 {
 </div>
 
 
-<div class="recently-played-container" id="recently-played-container">
-    <h2>Hop Back In!</h2>
-    <div class="games-container" id="recent-games-container">
-        <!-- Recently played games will be dynamically added here -->
-    </div>
-</div>
-
-
     <div class="games-container" id="games-container">
         <!-- Game items -->
         <div class="game-item reveal" onclick="openGame('requestgame.html', 'requestgame.html')">
@@ -1201,13 +1193,15 @@ header h5 {
 
 // Wait for the DOM content to be fully loaded before adding event listeners
 document.addEventListener('DOMContentLoaded', function () {
-    // Sidebar and toggle button functionality
+    // Get the sidebar and toggle button elements
     const sidebar = document.getElementById('sidebar');
     const toggleButton = document.getElementById('toggleSidebar');
 
     // Add animation-specific styles without overwriting existing styles
     sidebar.style.transition = 'transform 0.3s ease'; // Smooth sliding animation for sidebar
     sidebar.style.transform = 'translateX(-100%)'; // Ensure sidebar is off-screen initially
+
+    // Add transition for the button animation
     toggleButton.style.transition = 'transform 0.3s ease'; // Smooth button animation
 
     // Toggle sidebar visibility with sliding animation
@@ -1215,75 +1209,19 @@ document.addEventListener('DOMContentLoaded', function () {
         if (sidebar.style.transform === 'translateX(-100%)') {
             // Show sidebar with sliding animation
             sidebar.style.transform = 'translateX(0)';
+
+            // Move the button to the right
             toggleButton.style.transform = 'translateX(200px)'; // Adjust as needed
         } else {
             // Hide sidebar with sliding animation
             sidebar.style.transform = 'translateX(-100%)';
+
+            // Move the button back to the original position
             toggleButton.style.transform = 'translateX(0)';
         }
     });
-
-    // Function to display the recently played games
-    function displayRecentlyPlayed() {
-        const recentGamesContainer = document.getElementById('recent-games-container');
-        let recentlyPlayed = JSON.parse(localStorage.getItem('recentlyPlayed')) || [];
-
-        // Clear the container
-        recentGamesContainer.innerHTML = '';
-
-        // Add the recently played games to the container
-        recentlyPlayed.forEach(game => {
-            const gameItem = document.createElement('div');
-            gameItem.classList.add('game-item', 'reveal');
-            gameItem.setAttribute('data-file', game.id); // Store game ID in dataset
-            gameItem.setAttribute('data-download', game.id); // Store download link in dataset
-
-            gameItem.innerHTML = `
-                <img src="${game.src}" alt="${game.alt}">
-                <h2>${game.title}</h2>
-                <p>${game.description}</p>
-            `;
-
-            recentGamesContainer.appendChild(gameItem);
-        });
-    }
-
-    // Add event listener for dynamically created game items
-    document.addEventListener('click', function (event) {
-        if (event.target.closest('.game-item')) {
-            const gameItem = event.target.closest('.game-item');
-            const gameFile = gameItem.getAttribute('data-file');
-            const downloadFile = gameItem.getAttribute('data-download');
-
-            // Open the clicked game
-            openGame(gameFile, downloadFile);
-        }
-    });
-
-    // Function to add a game to the recently played list
-    function addToRecentlyPlayed(gameId, gameSrc, gameAlt, gameTitle, gameDescription) {
-        const maxRecentGames = 4;
-        let recentlyPlayed = JSON.parse(localStorage.getItem('recentlyPlayed')) || [];
-
-        // Check if the game is already in the list
-        if (!recentlyPlayed.some(game => game.id === gameId)) {
-            // Add the new game to the beginning of the list
-            recentlyPlayed.unshift({ id: gameId, src: gameSrc, alt: gameAlt, title: gameTitle, description: gameDescription });
-
-            // Limit the list to the most recent 4 games
-            if (recentlyPlayed.length > maxRecentGames) {
-                recentlyPlayed.pop();
-            }
-
-            // Save the updated list to local storage
-            localStorage.setItem('recentlyPlayed', JSON.stringify(recentlyPlayed));
-        }
-
-        // Immediately update the UI
-        displayRecentlyPlayed();
-    }
-
-
+});
+     
         // Redirect on page load
         window.onload = function () {
             checkRedirect();
@@ -1346,31 +1284,18 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Function to open a game
-    function openGame(gameFile, downloadFile) {
-        if (progress < totalGames) { // Increment only if below max
-            progress++;
-            localStorage.setItem('progress', progress); // Save progress to local storage
-            updateProgressBar(); // Update progress on UI
+        function openGame(gameFile, downloadFile) {
+            if (progress < totalGames) { // Increment only if below max
+                progress++;
+                localStorage.setItem('progress', progress); // Save progress to local storage
+                updateProgressBar(); // Update progress on UI
+            }
+            document.getElementById('game-iframe').src = gameFile; // Set iframe source
+            document.getElementById('game-modal').style.display = 'block'; // Show modal
+            document.getElementById('download-button').setAttribute('href', downloadFile); // Set download link
+            document.getElementById('download-button').setAttribute('download', downloadFile); // Download attribute
         }
 
-        // Update the iframe source and modal
-        document.getElementById('game-iframe').src = gameFile; // Set iframe source
-        document.getElementById('game-modal').style.display = 'block'; // Show modal
-        document.getElementById('download-button').setAttribute('href', downloadFile); // Set download link
-        document.getElementById('download-button').setAttribute('download', downloadFile); // Download attribute
-
-        // Add game to recently played
-        const gameItem = document.querySelector(`[onclick="openGame('${gameFile}', '${downloadFile}')"]`);
-        const img = gameItem.querySelector('img');
-        const title = gameItem.querySelector('h2').textContent;
-        const description = gameItem.querySelector('p').textContent;
-
-        addToRecentlyPlayed(downloadFile, img.src, img.alt, title, description);
-    }
-
-    // Initialize the recently played section on page load
-    displayRecentlyPlayed();
-});
         // Close game modal
         function closeGame() {
             document.getElementById('game-modal').style.display = 'none'; // Hide modal
