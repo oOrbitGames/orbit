@@ -28,7 +28,7 @@
         }
 
    body {
-    background-image: url('Assets/spacebackground.jpg'); /* Set the background image */
+    background-image: url('Assets/bg2.png'); /* Set the background image */
     background-size: cover; /* Ensure the image covers the entire screen */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Prevent the image from repeating */
@@ -672,6 +672,9 @@ header h5 {
     <input type="text" id="gameSearchInput" placeholder="Search..." />
 </div>
 
+<div class="recently-played-container" id="recently-played-container">
+    <!-- Recently played games will be dynamically added here -->
+</div>
 
     <div class="games-container" id="games-container">
         <!-- Game items -->
@@ -701,7 +704,7 @@ header h5 {
             <p>Test your sword fighting skills!</p>
         </div>
         <div class="game-item reveal" onclick="openGame('mario.html', 'mario.html')">
-            <img src="mariologo.png" alt="Mario">
+            <img src="mario.png" alt="Mario">
             <h2>Mario Bros.</h2>
             <p>Win. Just win.</p>
         </div>
@@ -746,7 +749,7 @@ header h5 {
             <p>Tons of experiences! - We made a new Roblox! yay! But our host site doesn't let you play it here, open it in a new tab!</p>
         </div>
         <div class="game-item reveal" onclick="openGame('snowballio.html', 'snowballio.html')">
-            <img src="snowball-io.png" alt="Snowball IO">
+            <img src="snowballio.png" alt="Snowball IO">
             <h2>Snowball IO</h2>
             <p>Roll your snowball to make it big. WIN!!</p>
         </div>
@@ -788,7 +791,7 @@ header h5 {
         <div class="game-item reveal" onclick="openGame('bballstars.html', 'bballstars.html')">
             <img src="bballstars.png" alt="Shoot;Bball">
             <h2>Basketball Stars</h2>
-            <p>Shoot baskets to win, featuring my glorius king LeBron</p>
+            <p>Only blacks play this</p>
         </div>
         <div class="game-item reveal" onclick="openGame('bitlife.html', 'bitlife.html')">
             <img src="bitlife.png" alt="grow-up;get-a-life">
@@ -1035,6 +1038,11 @@ header h5 {
             <h2>Tomb of the Mask</h2>
             <p>Tomb of the Mask develop by Happymagenta UAB is a fast-paced, arcade-style game.</p>
         </div>
+        <div class="game-item reveal" onclick="openGame('ourproxy.html', 'ourproxy.html')">
+            <img src="https://playervpn.github.io/playervpn-game/logoorbit3.png" alt="proxy;our">
+            <h2>Orbit Search</h2>
+            <p>We made a proxy!</p>
+        </div>
         <div class="game-item reveal" onclick="openGame('yohoho', 'yohoho')">
             <img src="yohoho.png" alt="yohoho;io">
             <h2>Yohoho io</h2>
@@ -1070,7 +1078,7 @@ header h5 {
             <h2>Candy Crush</h2>
             <p>3 in a row.</p>
         </div>
-        <div class="game-item reveal" onclick="openGame('counterstrike', 'counterstrike')">
+         <div class="game-item reveal" onclick="openGame('counterstrike', 'counterstrike')">
             <img src="counterstrike.png" alt="counter;strike">
             <h2>Counter Strike</h2>
             <p>Shoot things in this 3d, first person shooter.</p>
@@ -1096,7 +1104,7 @@ header h5 {
     <div class="game-modal" id="game-modal">
         <iframe class="game-iframe" id="game-iframe" src=""></iframe>
 
-        <!-- Icon Bar for Modal -->
+       <!-- Icon Bar for Modal -->
         <div class="icon-bar">
             <i class="fas fa-times" onclick="closeGame();" title="Close Game"></i>
             <i class="fas fa-external-link-alt" onclick="openGameInNewTab();" title="Open in New Tab"></i>
@@ -1220,6 +1228,57 @@ document.addEventListener('DOMContentLoaded', function () {
             toggleButton.style.transform = 'translateX(0)';
         }
     });
+
+    // Get the recently played container element
+    const recentlyPlayedContainer = document.getElementById("recently-played-container");
+
+    // Load recently played games from localStorage
+    const recentlyPlayed = JSON.parse(localStorage.getItem("recentlyPlayed")) || [];
+
+    // Function to render the recently played section
+    function renderRecentlyPlayed() {
+        recentlyPlayedContainer.innerHTML = "<h2>Recently Played</h2>";
+        recentlyPlayed.forEach((game) => {
+            const gameDiv = document.createElement("div");
+            gameDiv.className = "game-item reveal";
+            gameDiv.setAttribute("onclick", `playGame('${game.title}', '${game.image}', '${game.url}')`);
+            gameDiv.innerHTML = `
+                <img src="${game.image}" alt="${game.title}">
+                <h2>${game.title}</h2>
+                <p>Last played on ${game.lastPlayed}</p>
+            `;
+            recentlyPlayedContainer.appendChild(gameDiv);
+        });
+    }
+
+    // Save game to recently played and re-render the section
+    function playGame(title, image, url) {
+        const game = {
+            title: title,
+            image: image,
+            url: url,
+            lastPlayed: new Date().toLocaleDateString(),
+        };
+
+        // Add the game to the start of the list and limit to 5 games
+        recentlyPlayed.unshift(game);
+        if (recentlyPlayed.length > 5) recentlyPlayed.pop();
+
+        // Save the updated list to localStorage
+        localStorage.setItem("recentlyPlayed", JSON.stringify(recentlyPlayed));
+
+        // Render the updated recently played list
+        renderRecentlyPlayed();
+
+        // Simulate opening the game (replace with your actual game logic)
+        alert(`Opening ${title}`);
+    }
+
+    // Attach the playGame function globally
+    window.playGame = playGame;
+
+    // Initial render of recently played
+    renderRecentlyPlayed();
 });
      
         // Redirect on page load
