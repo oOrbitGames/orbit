@@ -1283,32 +1283,6 @@ document.addEventListener('DOMContentLoaded', function () {
         displayRecentlyPlayed();
     }
 
-    // Function to open a game
-    function openGame(gameFile, downloadFile) {
-        if (progress < totalGames) { // Increment only if below max
-            progress++;
-            localStorage.setItem('progress', progress); // Save progress to local storage
-            updateProgressBar(); // Update progress on UI
-        }
-
-        // Update the iframe source and modal
-        document.getElementById('game-iframe').src = gameFile; // Set iframe source
-        document.getElementById('game-modal').style.display = 'block'; // Show modal
-        document.getElementById('download-button').setAttribute('href', downloadFile); // Set download link
-        document.getElementById('download-button').setAttribute('download', downloadFile); // Download attribute
-
-        // Add game to recently played
-        const gameItem = document.querySelector(`[onclick="openGame('${gameFile}', '${downloadFile}')"]`);
-        const img = gameItem.querySelector('img');
-        const title = gameItem.querySelector('h2').textContent;
-        const description = gameItem.querySelector('p').textContent;
-
-        addToRecentlyPlayed(downloadFile, img.src, img.alt, title, description);
-    }
-
-    // Initialize the recently played section on page load
-    displayRecentlyPlayed();
-});
 
         // Redirect on page load
         window.onload = function () {
@@ -1372,33 +1346,31 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Function to open a game
-        function openGame(gameFile, downloadFile) {
-            if (progress < totalGames) { // Increment only if below max
-                progress++;
-                localStorage.setItem('progress', progress); // Save progress to local storage
-                updateProgressBar(); // Update progress on UI
-            }
-            document.getElementById('game-iframe').src = gameFile; // Set iframe source
-            document.getElementById('game-modal').style.display = 'block'; // Show modal
-            document.getElementById('download-button').setAttribute('href', downloadFile); // Set download link
-            document.getElementById('download-button').setAttribute('download', downloadFile); // Download attribute
+    function openGame(gameFile, downloadFile) {
+        if (progress < totalGames) { // Increment only if below max
+            progress++;
+            localStorage.setItem('progress', progress); // Save progress to local storage
+            updateProgressBar(); // Update progress on UI
         }
 
-// Function to open a game
-function openGame(gameFile, downloadFile) {
-    if (progress < totalGames) { // Increment only if below max
-        progress++;
-        localStorage.setItem('progress', progress); // Save progress to local storage
-        updateProgressBar(); // Update progress on UI
+        // Update the iframe source and modal
+        document.getElementById('game-iframe').src = gameFile; // Set iframe source
+        document.getElementById('game-modal').style.display = 'block'; // Show modal
+        document.getElementById('download-button').setAttribute('href', downloadFile); // Set download link
+        document.getElementById('download-button').setAttribute('download', downloadFile); // Download attribute
+
+        // Add game to recently played
+        const gameItem = document.querySelector(`[onclick="openGame('${gameFile}', '${downloadFile}')"]`);
+        const img = gameItem.querySelector('img');
+        const title = gameItem.querySelector('h2').textContent;
+        const description = gameItem.querySelector('p').textContent;
+
+        addToRecentlyPlayed(downloadFile, img.src, img.alt, title, description);
     }
 
-    // Update the iframe source and modal
-    document.getElementById('game-iframe').src = gameFile; // Set iframe source
-    document.getElementById('game-modal').style.display = 'block'; // Show modal
-    document.getElementById('download-button').setAttribute('href', downloadFile); // Set download link
-    document.getElementById('download-button').setAttribute('download', downloadFile); // Download attribute
-
-
+    // Initialize the recently played section on page load
+    displayRecentlyPlayed();
+});
         // Close game modal
         function closeGame() {
             document.getElementById('game-modal').style.display = 'none'; // Hide modal
