@@ -1122,11 +1122,12 @@ header h5 {
             <h2 class="settings-title">Tab Cloak Settings</h2>
             <div class="dropdown">
                 <select id="tab-cloak-select" onchange="changeTabCloak()">
-                    <option value="default">Select Tab Cloak</option>
+                    <option value="default">Orbit</option>
                     <option value="schoology">Schoology</option>
                     <option value="google">Google</option>
                     <option value="google_classroom">Google Classroom</option>
-                    <option value="edia">Edia</option> <!-- New Edia option -->
+                    <option value="edia">Edia</option>
+                    <option value="gmail">Gmail</option>
                 </select>
             </div>
             <button class="cloak-button" onclick="closeSettings()">Close Settings</button>
@@ -1364,6 +1365,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 case 'edia':
                     title = "Edia";
                     favicon = 'ediamath.png'; // Set favicon for Edia
+                    break;
+                case 'gmail':
+                    title = "Gmail";
+                    favicon = 'https://cdn.iconscout.com/icon/free/png-256/free-gmail-logo-icon-download-in-svg-png-gif-file-formats--new-google-logos-pack-icons-2476484.png?f=webp&w=256'; // Set favicon for Edia
                     break;
                 default:
                     title = "Orbit.";
