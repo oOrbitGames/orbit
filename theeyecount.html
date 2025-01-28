@@ -1,0 +1,133 @@
+<link rel="shortcut icon" type="image/png" href="mylogo.png">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToTheEyeCount</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(29,29,29,1) 100%);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+        }
+        .icons-container {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 80%;
+            margin: 0 auto;
+        }
+        .icon-box {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(145deg, #ff007f, #4000ff);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.7), 0 0 40px rgba(0, 0, 255, 0.7);
+            cursor: pointer;
+        }
+        .icon-box:hover {
+            box-shadow: 0 0 30px rgba(255, 0, 255, 1), 0 0 50px rgba(0, 0, 255, 1);
+            transform: scale(1.1);
+            transition: all 0.3s ease-in-out;
+        }
+        .icon {
+            font-size: 60px;
+            color: black;
+        }
+        .count-box {
+            position: absolute;
+            bottom: -25px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+        .summary {
+            margin-top: 30px;
+            font-size: 24px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icons-container">
+            <div class="icon-box" id="dislikeBox">
+                <i class="fas fa-thumbs-down icon" id="dislike"></i>
+                <div class="count-box">Dislikes <span id="dislikeCount">0</span></div>
+            </div>
+            <div class="icon-box" id="likeBox">
+                <i class="fas fa-thumbs-up icon" id="like"></i>
+                <div class="count-box">Upvotes <span id="likeCount">0</span></div>
+            </div>
+        </div>
+        <div class="summary">
+            Total Users <span id="totalCount">0</span>
+        </div>
+    </div>
+
+    <script>
+        const likeButton = document.getElementById('like');
+        const dislikeButton = document.getElementById('dislike');
+        const likeCount = document.getElementById('likeCount');
+        const dislikeCount = document.getElementById('dislikeCount');
+        const totalCount = document.getElementById('totalCount');
+
+        let likes = 0;
+        let dislikes = 0;
+        let userChoice = null;
+
+        likeButton.addEventListener('click', () => {
+            if (userChoice === 'like') {
+                likes--;
+                userChoice = null;
+            } else {
+                if (userChoice === 'dislike') dislikes--;
+                likes++;
+                userChoice = 'like';
+            }
+            updateCounts();
+        });
+
+        dislikeButton.addEventListener('click', () => {
+            if (userChoice === 'dislike') {
+                dislikes--;
+                userChoice = null;
+            } else {
+                if (userChoice === 'like') likes--;
+                dislikes++;
+                userChoice = 'dislike';
+            }
+            updateCounts();
+        });
+
+        function updateCounts() {
+            likeCount.textContent = likes;
+            dislikeCount.textContent = dislikes;
+            totalCount.textContent = likes + dislikes;
+        }
+    </script>
+</body>
+</html>
