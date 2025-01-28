@@ -19,10 +19,10 @@
 
         body {
     background-image: url('Assets/redbg.png');
-    background-size: 100% 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: scroll; /* Or simply remove this line */
+    background-size: contain; /* Ensures the entire image is always visible */
+    background-position: top center; /* Keeps the image centered */
+    background-repeat: no-repeat; /* Prevents tiling */
+    background-attachment: fixed; /* Keeps it fixed in place */
     color: #fff;
     font-family: 'Poppins', sans-serif;
     display: flex;
