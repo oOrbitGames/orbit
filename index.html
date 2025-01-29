@@ -17,22 +17,22 @@
             box-sizing: border-box;
         }
 
-    body {
-    background-image: url('Assets/redbg.png');
-    background-size: cover; /* Ensures the image fills the screen */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents tiling */
-    background-attachment: fixed; /* Keeps the background fixed while scrolling */
-    color: #fff;
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-    overflow-x: hidden;
-    position: relative;
-}
+        body {
+            background-image: url('redbg.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
 
         #particles-js {
             position: absolute;
@@ -346,20 +346,25 @@
             color: white;
             text-decoration: none;
             padding: 8px 15px;
-            border-radius: 5px;
+            border-radius: 25px; /* More rounded */
             font-size: 0.9rem;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.3s;
             font-family: 'Poppins', sans-serif;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         .play-now-button:hover {
             background-color: #ff1493;
+            transform: translateY(-2px);
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
             }
+
             to {
                 opacity: 1;
             }
@@ -370,6 +375,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -380,15 +386,19 @@
             0% {
                 color: #6a0dad;
             }
+
             25% {
                 color: #1e90ff;
             }
+
             50% {
                 color: #6a0dad;
             }
+
             75% {
                 color: #1e90ff;
             }
+
             100% {
                 color: #6a0dad;
             }
@@ -594,6 +604,76 @@
             color: #000;
             pointer-events: none;
         }
+
+        /* Adjusted styles for the combined news and movie box */
+        .box-container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 20px;
+            border-radius: 20px;
+            background-color: #2a003e;
+            color: white;
+            text-align: left;
+            border: 3px solid red; /* Red outline */
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .box-content {
+            flex: 1;
+            padding: 20px; /* Adjust padding as needed */
+        }
+
+        .left-box {
+            flex: 50%; /* Left side remains unchanged */
+        }
+
+        .right-box {
+            flex: 50%;
+            background: linear-gradient(to right, lightgreen, pink); /* Background gradient for right box */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center content vertically */
+            align-items: center; /* Center content horizontally */
+            position: relative; /* For positioning play button */
+        }
+
+        .divider {
+            width: 2px;
+            background-color: white;
+            height: 100%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .wicked-title {
+            font-size: 2.5rem; /* Font size for WICKED */
+            font-family: 'Poppins', sans-serif;
+            color: white; /* Color for text */
+            margin-top: 10px; /* Margin for spacing */
+        }
+
+        .play-button {
+            background-color: red;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px; /* Space between button and text */
+            cursor: pointer;
+            border: none; /* Remove default border */
+        }
+
+        .play-button i {
+            color: white; /* Icon color */
+            font-size: 1.5rem; /* Font size for icon */
+        }
+
     </style>
 </head>
 
@@ -616,6 +696,22 @@
     <div class="search-bar-container">
         <input type="text" id="gameSearchInput" placeholder="Search..." />
     </div>
+
+    <!-- New adjusted section for news and movies -->
+    <div class="box-container">
+        <div class="left-box box-content">
+            <div class="box-title">NEWS</div>
+            <div class="box-content">Changed Layout; fixing movies button soon.</div>
+        </div>
+        <div class="divider"></div>
+        <div class="right-box box-content">
+            <button class="play-button" onclick="openMoviesModal()">
+                <i class="fas fa-play"></i>
+            </button>
+            <div class="wicked-title">WICKED</div>
+        </div>
+    </div>
+    
     <div class="games-container" id="games-container">
         <div class="game-item reveal" onclick="openGame('requestgame.html', 'requestgame.html')">
             <img src="requestgame.png" alt="Game;request">
@@ -730,7 +826,7 @@
         <div class="game-item reveal" onclick="openGame('bballstars.html', 'bballstars.html')">
             <img src="bballstars.png" alt="Shoot;Bball">
             <h2>Basketball Stars</h2>
-            <p>Shoot baskets to win, featuring my glorius king LeBron</p>
+            <p>Shoot baskets to win, featuring my glorious king LeBron</p>
         </div>
         <div class="game-item reveal" onclick="openGame('bitlife2', 'bitlife2')">
             <img src="bitlife.png" alt="grow-up;get-a-life">
@@ -742,7 +838,7 @@
             <h2>Bloxorz</h2>
             <p>Move around as a rectangle.</p>
         </div>
-        <div class="game-item reveal" onclick="openGame('cuttherrope', 'cuttherope')">
+        <div class="game-item reveal" onclick="openGame('cuttherrope', 'cuttherrope')">
             <img src="cuttherope.png" alt="Cut;Ropes">
             <h2>Cut the Rope.</h2>
             <p>Cut ropes.</p>
@@ -1042,12 +1138,12 @@
             <h2>MX3M 2</h2>
             <p>Map 2 of MX3M</p>
         </div>
-            <div class="game-item reveal" onclick="openGame('mx3m/v3.html', 'mx3m/v3.html')">
+        <div class="game-item reveal" onclick="openGame('mx3m/v3.html', 'mx3m/v3.html')">
             <img src="mx3m/img/v3.png" alt="mx3m;3">
             <h2>MX3M 3</h2>
             <p>Map 3 of MX3M</p>
         </div>
-            <div class="game-item reveal" onclick="openGame('crossyroad', 'crossyroad')">
+        <div class="game-item reveal" onclick="openGame('crossyroad', 'crossyroad')">
             <img src="crossyroad/crossyroad.png" alt="Crossy Road">
             <h2>Crossy Road</h2>
             <p>The classic crossy road</p>
@@ -1080,12 +1176,12 @@
         <div class="game-item reveal" onclick="openGame('my-friend-pedro', 'my-friend-pedro')">
             <img src="my-friend-pedro/my-friend-pedro.png" alt="My Friend Pedro">
             <h2>My Friend Pedro</h2>
-            <p>Shoot up enemys :) YAY</p>
+            <p>Shoot up enemies :) YAY</p>
         </div>
         <div class="game-item reveal" onclick="openGame('deathsoul', 'deathsoul')">
             <img src="deathsoul/deathsoul.png" alt="deathsoul">
             <h2>Deathsoul</h2>
-            <p>Use your dead bodys to help finish the game</p>
+            <p>Use your dead bodies to help finish the game</p>
         </div>
         <div class="game-item reveal" onclick="openGame('skyblock', 'skyblock')">
             <img src="skyblock/skyblock.png" alt="skyblock">
@@ -1095,9 +1191,18 @@
         <div class="game-item reveal" onclick="openGame('scrambled-eggs', 'scrambled-eggs')">
             <img src="scrambled-eggs/scrambled-eggs.png" alt="scrambled-eggs">
             <h2>Scrambled Eggs</h2>
-            <p>2d, unity game, classic obstical I guess.</p>
+            <p>2d, unity game, classic obstacle I guess.</p>
         </div>
     </div>
+
+    <!-- Modal for Movies -->
+    <div class="modal" id="movies-modal">
+        <div class="modal-content">
+            <span class="close" style="color: white; cursor: pointer; font-size: large; position: absolute; top: 10px; right: 20px;" onclick="closeMoviesModal()">×</span>
+            <iframe id="movies-iframe" src="/tv/movies.html" style="width: 100%; height: 80vh; border: none;"></iframe>
+        </div>
+    </div>
+
     <div class="game-modal" id="game-modal">
         <iframe class="game-iframe" id="game-iframe" src=""></iframe>
         <div class="icon-bar">
@@ -1108,6 +1213,7 @@
             <i class="fas fa-expand-arrows-alt" onclick="toggleFullScreen();" title="Full Screen"></i>
         </div>
     </div>
+
     <div class="github-button" onclick="window.open('https://discord.com/channels/1326372865351749733/1326537719454892082', '_blank')">
         <img src="https://cdn.iconscout.com/icon/free/png-256/free-discord-logo-icon-download-in-svg-png-gif-file-formats--social-media-pack-logos-icons-3073764.png?f=webp&w=256" class="github-icon" alt="GitHub Icon">
     </div>
@@ -1156,6 +1262,7 @@
             <div id="recommended-items"></div>
         </div>
     </div>
+
     <script>
         const redirectToOAuth = "https://playervpn.github.io/playervpn-game/oauthpasskey";
         const LAST_REDIRECT_TIME_KEY = "lastRedirectTime";
@@ -1259,6 +1366,16 @@
             if (gameFile) {
                 window.open(gameFile, '_blank');
             }
+        }
+
+        function openMoviesModal() {
+            const moviesModal = document.getElementById('movies-modal');
+            moviesModal.style.display = 'flex';
+        }
+
+        function closeMoviesModal() {
+            const moviesModal = document.getElementById('movies-modal');
+            moviesModal.style.display = 'none';
         }
 
         function toggleFullScreen() {
