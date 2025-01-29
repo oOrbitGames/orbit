@@ -285,76 +285,77 @@
             z-index: 2;
         }
 
+        
         .games-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            width: 100%;
-            max-width: 1200px;
-            padding: 15px;
-            animation: fadeInUp 1.4s ease-in-out;
-            z-index: 2;
-        }
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    padding: 15px;
+    animation: fadeInUp 1.4s ease-in-out;
+    z-index: 2;
+}
 
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
-        .game-item {
-            background-color: #1a1a1a;
-            border: 3px solid #800080;
-            border-radius: 10px;
-            overflow: hidden;
-            text-align: center;
-            padding: 10px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
+.game-item {
+    background-color: #111; /* Darker black background */
+    border: 3px solid #ff0000; /* Red border */
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    padding: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
 
-        .game-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0px 8px 20px rgba(255, 105, 180, 0.7);
-        }
+.game-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 20px rgba(255, 0, 0, 0.7); /* Red glow on hover */
+}
 
-        .game-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-bottom: 2px solid #ff69b4;
-            transition: filter 0.3s;
-        }
+.game-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 2px solid #ff0000; /* Red bottom border */
+    transition: filter 0.3s;
+}
 
-        .game-item h2 {
-            color: white;
-            font-size: 1.2rem;
-            margin: 15px 0 10px;
-            font-family: 'Poppins', sans-serif;
-            transition: color 0.3s, transform 0.3s;
-        }
+.game-item h2 {
+    color: white;
+    font-size: 1.2rem;
+    margin: 15px 0 10px;
+    font-family: 'Poppins', sans-serif;
+    transition: color 0.3s, transform 0.3s;
+}
 
-        .game-item:hover h2 {
-            color: #ff69b4;
-            transform: scale(1.1);
-        }
+.game-item:hover h2 {
+    color: #ff0000; /* Red text on hover */
+    transform: scale(1.1);
+}
 
-        .game-item p {
-            color: #d3d3d3;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-            font-family: 'Poppins', sans-serif;
-        }
+.game-item p {
+    color: #b3b3b3; /* Light gray text */
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    font-family: 'Poppins', sans-serif;
+}
 
-        .play-now-button {
-            background-color: #ff69b4;
-            color: white;
-            text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            font-size: 0.9rem;
-            transition: background-color 0.3s;
-            font-family: 'Poppins', sans-serif;
-        }
+.play-now-button {
+    background-color: #ff0000; /* Red button */
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+    font-family: 'Poppins', sans-serif;
+}
 
-        .play-now-button:hover {
-            background-color: #ff1493;
-        }
+.play-now-button:hover {
+    background-color: #cc0000; /* Darker red on hover */
+}
 
         @keyframes fadeIn {
             from {
