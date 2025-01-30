@@ -13,21 +13,21 @@
             height: 100vh;
             background: #000;
             overflow: hidden;
-            color: #00ff41;
+            color: #33a2dd;
             font-family: "Courier New", monospace;
             text-align: center;
             animation: flash 0.8s infinite alternate;
         }
 
         @keyframes flash {
-            0%, 100% { color: #00ff41; }
-            50% { color: #ff0054; }
+            0%, 100% { color: #33a2dd; }
+            50% { color: #33a2dd; }
         }
 
         .container {
             background: rgba(0, 0, 0, 0.7);
             padding: 40px;
-            border: 4px solid #00ff00;
+            border: 4px solid #33a2dd;
             border-radius: 10px;
             box-shadow: 0 0 50px rgba(0, 255, 0, 1), 0 0 100px rgba(0, 255, 0, 0.5);
             overflow: hidden;
@@ -57,7 +57,7 @@
         }
 
         h1::before {
-            content: "💥 HACKED 💥";
+            content: "";
             position: absolute;
             left: 0;
             top: 0;
@@ -92,7 +92,7 @@
 
         a {
             text-decoration: none;
-            background: linear-gradient(90deg, #ff0054, #00ff41);
+            background: linear-gradient(90deg, #33a2dd, #33a2dd);
             color: black;
             padding: 15px 30px;
             border-radius: 5px;
@@ -172,7 +172,7 @@
     <div id="background"></div>
     <div class="container">
         <h1>Redirecting...</h1>
-        <p>Your email client will open shortly. If it doesn't, <a href="#" onclick="redirectToEmailClient()">click here</a>.</p>
+        <p>Please open in new tab if it doesn't load, If it doesn't, <a href="#" onclick="redirectToEmailClient()">click here</a>.</p>
     </div>
 </body>
 </html>
