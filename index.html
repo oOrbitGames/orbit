@@ -17,22 +17,22 @@
             box-sizing: border-box;
         }
 
-        body {
-            background-image: url('mymoon.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            color: #fff;
-            font-family: 'Poppins', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-            overflow-x: hidden;
-            position: relative;
-        }
+    body {
+    background-image: url('Assets/redbg.png');
+    background-size: cover; /* Ensures the image fills the screen */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents tiling */
+    background-attachment: fixed; /* Keeps the background fixed while scrolling */
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    overflow-x: hidden;
+    position: relative;
+}
 
         #particles-js {
             position: absolute;
@@ -285,76 +285,77 @@
             z-index: 2;
         }
 
+        
         .games-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            width: 100%;
-            max-width: 1200px;
-            padding: 15px;
-            animation: fadeInUp 1.4s ease-in-out;
-            z-index: 2;
-        }
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    padding: 15px;
+    animation: fadeInUp 1.4s ease-in-out;
+    z-index: 2;
+}
 
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
-        .game-item {
-            background-color: #111;
-            border: 3px solid #ff0000;
-            border-radius: 10px;
-            overflow: hidden;
-            text-align: center;
-            padding: 10px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
+.game-item {
+    background-color: #111; /* Darker black background */
+    border: 3px solid #ff0000; /* Red border */
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    padding: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
 
-        .game-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0px 8px 20px rgba(255, 0, 0, 0.7);
-        }
+.game-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 20px rgba(255, 0, 0, 0.7); /* Red glow on hover */
+}
 
-        .game-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-bottom: 2px solid #ff0000;
-            transition: filter 0.3s;
-        }
+.game-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 2px solid #ff0000; /* Red bottom border */
+    transition: filter 0.3s;
+}
 
-        .game-item h2 {
-            color: white;
-            font-size: 1.2rem;
-            margin: 15px 0 10px;
-            font-family: 'Poppins', sans-serif;
-            transition: color 0.3s, transform 0.3s;
-        }
+.game-item h2 {
+    color: white;
+    font-size: 1.2rem;
+    margin: 15px 0 10px;
+    font-family: 'Poppins', sans-serif;
+    transition: color 0.3s, transform 0.3s;
+}
 
-        .game-item:hover h2 {
-            color: #ff0000;
-            transform: scale(1.1);
-        }
+.game-item:hover h2 {
+    color: #ff0000; /* Red text on hover */
+    transform: scale(1.1);
+}
 
-        .game-item p {
-            color: #b3b3b3;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-            font-family: 'Poppins', sans-serif;
-        }
+.game-item p {
+    color: #b3b3b3; /* Light gray text */
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    font-family: 'Poppins', sans-serif;
+}
 
-        .play-now-button {
-            background-color: #ff0000;
-            color: white;
-            text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            font-size: 0.9rem;
-            transition: background-color 0.3s;
-            font-family: 'Poppins', sans-serif;
-        }
+.play-now-button {
+    background-color: #ff0000; /* Red button */
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+    font-family: 'Poppins', sans-serif;
+}
 
-        .play-now-button:hover {
-            background-color: #cc0000;
-        }
+.play-now-button:hover {
+    background-color: #cc0000; /* Darker red on hover */
+}
 
         @keyframes fadeIn {
             from {
@@ -514,6 +515,8 @@
             }
         }
 
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
         header {
             display: flex;
             flex-direction: column;
@@ -543,6 +546,14 @@
         header h5 {
             font-size: 1.5rem;
             margin-top: 0;
+            font-weight: bold;
+            font-family: 'Poppins', sans-serif;
+            color: #ffe6f7;
+        }
+
+        header h5 {
+            font-size: 1.5rem;
+            margin-top: 0;
             color: #ffe6f7;
             font-weight: 300;
         }
@@ -559,15 +570,14 @@
 
         #gameSearchInput {
             width: 50%;
-            padding: 10px 40px; /* increased padding for more height */
+            padding: 10px 40px 10px 40px;
             font-size: 1rem;
-            color: #fff;
-            background-color: #000; /* black background */
-            border: 2px solid #ff0000; /* thicker red outline */
+            color: #000;
+            background-color: #fff;
+            border: 2px solid #800080;
             border-radius: 25px;
             margin-top: 10px;
             outline: none;
-            box-shadow: 0 0 5px rgba(255, 0, 0, 0.5); /* red glow */
             transition: border-color 0.3s ease-in-out;
             position: relative;
         }
@@ -579,10 +589,10 @@
         .search-icon {
             position: absolute;
             top: 50%;
-            left: 15px; /* adjust for positioning */
+            left: 25%;
             transform: translate(-50%, -50%);
             font-size: 1.2rem;
-            color: #ff0000; /* red color for icon */
+            color: #000;
             pointer-events: none;
         }
     </style>
@@ -598,14 +608,13 @@
         </div>
     </div>
     <header>
-        <img src="moon.png" alt="Logo">
+        <img src="orbit100.png" alt="Logo">
     </header>
     <div class="progress-container">
         <div class="progress-bar" id="progress-bar"></div>
         <div class="progress-label" id="progress-label">LVL 1</div>
     </div>
     <div class="search-bar-container">
-        <i class="fas fa-search search-icon"></i> <!-- Red search icon -->
         <input type="text" id="gameSearchInput" placeholder="Search..." />
     </div>
     <div class="games-container" id="games-container">
@@ -722,7 +731,7 @@
         <div class="game-item reveal" onclick="openGame('bballstars.html', 'bballstars.html')">
             <img src="bballstars.png" alt="Shoot;Bball">
             <h2>Basketball Stars</h2>
-            <p>Shoot baskets to win, featuring my glorious king LeBron</p>
+            <p>Shoot baskets to win, featuring my glorius king LeBron</p>
         </div>
         <div class="game-item reveal" onclick="openGame('bitlife2', 'bitlife2')">
             <img src="bitlife.png" alt="grow-up;get-a-life">
@@ -767,12 +776,12 @@
         <div class="game-item reveal" onclick="openGame('slope', 'slope.html')">
             <img src="slopegame.png" alt="slope">
             <h2>Slope Game</h2>
-            <p>A fantastic fullscreen speedrun game</p>
+            <p>A fantastic fullscreen speed run game</p>
         </div>
         <div class="game-item reveal" onclick="openGame('slope-2', 'slope-2.html')">
             <img src="slope-2.png" alt="Slope-2">
             <h2>Slope Game 2</h2>
-            <p>A fantastic fullscreen speedrun game. The 2nd.</p>
+            <p>A fantastic fullscreen speed run game. The 2nd.</p>
         </div>
         <div class="game-item reveal" onclick="openGame('tunnelrush.html', 'tunnelrush.html')">
             <img src="tunnelrush.png" alt="rush;tunnel">
@@ -1034,12 +1043,12 @@
             <h2>MX3M 2</h2>
             <p>Map 2 of MX3M</p>
         </div>
-        <div class="game-item reveal" onclick="openGame('mx3m/v3.html', 'mx3m/v3.html')">
+            <div class="game-item reveal" onclick="openGame('mx3m/v3.html', 'mx3m/v3.html')">
             <img src="mx3m/img/v3.png" alt="mx3m;3">
             <h2>MX3M 3</h2>
             <p>Map 3 of MX3M</p>
         </div>
-        <div class="game-item reveal" onclick="openGame('crossyroad', 'crossyroad')">
+            <div class="game-item reveal" onclick="openGame('crossyroad', 'crossyroad')">
             <img src="crossyroad/crossyroad.png" alt="Crossy Road">
             <h2>Crossy Road</h2>
             <p>The classic crossy road</p>
@@ -1057,7 +1066,7 @@
         <div class="game-item reveal" onclick="openGame('thelittlegiant', 'thelittlegiant')">
             <img src="thelittlegiant/thelittlegiant.png" alt="the little giant">
             <h2>The Little Giant</h2>
-            <p>Avoid Obstacles</p>
+            <p>Avoid Obsticals</p>
         </div>
         <div class="game-item reveal" onclick="openGame('drifthunters', 'drifthunters')">
             <img src="drift-hunters/drift-hunters.png" alt="Drift Hunters">
@@ -1072,12 +1081,12 @@
         <div class="game-item reveal" onclick="openGame('my-friend-pedro', 'my-friend-pedro')">
             <img src="my-friend-pedro/my-friend-pedro.png" alt="My Friend Pedro">
             <h2>My Friend Pedro</h2>
-            <p>Shoot up enemies :) YAY</p>
+            <p>Shoot up enemys :) YAY</p>
         </div>
         <div class="game-item reveal" onclick="openGame('deathsoul', 'deathsoul')">
             <img src="deathsoul/deathsoul.png" alt="deathsoul">
             <h2>Deathsoul</h2>
-            <p>Use your dead bodies to help finish the game</p>
+            <p>Use your dead bodys to help finish the game</p>
         </div>
         <div class="game-item reveal" onclick="openGame('skyblock', 'skyblock')">
             <img src="skyblock/skyblock.png" alt="skyblock">
@@ -1087,9 +1096,9 @@
         <div class="game-item reveal" onclick="openGame('scrambled-eggs', 'scrambled-eggs')">
             <img src="scrambled-eggs/scrambled-eggs.png" alt="scrambled-eggs">
             <h2>Scrambled Eggs</h2>
-            <p>2d, unity game, classic obstacle I guess.</p>
+            <p>2d, unity game, classic obstical I guess.</p>
         </div>
-        <div class="game-item reveal" onclick="openGame('ovo', 'ovo')">
+            <div class="game-item reveal" onclick="openGame('ovo', 'ovo')">
             <img src="ovo/ovo.png" alt="OVO">
             <h2>OVO</h2>
             <p>Its OVO, what else can I say?</p>
