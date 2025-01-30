@@ -1115,24 +1115,56 @@
             <i class="fas fa-expand-arrows-alt" onclick="toggleFullScreen();" title="Full Screen"></i>
         </div>
     </div>
-   
-    <!-- Sidebar container -->
-    <div id="sidebar-container"></div>
-    
+    <div class="github-button" onclick="window.open('https://discord.com/channels/1326372865351749733/1326537719454892082', '_blank')">
+        <img src="https://cdn.iconscout.com/icon/free/png-256/free-discord-logo-icon-download-in-svg-png-gif-file-formats--social-media-pack-logos-icons-3073764.png?f=webp&w=256" class="github-icon" alt="GitHub Icon">
+    </div>
+    <div class="modal" id="settings-modal">
+        <div class="modal-content">
+            <h2 class="settings-title">Tab Cloak Settings</h2>
+            <div class="dropdown">
+                <select id="tab-cloak-select" onchange="changeTabCloak()">
+                    <option value="default">Orbit</option>
+                    <option value="schoology">Schoology</option>
+                    <option value="google">Google</option>
+                    <option value="google_classroom">Google Classroom</option>
+                    <option value="edia">Edia</option>
+                    <option value="gmail">Gmail</option>
+                </select>
+            </div>
+            <button class="cloak-button" onclick="closeSettings()">Close Settings</button>
+        </div>
+    </div>
+    <a href="javascript:void(0);" id="toggleSidebar" style="position: fixed; top: 20px; left: 20px; z-index: 999;">
+        <img src="Assets/threelines.png" alt="Toggle Sidebar" style="width: 30px; height: auto;">
+    </a>
+    <div class="sidebar" id="sidebar" style="display: none; position: fixed; top: 0; left: 0; background-color: #2a003e; width: 250px; height: 100%; padding: 20px; z-index: 998; transition: transform 0.3s ease; transform: translateX(-100%);">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+            <a href="index.html" style="display: flex; align-items: center; text-decoration: none;">
+                <img src="orbit100.png" alt="PVPN Logo" style="width: 30px; height: auto;">
+                <h3 style="margin: 0; color: white;">Orbit</h3>
+            </a>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 15px;">
+            <button class="cloak-button sidebar-link" id="settings-button" style="color: #ff69b4; background-color: transparent; border: none; font-weight: bold; font-size: 1.2em; cursor: pointer; display: flex; align-items: center; gap: 10px;" onclick="openSettings()">
+                <i class="fas fa-cog"></i> Settings‎
+            </button>
+            <a href="https://orbitproxy.flarum.cloud/" class="sidebar-link" style="color: #ff69b4; text-decoration: none; font-weight: bold; font-size: 1.2em; display: flex; align-items: center; gap: 10px;">
+                <i class="fas fa-comments"></i> Forum
+            </a>
+            <a href="https://discord.com/channels/1326372865351749733/1326537719454892082" class="sidebar-link" style="color: #ff69b4; text-decoration: none; font-weight: bold; font-size: 1.2em; display: flex; align-items: center; gap: 10px;">
+                <i class="fas fa-comments"></i> Discord
+            </a>
+            <a href="https://github.com/PlayerVPN/playervpn-game" target="_blank" class="sidebar-link" style="color: #ff69b4; text-decoration: none; font-weight: bold; font-size: 1.2em; display: flex; align-items: center; gap: 10px;">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+        </div>
+        <div class="recommended-games" style="margin-top: 20px;">
+            <h3 style="color: white;">Recommended</h3>
+            <div id="recommended-items"></div>
+        </div>
+    </div>
     <script>
-      // JavaScript to load sidebar.html dynamically
-        window.onload = function() {
-            fetch('sidebar.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('sidebar-container').innerHTML = data;
-                })
-                .catch(error => {
-                    console.error('Error loading sidebar:', error);
-                });
-        }; 
-        
-        const redirectToOAuth = "oauthpasskey.html";
+        const redirectToOAuth = "https://playervpn.github.io/playervpn-game/oauthpasskey";
         const LAST_REDIRECT_TIME_KEY = "lastRedirectTime";
         const TWENTY_MINUTES = 20 * 60 * 1000;
 
