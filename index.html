@@ -18,7 +18,7 @@
         }
 
     body {
-    background-image: url('mymoon.png');
+    background-image: url('Assets/redbg.png');
     background-size: cover; /* Ensures the image fills the screen */
     background-position: center; /* Centers the image */
     background-repeat: no-repeat; /* Prevents tiling */
@@ -208,70 +208,65 @@
 
         .dropdown select:focus {
             outline: none;
-            border-color: #358edf;
+            border-color: #ff0000;
         }
 
-       .sidebar {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    width: 200px;
-    background-color: #8A0707; /* Blood red */
-    border: 2px solid black; /* Black border */
-    border-radius: 12px;
-    padding: 10px;
-    z-index: 1000;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.7);
-}
+        .sidebar {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 200px;
+            background-color: #282a36;
+            border: 2px solid #464646;
+            border-radius: 12px;
+            padding: 10px;
+            z-index: 1000;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+        }
 
-.sidebar h3 {
-    color: #ffffff;
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    border-bottom: 2px solid black; /* Black underline */
-    padding-bottom: 5px;
-}
+        .sidebar h3 {
+            color: #ffffff;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
 
-.sidebar a {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: #ffffff; /* White text */
-    background: black; /* Black background */
-    margin: 8px 0;
-    padding: 8px;
-    border-radius: 8px;
-    transition: background 0.3s, color 0.3s;
-}
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #b3b3b3;
+            margin: 8px 0;
+            padding: 5px;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
 
-.sidebar a:hover {
-    background: #b30000; /* Darker blood red on hover */
-    color: black; /* Black text on hover */
-}
+        .sidebar a:hover {
+            background: rgba(30, 144, 255, 0.2);
+        }
 
-.recommended-games {
-    margin-top: 20px;
-}
+        .recommended-games {
+            margin-top: 20px;
+        }
 
-.recommended-item {
-    display: flex;
-    align-items: center;
-    margin: 8px 0;
-    transition: transform 0.3s;
-}
+        .recommended-item {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+            transition: transform 0.3s;
+        }
 
-.recommended-item img {
-    width: 40px;
-    height: 40px;
-    object-fit: cover;
-    border-radius: 5px;
-    margin-right: 10px;
-    border: 2px solid black; /* Black border for images */
-}
+        .recommended-item img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
 
-.recommended-item:hover {
-    transform: scale(1.05);
-}
+        .recommended-item:hover {
+            transform: scale(1.05);
+        }
 
         header {
             text-align: center;
@@ -306,7 +301,7 @@
 
 .game-item {
     background-color: #111; /* Darker black background */
-    border: 3px solid #2b7fcb; /* Red border */
+    border: 3px solid #ff0000; /* Red border */
     border-radius: 10px;
     overflow: hidden;
     text-align: center;
@@ -316,14 +311,14 @@
 
 .game-item:hover {
     transform: scale(1.05);
-    box-shadow: 0px 8px 20px rgba(43, 127, 203); /* Red glow on hover */
+    box-shadow: 0px 8px 20px rgba(255, 0, 0, 0.7); /* Red glow on hover */
 }
 
 .game-item img {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    border-bottom: 2px solid #358edf; /* Red bottom border */
+    border-bottom: 2px solid #ff0000; /* Red bottom border */
     transition: filter 0.3s;
 }
 
@@ -336,7 +331,7 @@
 }
 
 .game-item:hover h2 {
-    color: #358edf; /* Red text on hover */
+    color: #ff0000; /* Red text on hover */
     transform: scale(1.1);
 }
 
@@ -348,7 +343,7 @@
 }
 
 .play-now-button {
-    background-color: #358edf; /* Red button */
+    background-color: #ff0000; /* Red button */
     color: white;
     text-decoration: none;
     padding: 8px 15px;
@@ -613,7 +608,7 @@
         </div>
     </div>
     <header>
-        <img src="moon.png" alt="Logo">
+        <img src="orbit100.png" alt="Logo">
     </header>
     <div class="progress-container">
         <div class="progress-bar" id="progress-bar"></div>
@@ -888,9 +883,9 @@
             <h2>The REAL SlitherIO</h2>
             <p>The non-scratch version of Slitherio on PVPN games.</p>
         </div>
-        <div class="game-item reveal" onclick="openGame('https://1056516.github.io/DriftBoss1/', 'https://1056516.github.io/DriftBoss1/')">
+        <div class="game-item reveal" onclick="openGame('driftboss.html', 'driftboss.html')">
             <img src="driftboss.png" alt="boss;drift">
-            <h2>Drift Boss | Full</h2>
+            <h2>Drift Boss</h2>
             <p>Oh man, don't fall off!</p>
         </div>
         <div class="game-item reveal" onclick="openGame('tiny-fishing.html', 'tiny-fishing.html')">
@@ -1439,5 +1434,3 @@
         });
     </script>
 </body>
-
-</html>
