@@ -211,62 +211,67 @@
             border-color: #358edf;
         }
 
-        .sidebar {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            width: 200px;
-            background-color: #282a36;
-            border: 2px solid #464646;
-            border-radius: 12px;
-            padding: 10px;
-            z-index: 1000;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
-        }
+       .sidebar {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 200px;
+    background-color: #8A0707; /* Blood red */
+    border: 2px solid black; /* Black border */
+    border-radius: 12px;
+    padding: 10px;
+    z-index: 1000;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.7);
+}
 
-        .sidebar h3 {
-            color: #ffffff;
-            font-size: 1.5em;
-            margin-bottom: 10px;
-        }
+.sidebar h3 {
+    color: #ffffff;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    border-bottom: 2px solid black; /* Black underline */
+    padding-bottom: 5px;
+}
 
-        .sidebar a {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: #b3b3b3;
-            margin: 8px 0;
-            padding: 5px;
-            border-radius: 8px;
-            transition: background 0.3s;
-        }
+.sidebar a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #ffffff; /* White text */
+    background: black; /* Black background */
+    margin: 8px 0;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background 0.3s, color 0.3s;
+}
 
-        .sidebar a:hover {
-            background: rgba(30, 144, 255, 0.2);
-        }
+.sidebar a:hover {
+    background: #b30000; /* Darker blood red on hover */
+    color: black; /* Black text on hover */
+}
 
-        .recommended-games {
-            margin-top: 20px;
-        }
+.recommended-games {
+    margin-top: 20px;
+}
 
-        .recommended-item {
-            display: flex;
-            align-items: center;
-            margin: 8px 0;
-            transition: transform 0.3s;
-        }
+.recommended-item {
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+    transition: transform 0.3s;
+}
 
-        .recommended-item img {
-            width: 40px;
-            height: 40px;
-            object-fit: cover;
-            border-radius: 5px;
-            margin-right: 10px;
-        }
+.recommended-item img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 10px;
+    border: 2px solid black; /* Black border for images */
+}
 
-        .recommended-item:hover {
-            transform: scale(1.05);
-        }
+.recommended-item:hover {
+    transform: scale(1.05);
+}
 
         header {
             text-align: center;
