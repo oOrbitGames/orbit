@@ -13,7 +13,7 @@
       justify-content: center;
       height: 100vh;
       margin: 0;
-      background: url('mymoon.png') no-repeat center center fixed;
+      background: url('image.png') no-repeat center center fixed;
       background-size: cover;
       color: white;
       font-family: 'Arial', sans-serif;
@@ -50,12 +50,12 @@
 <body>
   <h1>Facial Recognition Login</h1>
   <div id="videoContainer">
-    <video id="video" autoplay playsinline width="640" height="480"></video>
+    <video id="video" autoplay playsinline></video>
   </div>
   <p id="status">Initializing camera...</p>
 
   <script>
-    const API_KEY = AALUrA0xPtpxWkziwY4I-yOUAAAAAWdBQUFBQUJublVyRkdEVnFyLWZUZE94QXZBa0pzRVVsSW91dXp3dFc5SVpuREtBcGVVQldPa3AyekVTSU1PVkVqTHlsWHlQZE9BaXZkZDlvRHgzeGttYVFNVWRCX0RsZnFKVllnUUJabDdrbFB2OUhOZ09jeGQ0PQ==;
+    const API_KEY = "AALUrA0xPtpxWkziwY4I-yOUAAAAAWdBQUFBQUJublVyRkdEVnFyLWZUZE94QXZBa0pzRVVsSW91dXp3dFc5SVpuREtBcGVVQldPa3AyekVTSU1PVkVqTHlsWHlQZE9BaXZkZDlvRHgzeGttYVFNVWRCX0RsZnFKVllnUUJabDdrbFB2OUhOZ09jeGQ0PQ==";
     const VIDEO_ELEMENT = document.getElementById("video");
     const STATUS_ELEMENT = document.getElementById("status");
     const LOCAL_STORAGE_KEY = "savedFaceData";
@@ -64,8 +64,11 @@
       try {
         const stream = await navigator.mediaDevices.getUserMedia({ video: true });
         VIDEO_ELEMENT.srcObject = stream;
-        STATUS_ELEMENT.textContent = "Camera initialized. Searching for face...";
-        VIDEO_ELEMENT.onloadedmetadata = () => detectFace();
+        VIDEO_ELEMENT.onloadedmetadata = () => {
+          VIDEO_ELEMENT.play();
+          STATUS_ELEMENT.textContent = "Camera initialized. Searching for face...";
+          detectFace();
+        };
       } catch (err) {
         STATUS_ELEMENT.textContent = "Error accessing camera: " + err.message;
       }
@@ -74,10 +77,10 @@
     async function detectFace() {
       const canvas = document.createElement("canvas");
       const context = canvas.getContext("2d");
-      canvas.width = VIDEO_ELEMENT.videoWidth || 640;
-      canvas.height = VIDEO_ELEMENT.videoHeight || 480;
 
-      const checkFace = async () => {
+      async function checkFace() {
+        canvas.width = VIDEO_ELEMENT.videoWidth;
+        canvas.height = VIDEO_ELEMENT.videoHeight;
         context.drawImage(VIDEO_ELEMENT, 0, 0, canvas.width, canvas.height);
         const imageData = canvas.toDataURL("image/jpeg");
 
@@ -89,14 +92,13 @@
           );
 
           const savedFaceData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-          const faceFound = response.data.closestMatch;
+          const closestMatch = response.data.closestMatch;
 
           if (!savedFaceData) {
-            // Save first face data
-            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(faceFound));
+            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(closestMatch));
             STATUS_ELEMENT.textContent = "Face saved. Please return to verify.";
           } else {
-            const similarityScore = faceFound.similarity;
+            const similarityScore = closestMatch.similarity;
 
             if (similarityScore >= 0.85) {
               STATUS_ELEMENT.textContent = "Face recognized! Redirecting...";
@@ -109,8 +111,8 @@
           STATUS_ELEMENT.textContent = "Error: " + (error.response?.data?.message || error.message);
         }
 
-        setTimeout(checkFace, 2000);
-      };
+        setTimeout(checkFace, 3000);
+      }
 
       checkFace();
     }
