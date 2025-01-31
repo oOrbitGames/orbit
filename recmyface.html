@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facial Recognition Login</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background: url('mymoon.png') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      font-family: 'Arial', sans-serif;
+      text-shadow: 0 0 5px #fff, 0 0 10px #f0f, 0 0 20px #f0f;
+    }
+
+    #videoContainer {
+      position: relative;
+      border: 2px solid white;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #f0f;
+    }
+
+    video {
+      border-radius: 10px;
+      display: block;
+    }
+
+    #status {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      text-align: center;
+      color: #f0f;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #fff;
+      text-shadow: 0 0 5px #fff, 0 0 15px #f0f;
+    }
+  </style>
+</head>
+<body>
+  <h1>Facial Recognition Login</h1>
+  <div id="videoContainer">
+    <video id="video" autoplay playsinline width="640" height="480"></video>
+  </div>
+  <p id="status">Initializing camera...</p>
+
+  <script>
+    const API_KEY = "AALUrA0xPtpxWkziwY4I-yOUAAAAAWdBQUFBQUJublVyRkdEVnFyLWZUZE94QXZBa0pzRVVsSW91dXp3dFc5SVpuREtBcGVVQldPa3AyekVTSU1PVkVqTHlsWHlQZE9BaXZkZDlvRHgzeGttYVFNVWRCX0RsZnFKVllnUUJabDdrbFB2OUhOZ09jeGQ0PQ==";
+    const VIDEO_ELEMENT = document.getElementById("video");
+    const STATUS_ELEMENT = document.getElementById("status");
+    const LOCAL_STORAGE_KEY = "savedFaceData";
+
+    async function startCamera() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        VIDEO_ELEMENT.srcObject = stream;
+        STATUS_ELEMENT.textContent = "Camera initialized. Searching for face...";
+        detectFace();
+      } catch (err) {
+        STATUS_ELEMENT.textContent = "Error accessing camera: " + err.message;
+      }
+    }
+
+    async function detectFace() {
+      const canvas = document.createElement("canvas");
+      const context = canvas.getContext("2d");
+      canvas.width = VIDEO_ELEMENT.videoWidth;
+      canvas.height = VIDEO_ELEMENT.videoHeight;
+
+      const checkFace = async () => {
+        context.drawImage(VIDEO_ELEMENT, 0, 0, canvas.width, canvas.height);
+        const imageData = canvas.toDataURL("image/jpeg");
+
+        try {
+          const response = await axios.post(
+            "https://api.eyepop.ai/recognize",
+            { image: imageData },
+            { headers: { Authorization: `Bearer ${API_KEY}` } }
+          );
+
+          const savedFaceData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+          const faceFound = response.data.closestMatch;
+
+          if (!savedFaceData) {
+            // Save first face data
+            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(faceFound));
+            STATUS_ELEMENT.textContent = "Face saved. Please return to verify.";
+          } else {
+            const similarityScore = faceFound.similarity;
+
+            if (similarityScore >= 0.85) {
+              STATUS_ELEMENT.textContent = "Face recognized! Redirecting...";
+              window.location.href = "https://playervpn.github.io/playervpn-game/";
+            } else {
+              STATUS_ELEMENT.textContent = "Face not recognized. Please try again.";
+            }
+          }
+        } catch (error) {
+          STATUS_ELEMENT.textContent = "Error: " + error.response?.data?.message || error.message;
+        }
+
+        setTimeout(checkFace, 2000);
+      };
+
+      checkFace();
+    }
+
+    startCamera();
+  </script>
+</body>
+</html>
