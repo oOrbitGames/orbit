@@ -13,7 +13,7 @@
       justify-content: center;
       height: 100vh;
       margin: 0;
-      background: url('mymoon.png') no-repeat center center fixed;
+      background: url('image.png') no-repeat center center fixed;
       background-size: cover;
       color: white;
       font-family: 'Arial', sans-serif;
@@ -65,7 +65,7 @@
         const stream = await navigator.mediaDevices.getUserMedia({ video: true });
         VIDEO_ELEMENT.srcObject = stream;
         STATUS_ELEMENT.textContent = "Camera initialized. Searching for face...";
-        detectFace();
+        VIDEO_ELEMENT.onloadedmetadata = () => detectFace();
       } catch (err) {
         STATUS_ELEMENT.textContent = "Error accessing camera: " + err.message;
       }
@@ -74,8 +74,8 @@
     async function detectFace() {
       const canvas = document.createElement("canvas");
       const context = canvas.getContext("2d");
-      canvas.width = VIDEO_ELEMENT.videoWidth;
-      canvas.height = VIDEO_ELEMENT.videoHeight;
+      canvas.width = VIDEO_ELEMENT.videoWidth || 640;
+      canvas.height = VIDEO_ELEMENT.videoHeight || 480;
 
       const checkFace = async () => {
         context.drawImage(VIDEO_ELEMENT, 0, 0, canvas.width, canvas.height);
@@ -106,7 +106,7 @@
             }
           }
         } catch (error) {
-          STATUS_ELEMENT.textContent = "Error: " + error.response?.data?.message || error.message;
+          STATUS_ELEMENT.textContent = "Error: " + (error.response?.data?.message || error.message);
         }
 
         setTimeout(checkFace, 2000);
