@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORBIT LOGIN | NEW</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            background: url('mymoon.png') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+
+        .login-container {
+            text-align: center;
+        }
+
+        .keypad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+            max-width: 300px;
+            margin: auto;
+        }
+
+        .keypad button {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(145deg, #1e90ff, #007BFF);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+        }
+
+        .keypad button:active {
+            transform: scale(0.9);
+        }
+
+        .display {
+            margin: 20px auto;
+            padding: 10px;
+            width: 300px;
+            font-size: 1.2rem;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            color: white;
+            border: 2px solid #007BFF;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            max-width: 300px;
+            margin: auto;
+        }
+
+        .actions button {
+            width: 48%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .actions button:hover {
+            background-color: #0056b3;
+        }
+
+        .actions .go {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #007BFF;
+            font-size: 1.5rem;
+            width: 48%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="keypad">
+            <button onclick="enterNumber(1)">1</button>
+            <button onclick="enterNumber(2)">2</button>
+            <button onclick="enterNumber(3)">3</button>
+            <button onclick="enterNumber(4)">4</button>
+            <button onclick="enterNumber(5)">5</button>
+            <button onclick="enterNumber(6)">6</button>
+            <button onclick="enterNumber(7)">7</button>
+            <button onclick="enterNumber(8)">8</button>
+            <button onclick="enterNumber(9)">9</button>
+        </div>
+
+        <div class="display" id="display">NUMBERS YOU ENTER HERE</div>
+
+        <div class="actions">
+            <button onclick="resetPasscode()">Reset Passcode</button>
+            <div class="go" onclick="goToNextPage()">
+                <i class="fas fa-arrow-right"></i>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let passcode = '';
+
+        function enterNumber(num) {
+            if (passcode.length < 4) {
+                passcode += num;
+                document.getElementById('display').innerText = passcode;
+            }
+        }
+
+        function resetPasscode() {
+            passcode = '';
+            document.getElementById('display').innerText = 'NUMBERS YOU ENTER HERE';
+        }
+
+        function goToNextPage() {
+            if (passcode.length === 4) {
+                localStorage.setItem('passcode', passcode);
+                window.location.href = 'https://playervpn.github.io/playervpn-game';
+            } else {
+                alert('Please enter a 4-digit passcode.');
+            }
+        }
+    </script>
+</body>
+</html>
