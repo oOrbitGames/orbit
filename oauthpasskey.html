@@ -1,4 +1,4 @@
- <link rel="icon" type="image/x-icon" href="mylogo.png">
+<link rel="icon" type="image/x-icon" href="moon.png">
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +7,7 @@
     <title>Orbit Login</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
+        /* Existing CSS remains unchanged */
         body {
             margin: 0;
             font-family: 'Roboto', sans-serif;
@@ -85,18 +86,27 @@
             background: linear-gradient(135deg, #6a74a8, #3a416f);
             border: none;
             border-radius: 30px;
-            padding: 15px 40px;
+            padding: 15px 20px; /* Adjusted for "continue" button */
             color: #fff;
             font-size: 18px;
             cursor: pointer;
             z-index: 2;
             box-shadow: 0 4px 15px rgba(106, 116, 168, 0.5);
             transition: all 0.3s ease;
+            margin-left: 10px; /* Add spacing to the left for reset button */
         }
 
         button:hover {
             background: linear-gradient(135deg, #3a416f, #1c1f3a);
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+        }
+
+        .reset-button {
+            background: linear-gradient(135deg, #d9534f, #c9302c);
+        }
+
+        .reset-button:hover {
+            background: linear-gradient(135deg, #c9302c, #a40e0e);
         }
 
         .message {
@@ -114,6 +124,36 @@
             color: rgba(255, 255, 255, 0.6);
             z-index: 2;
         }
+
+        /* Password reset styles */
+        .reset-container {
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .reset-container input {
+            width: 300px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 16px;
+            outline: none;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .reset-container button {
+            padding: 10px 20px;
+            margin-top: 10px; /* Space from input field */
+        }
+
     </style>
 </head>
 <body>
@@ -133,10 +173,23 @@
         <input type="password" id="reenter" placeholder="Re-enter your password">
     </div>
 
-    <button id="submit-btn"><i class="fas fa-arrow-right"></i></button>
+    <div style="display: flex; align-items: center;">
+        <button id="submit-btn"><i class="fas fa-arrow-right"></i></button>
+        <button class="reset-button" id="reset-btn">Reset Password</button>
+    </div>
+
     <div class="message" id="message"></div>
 
     <div class="footer-text">Powered by PlayerVPN | Start or continue now</div>
+
+    <div class="reset-container" id="reset-container">
+        <h2>Reset Password</h2>
+        <input type="password" id="new-password" placeholder="Enter new password">
+        <input type="password" id="confirm-new-password" placeholder="Confirm new password">
+        <button id="confirm-reset-btn">Confirm</button>
+        <div class="message" id="reset-message"></div>
+        <button id="back-btn">Back to Login</button>
+    </div>
 
     <script>
         const createPassword = document.getElementById('create-password');
@@ -145,6 +198,13 @@
         const reenterInput = document.getElementById('reenter');
         const submitBtn = document.getElementById('submit-btn');
         const message = document.getElementById('message');
+        const resetBtn = document.getElementById('reset-btn');
+        const resetContainer = document.getElementById('reset-container');
+        const newPasswordInput = document.getElementById('new-password');
+        const confirmNewPasswordInput = document.getElementById('confirm-new-password');
+        const confirmResetBtn = document.getElementById('confirm-reset-btn');
+        const resetMessage = document.getElementById('reset-message');
+        const backBtn = document.getElementById('back-btn');
 
         if (localStorage.getItem('orbitPassword')) {
             createPassword.style.display = 'none';
@@ -175,8 +235,45 @@
                 message.style.color = 'green';
                 message.style.display = 'block';
                 setTimeout(() => {
-                    window.location.href = 'https://playervpn.github.io/playervpn-game';
+                    window.location.href = '/';
                 }, 1000);
+            }
+        });
+
+        resetBtn.addEventListener('click', () => {
+            createPassword.style.display = 'none';
+            reEnterPassword.style.display = 'none';
+            resetContainer.style.display = 'flex'; // Show the reset container
+        });
+
+        confirmResetBtn.addEventListener('click', () => {
+            if (newPasswordInput.value.length < 6) {
+                resetMessage.textContent = 'Password must be at least 6 characters long';
+                resetMessage.style.color = 'red';
+                resetMessage.style.display = 'block';
+                return;
+            }
+            if (newPasswordInput.value !== confirmNewPasswordInput.value) {
+                resetMessage.textContent = 'Passwords do not match';
+                resetMessage.style.color = 'red';
+                resetMessage.style.display = 'block';
+                return;
+            }
+            localStorage.setItem('orbitPassword', newPasswordInput.value);
+            resetMessage.textContent = 'Password reset successfully! Redirecting...';
+            resetMessage.style.color = 'green';
+            resetMessage.style.display = 'block';
+            setTimeout(() => {
+                window.location.href = 'https://playervpn.github.io/playervpn-game';
+            }, 1000);
+        });
+
+        backBtn.addEventListener('click', () => {
+            resetContainer.style.display = 'none'; // Hide reset container
+            if (localStorage.getItem('orbitPassword')) {
+                reEnterPassword.style.display = 'block';
+            } else {
+                createPassword.style.display = 'block'; // Show create password input again
             }
         });
     </script>
