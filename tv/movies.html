@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orbit TV</title>
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
@@ -257,7 +256,6 @@
 
         let currentMovieId = null;
 
-        // Fetch movies from TMDB
         async function fetchMovies(page = 1, searchQuery = "") {
             const url = searchQuery
                 ? `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(searchQuery)}&page=${page}`
@@ -267,7 +265,6 @@
             return data.results;
         }
 
-        // Display top 10 movies
         async function displayTop10() {
             const movies = await fetchMovies(1);
             const randomMovies = movies.sort(() => 0.5 - Math.random()).slice(0, 10);
@@ -280,7 +277,6 @@
                 .join("");
         }
 
-        // Display all movies
         async function displayAllMovies() {
             const movies = await fetchMovies(1);
             movieGrid.innerHTML = movies
@@ -292,7 +288,6 @@
                 .join("");
         }
 
-        // Open movie page
         function openMoviePage(movieId, title, posterPath) {
             currentMovieId = movieId;
             movieImage.src = `https://image.tmdb.org/t/p/w500${posterPath}`;
@@ -301,15 +296,13 @@
             moviePlayer.style.display = "none";
         }
 
-        // Close movie page and stop the audio
         closeMoviePage.addEventListener("click", () => {
             moviePage.classList.remove("full-screen");
             moviePlayer.style.display = "none";
-            movieIframe.src = ""; // Stops the video and audio
+            movieIframe.src = "";
             currentMovieId = null;
         });
 
-        // Play movie
         playMovieButton.addEventListener("click", () => {
             if (currentMovieId) {
                 moviePlayer.style.display = "block";
@@ -317,7 +310,6 @@
             }
         });
 
-        // Search functionality
         searchBar.addEventListener("input", async (e) => {
             const searchQuery = e.target.value;
             if (searchQuery.trim()) {
@@ -334,7 +326,6 @@
             }
         });
 
-        // Initialize
         displayTop10();
         displayAllMovies();
     </script>
